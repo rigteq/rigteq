@@ -49,23 +49,19 @@ export default function Testimonials() {
                             </div>
 
                             <p className="text-gray-700 text-lg leading-relaxed italic mb-10 text-justify relative z-10">
-                                "Css Founder is one of the best web designing company in market and two things which makes them
-                                different from market Budget & Service, Budget is very competitive in comparison to market and Services
-                                was very personal level it was 1 month project but requirement increased with time and they worked
-                                almost 6 month and honestly they dint ask any extra amount so they work for long term relationship
-                                Thanks for Good Looking Site"
+                                "Rigteq is a global IT services and digital transformation company specializing in cybersecurity, AI, automation, and enterprise-scale solutions. Their expert team delivers innovative, tailored services that drive business growth and efficiency for clients worldwide."
                             </p>
 
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-4">
                                     <img
                                         src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=100&h=100&auto=format&fit=crop"
-                                        alt="Pradeep Tiwari"
+                                        alt="Rachel Jones"
                                         className="w-16 h-16 rounded-full object-cover"
                                     />
                                     <div>
-                                        <h4 className="font-bold text-[#0e3d52] text-xl">Pradeep Tiwari,</h4>
-                                        <p className="text-gray-500 font-medium">Luxor International</p>
+                                        <h4 className="font-bold text-[#0e3d52] text-xl">Rachel Jones</h4>
+                                        <p className="text-gray-500 font-medium">Client Manager, DBS Group</p>
                                     </div>
                                 </div>
                                 <Quote size={40} className="text-[#0e3d52]" />
