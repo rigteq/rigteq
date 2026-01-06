@@ -94,14 +94,14 @@ export default function Navbar() {
                     <a href="#industries" className="hover:text-blue-600 transition-colors">Industries</a>
                     <a href="#media" className="hover:text-blue-600 transition-colors">Media</a>
                     <a href="#blog" className="hover:text-blue-600 transition-colors">Blog</a>
+                    <a href="#contact" className={`font-medium transition-colors ${scrolled ? "hover:text-blue-600" : "hover:text-blue-400"
+                        }`}>Contact Us</a>
                     <div className={`px-5 py-1.5 rounded-full font-semibold cursor-pointer transition-all ${scrolled
                         ? "bg-blue-600 text-white hover:bg-blue-700"
                         : "bg-blue-600/20 text-[#7bbde8] border border-[#7bbde8]/30 hover:bg-blue-600/30"
                         }`}>
                         Packages
                     </div>
-                    <a href="#contact" className={`font-medium transition-colors ${scrolled ? "hover:text-blue-600" : "hover:text-blue-400"
-                        }`}>Contact Us</a>
                     <button className={`px-6 py-2 rounded-full font-semibold transition-all ${scrolled
                         ? "border border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white"
                         : "border border-white/40 text-white hover:bg-white hover:text-black"

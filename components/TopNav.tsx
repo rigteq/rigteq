@@ -3,11 +3,10 @@ import { ChevronDown } from "lucide-react";
 export default function TopNav() {
     const links = [
         "Home",
-        "Website Calculator",
-        "Career",
+        "Careers",
         "Clients",
-        "Testimonial",
-        "CSR",
+        "Testimonials",
+        "Support",
         "Get Quotes",
     ];
 

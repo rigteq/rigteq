@@ -2,49 +2,51 @@ import { MapPin, Phone, Mail, Facebook, Instagram, Twitter, Linkedin, Youtube, A
 
 export default function Footer() {
     const aboutLinks = [
-        "Any grievance Home",
-        "Know more About",
-        "Our Supporter Clients",
-        "What They Says Testimonial",
-        "Our Inspiration CSR",
-        "For Pricing GET QUOTE",
-        "Links Details Site Map",
-        "Your Words Feedback",
+        "Careers",
+        "About Us",
+        "Clients",
+        "Testimonials",
+        "Raise a concern",
+        "Get a Quote",
+        "Share Feedback",
+        "FAQs",
+        "Other Links",
     ];
 
     const policyLinks = [
-        "Career",
-        "Email Hosting",
-        "Domain",
-        "Annual Maintenance",
+        "Domains",
+        "Hosting",
+        "Emails",
+        "Cloud Services",
+        "Maintenance",
+        "Complaints",
         "Refund Policy",
         "Privacy Policy",
         "Terms & Condition",
-        "Complaint",
     ];
 
     const servicesCol1 = [
         "Website Designing",
         "Static Website Design",
+        "Dynamic Website Design",
         "Startup Website Design",
         "Free Website Design",
-        "Dynamic Website Design",
         "Corporate Website Design",
-        "CMS Development",
-        "CRM Development",
+        "SEO Services",
+        "Digital Marketing",
         "E-commerce Website Development",
     ];
 
     const servicesCol2 = [
-        "PSD to HTML Design",
-        "Landing page website",
-        "Email template design",
-        "Custom website development",
-        "Multi vendor Website Development",
-        "Business Profile Website",
-        "Informative Website",
-        "Portfolio Website",
-        "Website Designing Company In Noida",
+        "Software Development",
+        "Mobile App Development",
+        "Healthcare Software Development",
+        "ATS Development",
+        "CMS Development",
+        "HRMS Development",
+        "Native App Development",
+        "Android App Development",
+        "iOS App Development",
     ];
 
     return (
@@ -76,7 +78,7 @@ export default function Footer() {
             {/* Main Footer Content */}
             <div className="max-w-7xl mx-auto px-4 md:px-8 pt-20 pb-12">
                 {/* About Us / Our Services Header */}
-                <h2 className="text-center text-2xl font-bold mb-8">About Us/Our Services</h2>
+                <h2 className="text-center text-2xl font-bold mb-8">Our Services</h2>
 
                 {/* Links Grid */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
@@ -124,8 +126,7 @@ export default function Footer() {
                         <h3 className="text-xl font-bold mb-4">Our Global Presence</h3>
                         <div className="rounded-xl overflow-hidden h-72 shadow-lg border border-gray-700">
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.0611168506395!2d77.31073937528458!3d28.628519684203075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5456781f9a1%3A0x2f2b7e9d97d4c84c!2sSector%2062%2C%20Noida%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1704500000000!5m2!1sen!2sin"
-                                width="100%"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.0611168506395!2d77.365!3d28.620!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce56b12345678%3A0xabcdef123456789!2sD-41%2C%20C%20Block%2C%20Sector%2059%2C%20Noida%2C%20Uttar%20Pradesh%20201309!5e0!3m2!1sen!2sin!4v1704500000000!5m2!1sen!2sin" width="100%"
                                 height="100%"
                                 style={{ border: 0 }}
                                 allowFullScreen
@@ -135,7 +136,6 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    {/* Noida Office */}
                     <div className="space-y-6">
                         <h3 className="text-xl font-bold">Contact Us</h3>
                         <div className="flex items-start gap-4">
@@ -143,8 +143,8 @@ export default function Footer() {
                                 <MapPin size={20} className="text-red-500" />
                             </div>
                             <div>
-                                <h4 className="font-semibold text-lg">Noida Office</h4>
-                                <p className="text-gray-300 text-sm">Tower C 210 & 211 Noida One Building, Sector 62, Uttar Pradesh 201301</p>
+                                <h4 className="font-semibold text-lg">Rigteq</h4>
+                                <p className="text-gray-300 text-sm"> D-41, C Block, Sector 59, Noida, Uttar Pradesh 201309</p>
                             </div>
                         </div>
                         <div className="flex items-start gap-4">
@@ -153,8 +153,8 @@ export default function Footer() {
                             </div>
                             <div>
                                 <h4 className="font-semibold text-lg">Call Us</h4>
-                                <p className="text-gray-300 text-sm">+91 88600 80044</p>
-                                <p className="text-gray-300 text-sm">+91 78384 90044</p>
+                                <p className="text-gray-300 text-sm">+91 87503 99055</p>
+                                <p className="text-gray-300 text-sm">+91 87503 99066</p>
                             </div>
                         </div>
                         <div className="flex items-start gap-4">
@@ -163,7 +163,7 @@ export default function Footer() {
                             </div>
                             <div>
                                 <h4 className="font-semibold text-lg">Email Addresses</h4>
-                                <p className="text-gray-300 text-sm">info@rigteq.com</p>
+                                <p className="text-gray-300 text-sm">ops@rigteq.com</p>
                                 <p className="text-gray-300 text-sm">sales@rigteq.com</p>
                             </div>
                         </div>
@@ -173,10 +173,10 @@ export default function Footer() {
                 {/* CTA Buttons */}
                 <div className="flex flex-wrap justify-center gap-4 mb-8">
                     <button className="bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-8 rounded transition-colors">
-                        Website Price Calculator
+                        View Our Packages
                     </button>
                     <button className="border-2 border-red-600 text-red-500 hover:bg-red-600 hover:text-white font-semibold py-3 px-8 rounded transition-colors">
-                        Raise Your Ticket
+                        Talk to Our Experts
                     </button>
                 </div>
 

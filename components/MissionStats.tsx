@@ -3,8 +3,8 @@ import { ExternalLink } from "lucide-react";
 export default function MissionStats() {
     const missions = [
         {
-            title: "Your Website, Our Mission",
-            desc: "Crafting impactful websites that bring your global vision to life.",
+            title: "Your Software, Our Mission",
+            desc: "Crafting impactful websites and apps that bring your global vision to life.",
         },
         {
             title: "Revolutionizing Web Design",
@@ -18,26 +18,26 @@ export default function MissionStats() {
 
     const stats = [
         {
-            value: "11+ Year",
-            label: "Track Record",
+            value: "11+ Years",
+            label: "of Industry Track Record",
             img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&h=400&auto=format&fit=crop",
             bg: "bg-[#e0fcf9]",
         },
         {
-            value: "10000+",
+            value: "1000+",
             label: "Happy Customers",
             img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&h=400&auto=format&fit=crop",
             bg: "bg-[#fff7e6]",
         },
         {
             value: "90+",
-            label: "Expert Team",
+            label: "Expert Teams",
             img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&h=400&auto=format&fit=crop",
             bg: "bg-[#fff2f0]",
         },
         {
-            value: "900+",
-            label: "Total Reviews",
+            value: "300+",
+            label: "Tech Partners",
             img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400&h=400&auto=format&fit=crop",
             bg: "bg-[#f0f5ff]",
         },
