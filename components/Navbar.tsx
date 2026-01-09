@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
 
@@ -94,8 +95,8 @@ export default function Navbar() {
                     <a href="#industries" className="hover:text-blue-600 transition-colors">Industries</a>
                     <a href="#media" className="hover:text-blue-600 transition-colors">Media</a>
                     <a href="#blog" className="hover:text-blue-600 transition-colors">Blog</a>
-                    <a href="#contact" className={`font-medium transition-colors ${scrolled ? "hover:text-blue-600" : "hover:text-blue-400"
-                        }`}>Contact Us</a>
+                    <Link href="/contact" className={`font-medium transition-colors ${scrolled ? "hover:text-blue-600" : "hover:text-blue-400"
+                        }`}>Contact Us</Link>
                     <div className={`px-5 py-1.5 rounded-full font-semibold cursor-pointer transition-all ${scrolled
                         ? "bg-blue-600 text-white hover:bg-blue-700"
                         : "bg-blue-600/20 text-[#7bbde8] border border-[#7bbde8]/30 hover:bg-blue-600/30"
