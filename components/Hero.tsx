@@ -1,6 +1,6 @@
 export default function Hero() {
     return (
-        <section className="relative min-h-[85vh] flex flex-col items-start justify-center px-4 md:px-24 overflow-hidden bg-[#0a0a0c]">
+        <section id="hero" className="relative min-h-[85vh] flex flex-col items-start justify-center px-4 md:px-24 overflow-hidden bg-[#0a0a0c]">
             {/* Background Animation Placeholder / Video */}
             <div className="absolute inset-0 z-0">
                 <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-black/20 z-10" />

@@ -11,7 +11,7 @@ export default function IndustriesSection() {
     ];
 
     return (
-        <section className="bg-[#f5f5f5] py-16 px-4 md:px-24">
+        <section id="industries" className="bg-[#f5f5f5] py-16 px-4 md:px-24">
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-12 items-start">
                     {/* Left Content */}

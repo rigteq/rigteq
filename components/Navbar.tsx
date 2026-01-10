@@ -51,7 +51,12 @@ const servicesMenu = {
     ],
 };
 
-export default function Navbar() {
+interface NavbarProps {
+    currentView?: string;
+    setView?: (view: string) => void;
+}
+
+export default function Navbar({ currentView = "home", setView }: NavbarProps) {
     const [scrolled, setScrolled] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState<"design" | "services" | null>(null);
 
@@ -63,6 +68,23 @@ export default function Navbar() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    const handleViewChange = (view: string, sectionId?: string) => {
+        if (setView) {
+            setView(view);
+            if (sectionId) {
+                // Small timeout to ensure the DOM is updated if we were in another view
+                setTimeout(() => {
+                    const el = document.getElementById(sectionId);
+                    if (el) {
+                        el.scrollIntoView({ behavior: "smooth" });
+                    }
+                }, 50);
+            } else {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+        }
+    };
+
     return (
         <div className="relative">
             <nav className={`sticky top-0 z-50 px-4 md:px-12 py-3 flex items-center justify-between transition-all duration-300 ${scrolled
@@ -70,7 +92,10 @@ export default function Navbar() {
                 : "bg-white/5 backdrop-blur-md border-b border-white/10"
                 }`}>
                 {/* Logo */}
-                <div className="flex items-center gap-2">
+                <div
+                    className="flex items-center gap-2 cursor-pointer"
+                    onClick={() => handleViewChange("home")}
+                >
                     <img src="/images/logos/main_logo.png" alt="Rigteq Logo" className="h-10 md:h-12 w-auto object-contain" />
                 </div>
 
@@ -88,15 +113,43 @@ export default function Navbar() {
                         className="flex items-center gap-1 cursor-pointer group hover:text-blue-600 transition-colors"
                         onMouseEnter={() => setActiveDropdown("services")}
                         onMouseLeave={() => setActiveDropdown(null)}
+                        onClick={() => handleViewChange("home", "services")}
                     >
                         Services <ChevronDown size={14} className={`transition-transform ${activeDropdown === "services" ? "rotate-180" : ""}`} />
                     </div>
-                    <a href="#portfolio" className="hover:text-blue-600 transition-colors">Portfolio</a>
-                    <a href="#industries" className="hover:text-blue-600 transition-colors">Industries</a>
-                    <a href="#media" className="hover:text-blue-600 transition-colors">Media</a>
-                    <a href="#blog" className="hover:text-blue-600 transition-colors">Blog</a>
-                    <Link href="/contact" className={`font-medium transition-colors ${scrolled ? "hover:text-blue-600" : "hover:text-blue-400"
-                        }`}>Contact Us</Link>
+                    <button
+                        onClick={() => handleViewChange("home", "portfolio")}
+                        className="hover:text-blue-600 transition-colors"
+                    >
+                        Portfolio
+                    </button>
+                    <button
+                        onClick={() => handleViewChange("home", "industries")}
+                        className="hover:text-blue-600 transition-colors"
+                    >
+                        Industries
+                    </button>
+                    <button
+                        onClick={() => handleViewChange("home", "media")}
+                        className="hover:text-blue-600 transition-colors"
+                    >
+                        Media
+                    </button>
+                    <button
+                        onClick={() => handleViewChange("home", "blog")}
+                        className="hover:text-blue-600 transition-colors"
+                    >
+                        Blog
+                    </button>
+                    <button
+                        onClick={() => handleViewChange("contact")}
+                        className={`font-medium transition-colors ${currentView === "contact"
+                            ? "text-blue-600"
+                            : scrolled ? "hover:text-blue-600" : "hover:text-blue-400"
+                            }`}
+                    >
+                        Contact Us
+                    </button>
                     <div className={`px-5 py-1.5 rounded-full font-semibold cursor-pointer transition-all ${scrolled
                         ? "bg-blue-600 text-white hover:bg-blue-700"
                         : "bg-blue-600/20 text-[#7bbde8] border border-[#7bbde8]/30 hover:bg-blue-600/30"
