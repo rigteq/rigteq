@@ -119,18 +119,14 @@ export default function Footer() {
 
                 {/* Map and Contact Section */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-                    {/* Google Map - Wider */}
+                    {/* Global Presence Map */}
                     <div>
                         <h3 className="text-xl font-bold mb-4">Our Global Presence</h3>
-                        <div className="rounded-xl overflow-hidden h-72 shadow-lg border border-gray-700">
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.0611168506395!2d77.31073937528458!3d28.628519684203075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5456781f9a1%3A0x2f2b7e9d97d4c84c!2sSector%2062%2C%20Noida%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1704500000000!5m2!1sen!2sin"
-                                width="100%"
-                                height="100%"
-                                style={{ border: 0 }}
-                                allowFullScreen
-                                loading="lazy"
-                                referrerPolicy="no-referrer-when-downgrade"
+                        <div className="rounded-xl overflow-hidden h-72">
+                            <img
+                                src="/images/cover-map.gif"
+                                alt="Our Global Presence"
+                                className="w-full h-full object-cover"
                             />
                         </div>
                     </div>
