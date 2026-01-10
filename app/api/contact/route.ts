@@ -55,7 +55,7 @@ export async function POST(request: Request) {
     // Attempt to send email via Resend
     const { data, error } = await resend.emails.send({
       from: "Rigteq Inquiry <onboarding@resend.dev>",
-      to: "ops@rigteq.com",
+      to: "devsharma1991111@gmail.com",
       subject: `New Inquiry from ${name}`,
       replyTo: email,
       html: `
