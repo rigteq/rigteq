@@ -1,0 +1,33 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#grad5)"/>
+  <!-- Educational platform doodle -->
+  <!-- Graduation cap -->
+  <rect x="170" y="120" width="60" height="8" fill="#fff"/>
+  <rect x="175" y="112" width="50" height="8" fill="#fff"/>
+  <rect x="180" y="104" width="40" height="8" fill="#fff"/>
+  <!-- Tassel -->
+  <line x1="200" y1="104" x2="210" y2="95" stroke="#fff" stroke-width="3"/>
+  <circle cx="210" cy="95" r="3" fill="#ffd93d"/>
+  <!-- Books -->
+  <rect x="160" y="150" width="30" height="40" rx="2" fill="#fff" opacity="0.9"/>
+  <rect x="165" y="155" width="20" height="3" fill="#333"/>
+  <rect x="165" y="165" width="20" height="3" fill="#333"/>
+  <rect x="165" y="175" width="20" height="3" fill="#333"/>
+  <rect x="210" y="150" width="30" height="40" rx="2" fill="#fff" opacity="0.9"/>
+  <rect x="215" y="155" width="20" height="3" fill="#333"/>
+  <rect x="215" y="165" width="20" height="3" fill="#333"/>
+  <rect x="215" y="175" width="20" height="3" fill="#333"/>
+  <!-- Computer screen -->
+  <rect x="170" y="200" width="60" height="40" rx="3" fill="#fff" opacity="0.8"/>
+  <rect x="175" y="205" width="50" height="30" rx="2" fill="#333"/>
+  <circle cx="185" cy="215" r="3" fill="#4ecdc4"/>
+  <circle cx="200" cy="215" r="3" fill="#ffd93d"/>
+  <circle cx="215" cy="215" r="3" fill="#ff6b6b"/>
+  <text x="200" y="260" text-anchor="middle" fill="#fff" font-family="Arial" font-size="14" font-weight="bold">EDUCATIONAL PLATFORM</text>
+</svg>

@@ -1,0 +1,32 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f5576c;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#grad4)"/>
+  <!-- CRM system doodle -->
+  <!-- Dashboard -->
+  <rect x="120" y="80" width="160" height="120" rx="10" fill="#fff" opacity="0.9"/>
+  <!-- Charts -->
+  <rect x="140" y="100" width="40" height="30" rx="3" fill="#4ecdc4"/>
+  <rect x="190" y="100" width="40" height="45" rx="3" fill="#45b7d1"/>
+  <rect x="240" y="100" width="40" height="25" rx="3" fill="#96ceb4"/>
+  <!-- People icons -->
+  <circle cx="160" cy="160" r="8" fill="#333"/>
+  <circle cx="180" cy="160" r="8" fill="#333"/>
+  <circle cx="200" cy="160" r="8" fill="#333"/>
+  <circle cx="220" cy="160" r="8" fill="#333"/>
+  <!-- Lines connecting people -->
+  <line x1="168" y1="160" x2="172" y2="160" stroke="#333" stroke-width="2"/>
+  <line x1="188" y1="160" x2="192" y2="160" stroke="#333" stroke-width="2"/>
+  <line x1="208" y1="160" x2="212" y2="160" stroke="#333" stroke-width="2"/>
+  <text x="200" y="200" text-anchor="middle" fill="#fff" font-family="Arial" font-size="14" font-weight="bold">CRM SYSTEM</text>
+  <!-- Gear -->
+  <circle cx="200" cy="230" r="15" fill="none" stroke="#fff" stroke-width="2"/>
+  <rect x="195" y="215" width="10" height="4" fill="#fff"/>
+  <rect x="195" y="225" width="10" height="4" fill="#fff"/>
+  <rect x="191" y="219" width="4" height="10" fill="#fff"/>
+  <rect x="205" y="219" width="4" height="10" fill="#fff"/>
+</svg>

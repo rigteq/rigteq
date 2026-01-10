@@ -130,7 +130,7 @@ export default function Navbar({ currentView = "home", setView }: NavbarProps) {
                         Industries
                     </button>
                     <button
-                        onClick={() => handleViewChange("home", "media")}
+                        onClick={() => handleViewChange("media")}
                         className="hover:text-blue-600 transition-colors"
                     >
                         Media
