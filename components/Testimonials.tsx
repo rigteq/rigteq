@@ -2,7 +2,7 @@ import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 export default function Testimonials() {
     return (
-        <section className="bg-[#f9f9f9] py-20 px-4 md:px-24 overflow-hidden">
+        <section id="testimonials" className="bg-[#f9f9f9] py-20 px-4 md:px-24 overflow-hidden">
             <div className="max-w-7xl mx-auto">
                 <h2 className="text-center text-[#0e3d52] text-3xl font-bold mb-16">
                     What our clients says

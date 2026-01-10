@@ -1,6 +1,6 @@
 export default function ServicesGrid() {
     return (
-        <section className="bg-white pt-[60px] pb-20 px-4 md:px-24">
+        <section id="services" className="bg-white pt-[60px] pb-20 px-4 md:px-24">
             <div className="max-w-7xl mx-auto">
                 <h2 className="text-center text-xl md:text-2xl font-bold text-[#003366] mb-[30px]">
                     India's Leading Website Design Company for Custom Solutions

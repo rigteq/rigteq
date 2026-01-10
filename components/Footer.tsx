@@ -1,6 +1,17 @@
 import { MapPin, Phone, Mail, Facebook, Instagram, Twitter, Linkedin, Youtube, ArrowRight } from "lucide-react";
 
-export default function Footer() {
+interface FooterProps {
+    setView?: (view: string) => void;
+}
+
+export default function Footer({ setView }: FooterProps) {
+    const handleViewChange = (view: string) => {
+        if (setView) {
+            setView(view);
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    };
+
     const aboutLinks = [
         "Careers",
         "About Us",
@@ -66,7 +77,10 @@ export default function Footer() {
                             <span className="text-gray-800 text-lg font-semibold">
                                 Ready to Discuss your Project?
                             </span>
-                            <button className="flex items-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-3 px-6 rounded transition-colors">
+                            <button
+                                onClick={() => handleViewChange("contact")}
+                                className="flex items-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-3 px-6 rounded transition-colors"
+                            >
                                 Work With Us
                                 <ArrowRight size={18} />
                             </button>
@@ -175,7 +189,10 @@ export default function Footer() {
                     <button className="bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-8 rounded transition-colors">
                         View Our Packages
                     </button>
-                    <button className="border-2 border-red-600 text-red-500 hover:bg-red-600 hover:text-white font-semibold py-3 px-8 rounded transition-colors">
+                    <button
+                        onClick={() => handleViewChange("contact")}
+                        className="border-2 border-red-600 text-red-500 hover:bg-red-600 hover:text-white font-semibold py-3 px-8 rounded transition-colors"
+                    >
                         Talk to Our Experts
                     </button>
                 </div>
