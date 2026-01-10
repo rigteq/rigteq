@@ -1,4 +1,8 @@
-export default function IndustriesSection() {
+interface IndustriesProps {
+    setView?: (view: string) => void;
+}
+
+export default function IndustriesSection({ setView }: IndustriesProps) {
     const industries = [
         { name: "Healthcare", src: "/images/healthcare.webp" },
         { name: "Real Estate", src: "/images/realstate.webp" },
@@ -9,6 +13,10 @@ export default function IndustriesSection() {
         { name: "Supply Chain", src: "/images/supply_chain.webp" },
         { name: "Restaurant", src: "/images/restraunt.webp" },
     ];
+
+    const handleInquiry = () => {
+        if (setView) setView("contact");
+    };
 
     return (
         <section id="industries" className="bg-[#f5f5f5] py-16 px-4 md:px-24">
@@ -23,8 +31,11 @@ export default function IndustriesSection() {
                         <p className="text-gray-600 leading-relaxed">
                             At Rigteq, we create stunning, custom websites tailored to your industry's unique needs. Our expert team ensures your online presence is impactful and drives success. We combine cutting-edge design with innovation to elevate your brand. Partner with us for a standout digital experience.
                         </p>
-                        <button className="bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-8 rounded-full transition-colors">
-                            View All
+                        <button
+                            onClick={handleInquiry}
+                            className="bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-8 rounded-full transition-colors"
+                        >
+                            Get Started
                         </button>
                     </div>
 

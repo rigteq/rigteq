@@ -1,4 +1,12 @@
-export default function Hero() {
+interface HeroProps {
+    setView?: (view: string) => void;
+}
+
+export default function Hero({ setView }: HeroProps) {
+    const handleEnquire = () => {
+        if (setView) setView("contact");
+    };
+
     return (
         <section id="hero" className="relative min-h-[85vh] flex flex-col items-start justify-center px-4 md:px-24 overflow-hidden bg-[#0a0a0c]">
             {/* Background Animation Placeholder / Video */}
@@ -17,8 +25,11 @@ export default function Hero() {
 
             {/* Vertical Enquire Tab */}
             <div className="fixed right-0 top-1/2 -translate-y-1/2 z-40 hidden md:block">
-                <div className="bg-[#002b5c] text-white px-2 py-6 rounded-l-md flex flex-col items-center gap-4 cursor-pointer hover:bg-blue-900 transition-colors shadow-xl">
-                    <div className="flex items-center justify-center p-1 bg-white/20 rounded">
+                <div
+                    onClick={handleEnquire}
+                    className="bg-[#002b5c] text-white px-2 py-6 rounded-l-md flex flex-col items-center gap-4 cursor-pointer hover:bg-blue-900 transition-colors shadow-xl group"
+                >
+                    <div className="flex items-center justify-center p-1 bg-white/20 rounded group-hover:bg-white/30 transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>
                     </div>
                     <span className="[writing-mode:vertical-lr] rotate-180 uppercase tracking-widest text-[10px] font-bold">
