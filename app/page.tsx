@@ -15,6 +15,7 @@ import Footer from "@/components/Footer";
 import FloatingWidgets from "@/components/FloatingWidgets";
 import ContactForm from "@/components/ContactForm";
 import Media from "@/components/Media";
+import Blog from "@/components/Blog";
 
 export default function Home() {
   const [view, setView] = useState("home");
@@ -56,6 +57,8 @@ export default function Home() {
         </section>
       ) : view === "media" ? (
         <Media setView={setView} />
+      ) : view === "blog" ? (
+        <Blog setView={setView} />
       ) : null}
 
       <Footer setView={setView} />
