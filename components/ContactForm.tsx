@@ -72,8 +72,8 @@ export default function ContactForm() {
       localStorage.setItem("last_contact_submission", Date.now().toString());
       setSuccess(true);
       setForm({ name: "", email: "", company: "", message: "" });
-    } catch (err: any) {
-      setError(err?.message || "Internal server error.");
+    } catch (err: unknown) {
+      setError((err as Error)?.message || "Internal server error.");
     } finally {
       setLoading(false);
     }
@@ -173,7 +173,7 @@ export default function ContactForm() {
 
       {isRateLimited && (
         <p className="text-center text-xs text-gray-500">
-          You've reached your daily limit. Try again in 24 hours.
+          You&apos;ve reached your daily limit. Try again in 24 hours.
         </p>
       )}
     </form>

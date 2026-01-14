@@ -43,10 +43,6 @@ export default function MissionStats() {
         },
     ];
 
-    const logos = [
-        "CNBC", "YOURSTORY", "Forbes", "Gulf News", "TV9", "NDTV", "ABC"
-    ];
-
     return (
         <section className="bg-white py-16 px-4 md:px-24">
             <div className="max-w-7xl mx-auto">

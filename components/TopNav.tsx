@@ -1,5 +1,3 @@
-import { ChevronDown } from "lucide-react";
-
 export default function TopNav() {
     const links = [
         "Home",

@@ -1,5 +1,3 @@
-import { Download, ArrowRight } from "lucide-react";
-
 export default function TechnologiesSection() {
     const technologies = [
         { name: "PHP", src: "/images/logos/php.webp" },

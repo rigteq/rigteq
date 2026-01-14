@@ -43,10 +43,10 @@ export default function Home() {
           <div className="max-w-7xl mx-auto w-full">
             <div className="text-center mb-16">
               <h1 className="text-5xl md:text-7xl font-bold text-[#0e3d52] mb-6 font-[playfair] tracking-tight">
-                Let's Build Something <span className="text-blue-600">Extraordinary</span>
+                Let&apos;s Build Something <span className="text-blue-600">Extraordinary</span>
               </h1>
               <p className="text-gray-600 max-w-2xl mx-auto text-lg md:text-xl leading-relaxed">
-                Have a vision? We have the expertise. Reach out today and let's start your digital transformation journey.
+                Have a vision? We have the expertise. Reach out today and let&apos;s start your digital transformation journey.
               </p>
             </div>
 

@@ -59,7 +59,7 @@ export default function CompaniesSection() {
                             Get a free proposal - Transparent Price
                         </button>
                         <p className="text-gray-300 text-sm leading-relaxed italic">
-                            "Rigteq has always worked hard to make sure that we're getting what we need out of the partnership, not just what may seem like the best result"
+                            &quot;Rigteq has always worked hard to make sure that we&apos;re getting what we need out of the partnership, not just what may seem like the best result&quot;
                         </p>
                     </div>
                 </div>

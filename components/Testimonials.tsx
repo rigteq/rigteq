@@ -49,7 +49,7 @@ export default function Testimonials() {
                             </div>
 
                             <p className="text-gray-700 text-lg leading-relaxed italic mb-10 text-justify relative z-10">
-                                "Rigteq is a global IT services and digital transformation company specializing in cybersecurity, AI, automation, and enterprise-scale solutions. Their expert team delivers innovative, tailored services that drive business growth and efficiency for clients worldwide."
+                                &quot;Rigteq is a global IT services and digital transformation company specializing in cybersecurity, AI, automation, and enterprise-scale solutions. Their expert team delivers innovative, tailored services that drive business growth and efficiency for clients worldwide.&quot;
                             </p>
 
                             <div className="flex items-center justify-between">

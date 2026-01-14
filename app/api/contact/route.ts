@@ -53,7 +53,7 @@ export async function POST(request: Request) {
     }
 
     // Attempt to send email via Resend
-    const { data, error } = await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: "Rigteq Inquiry <onboarding@resend.dev>",
       to: "devsharma1991111@gmail.com",
       subject: `New Inquiry from ${name}`,
@@ -85,7 +85,7 @@ export async function POST(request: Request) {
       success: true,
       message: "Thank you! Your message has been sent to ops@rigteq.com."
     });
-  } catch (err) {
+  } catch {
     return NextResponse.json({ error: "Invalid request or server error" }, { status: 500 });
   }
 }
