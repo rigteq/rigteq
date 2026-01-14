@@ -3,7 +3,7 @@ export default function ServicesGrid() {
         <section id="services" className="bg-white pt-[60px] pb-20 px-4 md:px-24">
             <div className="max-w-7xl mx-auto">
                 <h2 className="text-center text-xl md:text-2xl font-bold text-[#003366] mb-[30px]">
-                    India's Leading Website Design Company for Custom Solutions
+                    India&apos;s Leading Website Design Company for Custom Solutions
                 </h2>
 
                 {/* Custom Grid Layout - Matches reference website proportions */}
@@ -30,7 +30,7 @@ export default function ServicesGrid() {
     );
 }
 
-function ServiceCard({ title, img, isTall = false }: { title: string; img: string; isTall?: boolean }) {
+function ServiceCard({ title, img }: { title: string; img: string }) {
     return (
         <div className={`relative overflow-hidden rounded-[15px] border border-gray-100 shadow-sm h-full bg-[#f8fbff]`}>
             <img
