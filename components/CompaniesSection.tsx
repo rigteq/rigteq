@@ -1,68 +1,69 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 export default function CompaniesSection() {
-    const logos = [
-        // Row 1
-        { name: "Luxor", src: "/images/Luxor_pen_logo.webp" },
-        { name: "Samsung", src: "/images/Samsung_Logo.webp" },
-        { name: "IIT Delhi", src: "/images/IIT_Delhi_logo.webp" },
-        { name: "SAYA", src: "/images/saya.webp" },
-        { name: "NICF", src: "/images/nicf.webp" },
-        { name: "Gaurs", src: "/images/gaur.webp" },
-        // Row 2
-        { name: "Exotica", src: "/images/exoticahousing.webp" },
-        { name: "Emaar", src: "/images/Emaar_logo.webp" },
-        { name: "Rolex", src: "/images/rolex-logo.webp" },
-        { name: "Hyundai", src: "/images/hyundai.webp" },
-        { name: "Cooke & Kelvey", src: "/images/cookeandkelvey-logo.webp" },
-        { name: "RVCJ", src: "/images/rvcj.webp" },
-        // Row 3
-        { name: "Mohani Tea", src: "/images/mohinitea.webp" },
-        { name: "Jakpower", src: "/images/jakpower.webp" },
-        { name: "Stylam", src: "/images/stylam.webp" },
-        { name: "Antriksh India", src: "/images/antriksh_logo.webp" },
-        { name: "Amar Ujala", src: "/images/Amar_Ujala_Logo.webp" },
-        { name: "Durr", src: "/images/durr.webp" },
+    const companies = [
+        "/images/Amar_Ujala_Logo.webp",
+        "/images/Emaar_logo.webp",
+        "/images/IIT_Delhi_logo.webp",
+        "/images/Luxor_pen_logo.webp",
+        "/images/Samsung_Logo.webp",
+        "/images/antriksh_logo.webp",
+        "/images/clutch.webp",
+        "/images/cookeandkelvey-logo.webp",
+        "/images/durr.webp",
+        "/images/exoticahousing.webp",
+        "/images/gaur.webp",
+        "/images/goodfirms.webp",
+        "/images/google.webp",
+        "/images/hyundai.webp",
+        "/images/jakpower.webp",
+        "/images/mohinitea.webp",
+        "/images/nicf.webp",
+        "/images/rolex-logo.webp",
+        "/images/rvcj.webp",
+        "/images/saya.webp",
+        "/images/stylam.webp",
+        "/images/trustpilot.webp",
     ];
 
+    // Double the array for seamless infinite scroll
+    const marqueeCompanies = [...companies, ...companies];
+
     return (
-        <section className="bg-white py-16 px-4 md:px-24">
-            <div className="max-w-7xl mx-auto">
-                <h2 className="text-center text-3xl md:text-4xl font-bold text-[#0e3d52] mb-12">
-                    Companies We Have Worked For
-                </h2>
+        <section className="bg-white py-12 md:py-20 overflow-hidden relative border-y border-gray-100">
+            <div className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white z-10 pointer-events-none" />
 
-                <div className="grid grid-cols-1 lg:grid-cols-[1fr_350px] gap-8 items-stretch">
-                    {/* Logo Grid */}
-                    <div className="grid grid-cols-3 md:grid-cols-6 border border-gray-200">
-                        {logos.map((logo, index) => (
-                            <div
-                                key={index}
-                                className="flex items-center justify-center p-4 md:p-6 border border-gray-200 bg-white hover:bg-gray-50 transition-colors h-24 md:h-28"
-                            >
-                                <img
-                                    src={logo.src}
-                                    alt={logo.name}
-                                    className="max-h-12 md:max-h-16 max-w-full object-contain grayscale hover:grayscale-0 transition-all"
-                                />
-                            </div>
-                        ))}
-                    </div>
+            <div className="text-center mb-12 relative z-20">
+                <h3 className="text-xl md:text-2xl font-bold text-gray-400 uppercase tracking-[0.2em]">
+                    Trusted By Industry Leaders
+                </h3>
+            </div>
 
-                    {/* CTA Box */}
-                    <div className="bg-[#0b2d5d] rounded-lg p-8 flex flex-col justify-center text-white">
-                        <h3 className="text-2xl md:text-3xl font-bold mb-2">
-                            Reach Your Business Goals in
-                        </h3>
-                        <h3 className="text-2xl md:text-3xl font-bold mb-6">
-                            2025 with <span className="text-[#ffd234]">Rigteq</span>
-                        </h3>
-                        <button className="bg-white text-[#0b2d5d] font-bold py-3 px-6 rounded-full hover:bg-gray-100 transition-colors mb-6">
-                            Get a free proposal - Transparent Price
-                        </button>
-                        <p className="text-gray-300 text-sm leading-relaxed italic">
-                            "Rigteq has always worked hard to make sure that we're getting what we need out of the partnership, not just what may seem like the best result"
-                        </p>
-                    </div>
-                </div>
+            <div className="flex relative z-0">
+                <motion.div
+                    className="flex gap-12 md:gap-24 items-center whitespace-nowrap"
+                    animate={{ x: [0, -2000] }}
+                    transition={{
+                        repeat: Infinity,
+                        ease: "linear",
+                        duration: 30 // Slow smooth scroll
+                    }}
+                >
+                    {marqueeCompanies.map((logo, index) => (
+                        <div
+                            key={index}
+                            className="w-32 md:w-40 h-20 relative grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100 flex items-center justify-center shrink-0"
+                        >
+                            <img
+                                src={logo}
+                                alt={`Company Logo ${index}`}
+                                className="max-w-full max-h-full object-contain"
+                            />
+                        </div>
+                    ))}
+                </motion.div>
             </div>
         </section>
     );

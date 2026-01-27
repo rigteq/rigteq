@@ -2,9 +2,10 @@ import { MapPin, Phone, Mail, Facebook, Instagram, Twitter, Linkedin, Youtube, A
 
 interface FooterProps {
     setView?: (view: string) => void;
+    openBrochure?: () => void;
 }
 
-export default function Footer({ setView }: FooterProps) {
+export default function Footer({ setView, openBrochure }: FooterProps) {
     const handleViewChange = (view: string) => {
         if (setView) {
             setView(view);
@@ -67,7 +68,10 @@ export default function Footer({ setView }: FooterProps) {
                 <div className="max-w-5xl mx-auto bg-gray-100 rounded-lg shadow-xl overflow-hidden">
                     <div className="flex flex-col md:flex-row items-stretch">
                         {/* Download Brochure */}
-                        <button className="flex items-center justify-center gap-3 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-4 px-8 transition-colors">
+                        <button
+                            onClick={openBrochure}
+                            className="flex items-center justify-center gap-3 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-4 px-8 transition-colors"
+                        >
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
                             Download Brochure
                         </button>

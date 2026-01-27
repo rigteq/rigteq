@@ -1,91 +1,96 @@
-import { NextResponse } from "next/server";
-import { Resend } from "resend";
-import fs from "fs";
-import path from "path";
-
-// Initialize Resend
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-// Simple file-based storage for rate limiting (simulating a DB)
-const LIMIT_FILE = path.join(process.cwd(), "submission_limits.json");
-
-function getSubmissionHistory(): Record<string, number> {
-  try {
-    if (fs.existsSync(LIMIT_FILE)) {
-      const data = fs.readFileSync(LIMIT_FILE, "utf-8");
-      return JSON.parse(data);
-    }
-  } catch (e) {
-    console.error("Error reading limit file", e);
-  }
-  return {};
-}
-
-function saveSubmissionHistory(history: Record<string, number>) {
-  try {
-    fs.writeFileSync(LIMIT_FILE, JSON.stringify(history, null, 2));
-  } catch (e) {
-    console.error("Error saving limit file", e);
-  }
-}
+import { NextResponse } from 'next/server';
+import nodemailer from 'nodemailer';
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
-    const { name, email, message, company } = body || {};
+    const formData = await request.formData();
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const company = formData.get("company") as string || "Not Specified";
+    const message = formData.get("message") as string;
+    const file = formData.get("file") as File | null;
 
-    if (!name || !email || !message) {
-      return NextResponse.json({ error: "Missing required fields." }, { status: 400 });
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
+
+    try {
+      await transporter.verify();
+    } catch (error) {
+      console.error("SMTP Connection Error:", error);
+      // Fallback or just log if developing without keys
+      if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+        console.warn("Missing Email Credentials. Returning success for DEV mode.");
+        return NextResponse.json({ success: true, message: "Message received (Dev Mode)" });
+      }
+      throw new Error("Failed to connect to email provider");
     }
 
-    const emailLower = String(email).toLowerCase().trim();
-    const now = Date.now();
-    const history = getSubmissionHistory();
-
-    // 24-hour check (24 * 60 * 60 * 1000 = 86400000ms)
-    if (history[emailLower] && now - history[emailLower] < 86400000) {
-      const remaining = 86400000 - (now - history[emailLower]);
-      const hours = Math.ceil(remaining / (1000 * 60 * 60));
-      return NextResponse.json(
-        { error: `You have already sent a message recently. Please try again in ${hours} hours.` },
-        { status: 429 }
-      );
+    let attachments = [];
+    if (file) {
+      const bytes = await file.arrayBuffer();
+      const buffer = Buffer.from(bytes);
+      attachments.push({
+        filename: file.name,
+        content: buffer,
+      });
     }
 
-    // Attempt to send email via Resend
-    const { data, error } = await resend.emails.send({
-      from: "Rigteq Inquiry <onboarding@resend.dev>",
-      to: "devsharma1991111@gmail.com",
-      subject: `New Inquiry from ${name}`,
-      replyTo: email,
+    // Email to Ops (Rigteq Team)
+    const mailOptions = {
+      from: `"Rigteq Website" <${process.env.EMAIL_USER}>`,
+      to: "ops@rigteq.com",
+      subject: `New Inquiry from ${name} - Rigteq Website`,
       html: `
-        <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #eee; border-radius: 10px; padding: 20px;">
-          <h2 style="color: #2563eb; margin-bottom: 20px;">New Contact Form Submission</h2>
-          <p style="margin-bottom: 10px;"><strong>Name:</strong> ${name}</p>
-          <p style="margin-bottom: 10px;"><strong>Email:</strong> ${email}</p>
-          <p style="margin-bottom: 10px;"><strong>Company:</strong> ${company || "Not provided"}</p>
-          <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee;">
-            <p><strong>Message:</strong></p>
-            <p style="white-space: pre-wrap; color: #555; background: #f9f9f9; padding: 15px; border-radius: 5px;">${message}</p>
-          </div>
-        </div>
-      `,
-    });
+            <div style="font-family: Arial, sans-serif; max-w-width: 600px; margin: 0 auto;">
+                <h2 style="color: #003366;">New Project Inquiry</h2>
+                <p><strong>Name:</strong> ${name}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Company:</strong> ${company}</p>
+                <p><strong>Message:</strong></p>
+                <blockquote style="background: #f5f5f5; padding: 15px; border-left: 4px solid #003366;">
+                    ${message}
+                </blockquote>
+                ${file ? `<p><strong>Attachment:</strong> ${file.name}</p>` : ''}
+                <p style="font-size: 12px; color: #888;">Received via Rigteq.com Contact Form</p>
+            </div>
+        `,
+      attachments: attachments,
+    };
 
-    if (error) {
-      console.error("Resend Error:", error);
-      return NextResponse.json({ error: "Failed to send email. Please try again later." }, { status: 500 });
-    }
+    // Auto-reply to User
+    const autoReplyOptions = {
+      from: `"Rigteq Team" <${process.env.EMAIL_USER}>`,
+      to: email,
+      subject: "Thank you for contacting Rigteq!",
+      html: `
+             <div style="font-family: Arial, sans-serif; max-w-width: 600px; margin: 0 auto;">
+                <h2 style="color: #003366;">Hello ${name},</h2>
+                <p>Thank you for reaching out to Rigteq. We have received your message and our team will review it shortly.</p>
+                <p>We usually reply within 24 hours.</p>
+                <br/>
+                <p>Best Regards,</p>
+                <p><strong>Team Rigteq</strong></p>
+                <a href="https://rigteq.com" style="color: #003366;">www.rigteq.com</a>
+            </div>
+        `
+    };
 
-    // Update history only if successful
-    history[emailLower] = now;
-    saveSubmissionHistory(history);
+    await Promise.all([
+      transporter.sendMail(mailOptions),
+      transporter.sendMail(autoReplyOptions)
+    ]);
 
-    return NextResponse.json({
-      success: true,
-      message: "Thank you! Your message has been sent to ops@rigteq.com."
-    });
-  } catch (err) {
-    return NextResponse.json({ error: "Invalid request or server error" }, { status: 500 });
+    return NextResponse.json({ success: true, message: "Email sent successfully" });
+  } catch (error) {
+    console.error("Contact API Error:", error);
+    return NextResponse.json(
+      { error: "Failed to send message: " + (error as Error).message },
+      { status: 500 }
+    );
   }
 }

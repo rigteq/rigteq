@@ -1,21 +1,23 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Send, CheckCircle, AlertCircle, RotateCcw } from "lucide-react";
+import { Send, CheckCircle, AlertCircle, RotateCcw, Paperclip } from "lucide-react";
 
 type FormState = {
   name: string;
   email: string;
   company?: string;
   message: string;
+  file?: File | null;
 };
 
 export default function ContactForm() {
-  const [form, setForm] = useState<FormState>({ name: "", email: "", company: "", message: "" });
+  const [form, setForm] = useState<FormState>({ name: "", email: "", company: "", message: "", file: null });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
   const [isRateLimited, setIsRateLimited] = useState(false);
+  const [fileName, setFileName] = useState<string | null>(null);
 
   useEffect(() => {
     const lastSubmission = localStorage.getItem("last_contact_submission");
@@ -31,6 +33,13 @@ export default function ContactForm() {
     const { name, value } = e.target;
     setForm((s) => ({ ...s, [name]: value }));
     if (error) setError(null);
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setForm((s) => ({ ...s, file: e.target.files![0] }));
+      setFileName(e.target.files[0].name);
+    }
   };
 
   const validate = () => {
@@ -57,10 +66,16 @@ export default function ContactForm() {
 
     setLoading(true);
     try {
+      const formData = new FormData();
+      formData.append("name", form.name);
+      formData.append("email", form.email);
+      formData.append("message", form.message);
+      if (form.company) formData.append("company", form.company);
+      if (form.file) formData.append("file", form.file);
+
       const res = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: formData,
       });
 
       const data = await res.json();
@@ -71,7 +86,8 @@ export default function ContactForm() {
 
       localStorage.setItem("last_contact_submission", Date.now().toString());
       setSuccess(true);
-      setForm({ name: "", email: "", company: "", message: "" });
+      setForm({ name: "", email: "", company: "", message: "", file: null });
+      setFileName(null);
     } catch (err: any) {
       setError(err?.message || "Internal server error.");
     } finally {
@@ -100,7 +116,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 bg-gray-50 p-8 md:p-10 rounded-3xl border border-gray-200 shadow-xl relative overflow-hidden group">
+    <form onSubmit={handleSubmit} className="space-y-6 bg-gray-50 p-6 md:p-10 rounded-3xl border border-gray-200 shadow-xl relative overflow-hidden group">
       {error && (
         <div className="flex items-center gap-3 text-sm text-red-600 bg-red-50 p-4 rounded-xl border border-red-200">
           <AlertCircle size={18} className="shrink-0" />
@@ -137,7 +153,7 @@ export default function ContactForm() {
         <label className="text-sm font-semibold text-gray-700 ml-1">Company Name <span className="text-gray-400 font-normal">(Optional)</span></label>
         <input
           name="company"
-          value={form.company}
+          value={form.company || ""}
           onChange={handleChange}
           className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all"
           placeholder="Your Company Ltd."
@@ -154,6 +170,27 @@ export default function ContactForm() {
           className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all resize-none"
           placeholder="Tell us about your project requirements..."
         />
+      </div>
+
+      <div className="space-y-2">
+        <label className="text-sm font-semibold text-gray-700 ml-1">Attach File <span className="text-gray-400 font-normal">(Optional)</span></label>
+        <div className="relative">
+          <input
+            type="file"
+            id="file-upload"
+            className="hidden"
+            onChange={handleFileChange}
+            accept=".pdf,.doc,.docx,.jpg,.png"
+          />
+          <label
+            htmlFor="file-upload"
+            className="flex items-center justify-between w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-gray-500 cursor-pointer hover:bg-gray-50 transition-colors"
+          >
+            <span className="truncate">{fileName || "Choose a file..."}</span>
+            <Paperclip size={18} />
+          </label>
+        </div>
+        <p className="text-xs text-gray-400 ml-1">Accepted formats: PDF, DOC, JPG, PNG (Max 5MB)</p>
       </div>
 
       <button

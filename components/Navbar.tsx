@@ -58,7 +58,7 @@ interface NavbarProps {
 
 export default function Navbar({ currentView = "home", setView }: NavbarProps) {
     const [scrolled, setScrolled] = useState(false);
-    const [activeDropdown, setActiveDropdown] = useState<"design" | "services" | null>(null);
+    const [activeDropdown, setActiveDropdown] = useState<"design" | "services" | "mobile" | null>(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -99,8 +99,29 @@ export default function Navbar({ currentView = "home", setView }: NavbarProps) {
                     <img src="/images/logos/main_logo.png" alt="Rigteq Logo" className="h-10 md:h-12 w-auto object-contain" />
                 </div>
 
-                {/* Navigation Links + Buttons - All in one container with equal spacing */}
-                <div className={`hidden lg:flex items-center gap-8 text-[15px] font-medium ml-24 ${scrolled ? "text-gray-800" : "text-white"
+                {/* Mobile Menu Toggle */}
+                <div className="lg:hidden">
+                    <button
+                        onClick={() => setActiveDropdown(activeDropdown === "mobile" ? null : "mobile")}
+                        className={`p-2 rounded-lg ${scrolled ? "text-gray-900" : "text-gray-800"}`}
+                    >
+                        {activeDropdown === "mobile" ? (
+                            <div className="relative w-6 h-6">
+                                <span className="absolute top-1/2 left-0 w-full h-0.5 bg-current rotate-45 transform transition-transform"></span>
+                                <span className="absolute top-1/2 left-0 w-full h-0.5 bg-current -rotate-45 transform transition-transform"></span>
+                            </div>
+                        ) : (
+                            <div className="space-y-1.5">
+                                <span className="block w-6 h-0.5 bg-current"></span>
+                                <span className="block w-6 h-0.5 bg-current"></span>
+                                <span className="block w-6 h-0.5 bg-current"></span>
+                            </div>
+                        )}
+                    </button>
+                </div>
+
+                {/* Desktop Navigation Links */}
+                <div className={`hidden lg:flex items-center gap-8 text-[15px] font-medium ml-24 ${scrolled ? "text-gray-900" : "text-gray-800"
                     }`}>
                     <div
                         className="flex items-center gap-1 cursor-pointer group hover:text-blue-600 transition-colors relative"
@@ -118,8 +139,8 @@ export default function Navbar({ currentView = "home", setView }: NavbarProps) {
                         Services <ChevronDown size={14} className={`transition-transform ${activeDropdown === "services" ? "rotate-180" : ""}`} />
                     </div>
                     <button
-                        onClick={() => handleViewChange("home", "portfolio")}
-                        className="hover:text-blue-600 transition-colors"
+                        onClick={() => handleViewChange("portfolio")}
+                        className={`hover:text-blue-600 transition-colors ${currentView === "portfolio" ? "text-blue-600" : ""}`}
                     >
                         Portfolio
                     </button>
@@ -131,13 +152,13 @@ export default function Navbar({ currentView = "home", setView }: NavbarProps) {
                     </button>
                     <button
                         onClick={() => handleViewChange("media")}
-                        className="hover:text-blue-600 transition-colors"
+                        className={`hover:text-blue-600 transition-colors ${currentView === "media" ? "text-blue-600" : ""}`}
                     >
                         Media
                     </button>
                     <button
                         onClick={() => handleViewChange("blog")}
-                        className="hover:text-blue-600 transition-colors"
+                        className={`hover:text-blue-600 transition-colors ${currentView === "blog" ? "text-blue-600" : ""}`}
                     >
                         Blog
                     </button>
@@ -150,24 +171,49 @@ export default function Navbar({ currentView = "home", setView }: NavbarProps) {
                     >
                         Contact Us
                     </button>
-                    <div className={`px-5 py-1.5 rounded-full font-semibold cursor-pointer transition-all ${scrolled
-                        ? "bg-blue-600 text-white hover:bg-blue-700"
-                        : "bg-blue-600/20 text-[#7bbde8] border border-[#7bbde8]/30 hover:bg-blue-600/30"
-                        }`}>
+                    <div
+                        onClick={() => handleViewChange("packages")}
+                        className={`px-5 py-1.5 rounded-full font-semibold cursor-pointer transition-all ${scrolled
+                            ? "bg-blue-600 text-white hover:bg-blue-700"
+                            : "bg-blue-600/20 text-[#7bbde8] border border-[#7bbde8]/30 hover:bg-blue-600/30"
+                            }`}>
                         Packages
                     </div>
-                    <button className={`px-6 py-2 rounded-full font-semibold transition-all ${scrolled
-                        ? "border border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white"
-                        : "border border-white/40 text-white hover:bg-white hover:text-black"
-                        }`}>
+                    <button
+                        onClick={() => handleViewChange("contact")}
+                        className={`px-6 py-2 rounded-full font-semibold transition-all ${scrolled
+                            ? "border border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white"
+                            : "border border-white/40 text-white hover:bg-white hover:text-black"
+                            }`}>
                         Order Now
                     </button>
                 </div>
             </nav>
 
-            {/* Website Design Dropdown */}
+            {/* Mobile Menu Dropdown */}
+            <div className={`lg:hidden fixed inset-x-0 top-[60px] bg-white border-b border-gray-200 shadow-xl transition-all duration-300 overflow-hidden ${activeDropdown === "mobile" ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"}`}>
+                <div className="flex flex-col p-4 space-y-4 overflow-y-auto max-h-[75vh]">
+                    <button onClick={() => { handleViewChange("home"); setActiveDropdown(null); }} className="text-left font-medium text-gray-800 p-2 hover:bg-gray-50 rounded">Home</button>
+                    <button onClick={() => { handleViewChange("portfolio"); setActiveDropdown(null); }} className="text-left font-medium text-gray-800 p-2 hover:bg-gray-50 rounded">Portfolio</button>
+                    <button onClick={() => { handleViewChange("packages"); setActiveDropdown(null); }} className="text-left font-medium text-gray-800 p-2 hover:bg-gray-50 rounded">Packages</button>
+                    <button onClick={() => { handleViewChange("home", "services"); setActiveDropdown(null); }} className="text-left font-medium text-gray-800 p-2 hover:bg-gray-50 rounded">Services</button>
+                    <button onClick={() => { handleViewChange("blog"); setActiveDropdown(null); }} className="text-left font-medium text-gray-800 p-2 hover:bg-gray-50 rounded">Blog</button>
+                    <button onClick={() => { handleViewChange("media"); setActiveDropdown(null); }} className="text-left font-medium text-gray-800 p-2 hover:bg-gray-50 rounded">Media</button>
+                    <button onClick={() => { handleViewChange("contact"); setActiveDropdown(null); }} className="text-left font-medium text-gray-800 p-2 hover:bg-gray-50 rounded">Contact</button>
+                    <div className="pt-4 border-t border-gray-100">
+                        <button
+                            onClick={() => { handleViewChange("contact"); setActiveDropdown(null); }}
+                            className="w-full bg-blue-600 text-white font-bold py-3 rounded-xl mb-3"
+                        >
+                            Order Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            {/* Website Design Dropdown (Desktop) */}
             <div
-                className={`absolute left-0 right-0 bg-white shadow-xl border-t border-gray-100 z-40 transition-all duration-300 ${activeDropdown === "design" ? "opacity-100 visible" : "opacity-0 invisible"
+                className={`hidden lg:block absolute left-0 right-0 bg-white shadow-xl border-t border-gray-100 z-40 transition-all duration-300 ${activeDropdown === "design" ? "opacity-100 visible" : "opacity-0 invisible"
                     }`}
                 onMouseEnter={() => setActiveDropdown("design")}
                 onMouseLeave={() => setActiveDropdown(null)}
@@ -207,7 +253,10 @@ export default function Navbar({ currentView = "home", setView }: NavbarProps) {
                             className="w-full h-full object-cover"
                         />
                         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[90%]">
-                            <button className="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-4 rounded text-sm transition-colors">
+                            <button
+                                onClick={() => handleViewChange("contact")}
+                                className="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-4 rounded text-sm transition-colors"
+                            >
                                 Customise Your Website
                             </button>
                         </div>
@@ -221,7 +270,10 @@ export default function Navbar({ currentView = "home", setView }: NavbarProps) {
                             className="w-full h-full object-cover"
                         />
                         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[90%]">
-                            <button className="w-full border-2 border-red-500 bg-white text-red-500 hover:bg-red-500 hover:text-white font-semibold py-3 px-4 rounded text-sm transition-colors">
+                            <button
+                                onClick={() => handleViewChange("packages")}
+                                className="w-full border-2 border-red-500 bg-white text-red-500 hover:bg-red-500 hover:text-white font-semibold py-3 px-4 rounded text-sm transition-colors"
+                            >
                                 Packages
                             </button>
                         </div>
@@ -229,9 +281,9 @@ export default function Navbar({ currentView = "home", setView }: NavbarProps) {
                 </div>
             </div>
 
-            {/* Services Dropdown */}
+            {/* Services Dropdown (Desktop) */}
             <div
-                className={`absolute left-0 right-0 bg-white shadow-xl border-t border-gray-100 z-40 transition-all duration-300 ${activeDropdown === "services" ? "opacity-100 visible" : "opacity-0 invisible"
+                className={`hidden lg:block absolute left-0 right-0 bg-white shadow-xl border-t border-gray-100 z-40 transition-all duration-300 ${activeDropdown === "services" ? "opacity-100 visible" : "opacity-0 invisible"
                     }`}
                 onMouseEnter={() => setActiveDropdown("services")}
                 onMouseLeave={() => setActiveDropdown(null)}
@@ -271,7 +323,10 @@ export default function Navbar({ currentView = "home", setView }: NavbarProps) {
                             className="w-full h-full object-cover"
                         />
                         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[90%]">
-                            <button className="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-4 rounded text-sm transition-colors">
+                            <button
+                                onClick={() => handleViewChange("home", "calculator")}
+                                className="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-4 rounded text-sm transition-colors"
+                            >
                                 Website Calculator
                             </button>
                         </div>
@@ -285,7 +340,10 @@ export default function Navbar({ currentView = "home", setView }: NavbarProps) {
                             className="w-full h-full object-cover"
                         />
                         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[90%]">
-                            <button className="w-full border-2 border-red-500 bg-white text-red-500 hover:bg-red-500 hover:text-white font-semibold py-3 px-4 rounded text-sm transition-colors">
+                            <button
+                                onClick={() => handleViewChange("packages")}
+                                className="w-full border-2 border-red-500 bg-white text-red-500 hover:bg-red-500 hover:text-white font-semibold py-3 px-4 rounded text-sm transition-colors"
+                            >
                                 Packages
                             </button>
                         </div>
