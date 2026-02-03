@@ -1,11 +1,43 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
-  --primary: #0f172a;
-  --secondary: #64748b;
-  --accent: #3b82f6;
+  /* Premium Blue-Teal Theme (Matching New Logo) */
+  --background: #ffffff;
+  --foreground: #0B1E42;
+  /* Deep Corporate Blue-Black */
+
+  /* Brand Identity Colors */
+  --primary: #004e92;
+  /* Deep Royal Blue */
+  --primary-dark: #002952;
+  --primary-light: #007cc2;
+
+  --secondary: #475569;
+  /* Slate Grey for body text */
+  --accent: #00c6ff;
+  /* Vibrant Cyan/Teal from Logo */
+
+  /* Gradients */
+  --accent-gradient: linear-gradient(135deg, #004e92 0%, #00c6ff 100%);
+  /* The "Rigteq" Gradient */
+  --glass-gradient: linear-gradient(135deg, rgba(0, 78, 146, 0.05) 0%, rgba(0, 198, 255, 0.05) 100%);
+
+  /* Status Colors */
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+
+  /* Neutral Scale */
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --gray-600: #475569;
+  --gray-700: #334155;
+  --gray-800: #1e293b;
+  --gray-900: #0f172a;
 }
 
 @theme inline {
@@ -18,12 +50,19 @@
   --font-serif: 'Playfair Display', serif;
 }
 
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
 }
 
 @media print {
@@ -43,20 +82,59 @@ body {
   }
 
   .glass {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .glass-dark {
+    background: rgba(14, 61, 82, 0.8);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .text-gradient {
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-image: linear-gradient(to right, #0F2027, #203A43, #2C5364);
+    background-image: var(--accent-gradient);
+  }
+
+  .text-gradient-gold {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  }
+
+  .bg-gradient-premium {
+    background: var(--accent-gradient);
   }
 
   .animate-float {
     animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s linear infinite;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+    background-size: 200% 100%;
+  }
+
+  /* Premium Shadows */
+  .shadow-premium {
+    box-shadow: 0 4px 6px -1px rgba(14, 61, 82, 0.1),
+      0 2px 4px -2px rgba(14, 61, 82, 0.1),
+      0 0 0 1px rgba(14, 61, 82, 0.05);
+  }
+
+  .shadow-premium-lg {
+    box-shadow: 0 10px 25px -5px rgba(14, 61, 82, 0.15),
+      0 8px 10px -6px rgba(14, 61, 82, 0.1);
   }
 }
 
@@ -72,4 +150,75 @@ body {
   100% {
     transform: translateY(0px);
   }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Range Input Styling for ROI Calculator */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 9999px;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
+  transition: transform 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
+}
+
+/* Selection Color */
+::selection {
+  background: rgba(59, 130, 246, 0.3);
+  color: #0e3d52;
+}
+
+/* Focus Styles for Accessibility */
+*:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
 }

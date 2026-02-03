@@ -9,7 +9,6 @@ const websiteDesignMenu = {
         "Website Designing",
         "Static Website Design",
         "Startup Website Design",
-        "Free Website Design",
         "Dynamic Website Design",
         "Corporate Website Design",
         "CMS Development",
@@ -17,7 +16,7 @@ const websiteDesignMenu = {
         "E-Commerce Website Development",
     ],
     col2: [
-        "Psd To HTML Design",
+        "PSD to HTML Design",
         "Landing Page Website",
         "Email Template Design",
         "Custom Website Development",
@@ -96,7 +95,7 @@ export default function Navbar({ currentView = "home", setView }: NavbarProps) {
                     className="flex items-center gap-2 cursor-pointer"
                     onClick={() => handleViewChange("home")}
                 >
-                    <img src="/images/logos/main_logo.png" alt="Rigteq Logo" className="h-10 md:h-12 w-auto object-contain" />
+                    <img src="/images/logos/main_logo.png" alt="Rigteq Logo" className="h-14 md:h-24 w-auto object-contain transition-transform hover:scale-105" />
                 </div>
 
                 {/* Mobile Menu Toggle */}
@@ -139,28 +138,28 @@ export default function Navbar({ currentView = "home", setView }: NavbarProps) {
                         Services <ChevronDown size={14} className={`transition-transform ${activeDropdown === "services" ? "rotate-180" : ""}`} />
                     </div>
                     <button
+                        onClick={() => handleViewChange("solutions")}
+                        className={`hover:text-blue-600 transition-colors ${currentView === "solutions" ? "text-blue-600" : ""}`}
+                    >
+                        Solutions
+                    </button>
+                    <button
+                        onClick={() => handleViewChange("roi-central")}
+                        className={`hover:text-blue-600 transition-colors ${currentView === "roi-central" ? "text-blue-600" : ""}`}
+                    >
+                        ROI Central
+                    </button>
+                    <button
+                        onClick={() => handleViewChange("enterprise")}
+                        className={`hover:text-blue-600 transition-colors ${currentView === "enterprise" ? "text-blue-600" : ""}`}
+                    >
+                        Enterprise
+                    </button>
+                    <button
                         onClick={() => handleViewChange("portfolio")}
                         className={`hover:text-blue-600 transition-colors ${currentView === "portfolio" ? "text-blue-600" : ""}`}
                     >
                         Portfolio
-                    </button>
-                    <button
-                        onClick={() => handleViewChange("home", "industries")}
-                        className="hover:text-blue-600 transition-colors"
-                    >
-                        Industries
-                    </button>
-                    <button
-                        onClick={() => handleViewChange("media")}
-                        className={`hover:text-blue-600 transition-colors ${currentView === "media" ? "text-blue-600" : ""}`}
-                    >
-                        Media
-                    </button>
-                    <button
-                        onClick={() => handleViewChange("blog")}
-                        className={`hover:text-blue-600 transition-colors ${currentView === "blog" ? "text-blue-600" : ""}`}
-                    >
-                        Blog
                     </button>
                     <button
                         onClick={() => handleViewChange("contact")}
@@ -194,18 +193,18 @@ export default function Navbar({ currentView = "home", setView }: NavbarProps) {
             <div className={`lg:hidden fixed inset-x-0 top-[60px] bg-white border-b border-gray-200 shadow-xl transition-all duration-300 overflow-hidden ${activeDropdown === "mobile" ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"}`}>
                 <div className="flex flex-col p-4 space-y-4 overflow-y-auto max-h-[75vh]">
                     <button onClick={() => { handleViewChange("home"); setActiveDropdown(null); }} className="text-left font-medium text-gray-800 p-2 hover:bg-gray-50 rounded">Home</button>
-                    <button onClick={() => { handleViewChange("portfolio"); setActiveDropdown(null); }} className="text-left font-medium text-gray-800 p-2 hover:bg-gray-50 rounded">Portfolio</button>
+                    <button onClick={() => { handleViewChange("solutions"); setActiveDropdown(null); }} className="text-left font-medium text-gray-800 p-2 hover:bg-gray-50 rounded">Solutions</button>
+                    <button onClick={() => { handleViewChange("roi-central"); setActiveDropdown(null); }} className="text-left font-medium text-gray-800 p-2 hover:bg-gray-50 rounded">ROI Central</button>
+                    <button onClick={() => { handleViewChange("enterprise"); setActiveDropdown(null); }} className="text-left font-medium text-gray-800 p-2 hover:bg-gray-50 rounded">Enterprise</button>
                     <button onClick={() => { handleViewChange("packages"); setActiveDropdown(null); }} className="text-left font-medium text-gray-800 p-2 hover:bg-gray-50 rounded">Packages</button>
-                    <button onClick={() => { handleViewChange("home", "services"); setActiveDropdown(null); }} className="text-left font-medium text-gray-800 p-2 hover:bg-gray-50 rounded">Services</button>
-                    <button onClick={() => { handleViewChange("blog"); setActiveDropdown(null); }} className="text-left font-medium text-gray-800 p-2 hover:bg-gray-50 rounded">Blog</button>
-                    <button onClick={() => { handleViewChange("media"); setActiveDropdown(null); }} className="text-left font-medium text-gray-800 p-2 hover:bg-gray-50 rounded">Media</button>
+                    <button onClick={() => { handleViewChange("portfolio"); setActiveDropdown(null); }} className="text-left font-medium text-gray-800 p-2 hover:bg-gray-50 rounded">Portfolio</button>
                     <button onClick={() => { handleViewChange("contact"); setActiveDropdown(null); }} className="text-left font-medium text-gray-800 p-2 hover:bg-gray-50 rounded">Contact</button>
                     <div className="pt-4 border-t border-gray-100">
                         <button
                             onClick={() => { handleViewChange("contact"); setActiveDropdown(null); }}
-                            className="w-full bg-blue-600 text-white font-bold py-3 rounded-xl mb-3"
+                            className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold py-3 rounded-xl mb-3"
                         >
-                            Order Now
+                            Get Started
                         </button>
                     </div>
                 </div>

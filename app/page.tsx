@@ -16,18 +16,19 @@ import FloatingWidgets from "@/components/FloatingWidgets";
 import ContactForm from "@/components/ContactForm";
 import Media from "@/components/Media";
 import Blog from "@/components/Blog";
-import DebugLog from "@/components/DebugLog";
 import Packages from "@/components/Packages";
 import Portfolio from "@/components/Portfolio";
 import Careers from "@/components/Careers";
 import Support from "@/components/Support";
 import BrochureModal from "@/components/BrochureModal";
+import Solutions from "@/components/Solutions";
+import ROICentral from "@/components/ROICentral";
+import Enterprise from "@/components/Enterprise";
 
 export default function Home() {
   const [view, setView] = useState("home");
   const [isBrochureOpen, setIsBrochureOpen] = useState(false);
 
-  // Function to open the brochure modal (can be passed down)
   const openBrochure = () => setIsBrochureOpen(true);
 
   return (
@@ -41,7 +42,9 @@ export default function Home() {
         <>
           <Hero setView={setView} />
           <MissionStats />
-          <ServicesGrid />
+          <div id="services">
+            <ServicesGrid />
+          </div>
           <div id="calculator">
             <WebsiteCostCalculator />
           </div>
@@ -58,12 +61,20 @@ export default function Home() {
         </>
       )}
 
+      {/* High-Value Pages */}
+      {view === "solutions" && <Solutions setView={setView} />}
+      {view === "roi-central" && <ROICentral setView={setView} />}
+      {view === "enterprise" && <Enterprise setView={setView} />}
+
       {view === "contact" && (
-        <section className="relative py-24 px-4 md:px-12 min-h-[80vh] flex items-center overflow-hidden bg-white animate-in fade-in slide-in-from-bottom-4 duration-500">
+        <section className="relative py-24 px-4 md:px-12 min-h-[80vh] flex items-center overflow-hidden bg-gradient-to-b from-slate-50 to-white animate-in fade-in slide-in-from-bottom-4 duration-500">
           <div className="max-w-7xl mx-auto w-full">
             <div className="text-center mb-16">
+              <span className="inline-block py-1.5 px-4 rounded-full bg-blue-50 text-blue-700 text-sm font-semibold border border-blue-100 mb-4">
+                Get Started
+              </span>
               <h1 className="text-5xl md:text-7xl font-bold text-[#0e3d52] mb-6 font-serif tracking-tight">
-                Let's Build Something <span className="text-blue-600">Extraordinary</span>
+                Let's Build Something <span className="text-gradient">Extraordinary</span>
               </h1>
               <p className="text-gray-600 max-w-2xl mx-auto text-lg md:text-xl leading-relaxed">
                 Have a vision? We have the expertise. Reach out today and let's start your digital transformation journey.
@@ -78,14 +89,13 @@ export default function Home() {
 
       {view === "media" && <Media setView={setView} />}
       {view === "blog" && <Blog setView={setView} />}
-      {view === "packages" && <Packages />}
+      {view === "packages" && <Packages setView={setView} />}
       {view === "portfolio" && <Portfolio />}
       {view === "careers" && <Careers setView={setView} />}
       {view === "support" && <Support setView={setView} />}
 
       <Footer setView={setView} openBrochure={openBrochure} />
       <FloatingWidgets />
-      <DebugLog />
       <BrochureModal isOpen={isBrochureOpen} onClose={() => setIsBrochureOpen(false)} />
     </main>
   );
