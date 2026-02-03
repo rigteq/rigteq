@@ -265,7 +265,7 @@ export default function Packages({ setView }: PackagesProps) {
                                 exit={{ opacity: 0, y: -20 }}
                                 transition={{ duration: 0.3, delay: index * 0.1 }}
                                 className={`rounded-3xl p-8 border relative flex flex-col ${pkg.popular
-                                    ? "bg-white border-[#00c6ff] shadow-2xl shadow-blue-500/10 scale-105"
+                                    ? "bg-white border-[#00c6ff] shadow-2xl shadow-blue-500/10 md:scale-105 ring-1 md:ring-0 ring-[#00c6ff]"
                                     : "bg-white border-gray-200 hover:border-gray-300 hover:shadow-lg"
                                     } transition-all duration-300`}
                             >

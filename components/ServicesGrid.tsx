@@ -1,6 +1,6 @@
 export default function ServicesGrid() {
     return (
-        <section id="services" className="bg-white pt-[60px] pb-20 px-4 md:px-24">
+        <section id="services" className="bg-white pt-[60px] pb-20 px-6 md:px-24">
             <div className="max-w-7xl mx-auto">
                 <h2 className="text-center text-xl md:text-2xl font-bold text-[#003366] mb-[30px]">
                     India's Leading Website Design Company for Custom Solutions
@@ -32,15 +32,15 @@ export default function ServicesGrid() {
 
 function ServiceCard({ title, img, isTall = false }: { title: string; img: string; isTall?: boolean }) {
     return (
-        <div className={`relative overflow-hidden rounded-[15px] border border-gray-100 shadow-sm h-full bg-[#f8fbff]`}>
+        <div className={`relative overflow-hidden rounded-[15px] border border-gray-100 shadow-sm min-h-[280px] h-full bg-[#f8fbff]`}>
             <img
                 src={img}
                 alt={title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
             />
             {title && (
-                <div className="absolute bottom-0 left-0 w-full bg-[#4a6b8a] py-3 text-center">
-                    <span className="text-white text-sm md:text-base font-semibold">{title}</span>
+                <div className="absolute bottom-0 left-0 w-full bg-[#4a6b8a]/90 backdrop-blur-sm py-4 text-center border-t border-white/10">
+                    <span className="text-white text-base font-medium tracking-wide">{title}</span>
                 </div>
             )}
         </div>

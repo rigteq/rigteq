@@ -257,7 +257,7 @@ export default function ROICentral({ setView }: ROICentralProps) {
                                     <PieChart size={18} className="group-hover:text-green-600 transition-colors" />
                                     <span className="text-sm font-medium">ROI</span>
                                 </div>
-                                <div className="text-3xl font-bold text-green-600">{calculations.roi}%</div>
+                                <div className="text-2xl md:text-3xl font-bold text-green-600">{calculations.roi}%</div>
                                 <p className="text-xs text-gray-400 mt-1">Return on total investment</p>
                             </div>
 
@@ -267,7 +267,7 @@ export default function ROICentral({ setView }: ROICentralProps) {
                                     <Target size={18} className="group-hover:text-purple-600 transition-colors" />
                                     <span className="text-sm font-medium">ROAS</span>
                                 </div>
-                                <div className="text-3xl font-bold text-[#0e3d52]">{calculations.roas}x</div>
+                                <div className="text-2xl md:text-3xl font-bold text-[#0e3d52]">{calculations.roas}x</div>
                                 <p className="text-xs text-gray-400 mt-1">Marketing Efficiency Ratio</p>
                             </div>
 
@@ -277,7 +277,7 @@ export default function ROICentral({ setView }: ROICentralProps) {
                                     <Users size={18} className="group-hover:text-blue-600 transition-colors" />
                                     <span className="text-sm font-medium">Est. Annual Leads</span>
                                 </div>
-                                <div className="text-3xl font-bold text-[#0e3d52]">{calculations.annualLeads.toLocaleString()}</div>
+                                <div className="text-2xl md:text-3xl font-bold text-[#0e3d52]">{calculations.annualLeads.toLocaleString()}</div>
                                 <p className="text-xs text-gray-400 mt-1">High-intent opportunities</p>
                             </div>
 
