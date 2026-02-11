@@ -12,6 +12,11 @@ export default function TechnologiesSection() {
         { name: "MySQL", src: "/images/logos/mysql.webp" },
         { name: "Node.js", src: "/images/logos/nodejs.webp" },
         { name: "Shopify", src: "/images/logos/shopify.webp" },
+        { name: "Java", src: "/images/javalogo.png" },
+        { name: "Python", src: "/images/pythonlogo.jpg" },
+        { name: "React", src: "/images/reactlogo.png" },
+        { name: "Next.js", src: "/images/nextlogo.png" },
+        { name: "Angular", src: "/images/angularlogo.png" },
     ];
 
     return (

@@ -36,8 +36,8 @@ export default function TopNav({ setView }: TopNavProps) {
     };
 
     return (
-        <div className="bg-[#0f172a] text-gray-300 py-2 px-4 md:px-12 flex flex-col md:flex-row justify-between items-center text-xs font-medium border-b border-white/5 relative z-[101]">
-            <div className="flex items-center gap-6 mb-2 md:mb-0">
+        <div className="bg-[#0f172a] text-gray-300 py-2 px-4 md:px-12 flex flex-row justify-between items-center text-xs font-medium border-b border-white/5 relative z-[101]">
+            <div className="flex items-center justify-between w-full md:w-auto gap-4">
                 <div className="flex items-center gap-2 hover:text-white transition-colors cursor-pointer" onClick={() => handleNavClick('contact')}>
                     <Phone size={14} className="text-blue-500" />
                     <span>+91 87503 99055</span>
@@ -48,32 +48,7 @@ export default function TopNav({ setView }: TopNavProps) {
                 </div>
             </div>
 
-            <div className="md:hidden flex flex-wrap justify-center gap-4 w-full mt-2">
-                <div className="flex gap-4 border-r border-gray-700 pr-4 mr-2">
-                    {socialLinks.map(({ Icon, href }, i) => (
-                        <a
-                            key={i}
-                            href={href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="hover:text-white transition-all duration-200"
-                        >
-                            <Icon size={14} />
-                        </a>
-                    ))}
-                </div>
-                <div className="flex flex-wrap gap-3 text-[10px] justify-center">
-                    {menuLinks.map((item) => (
-                        <button
-                            key={item.label}
-                            onClick={() => handleNavClick(item.view, item.id)}
-                            className="hover:text-blue-400 transition-colors uppercase tracking-wider bg-transparent border-none cursor-pointer"
-                        >
-                            {item.label}
-                        </button>
-                    ))}
-                </div>
-            </div>
+
 
             {/* Desktop Right Side */}
             <div className="hidden md:flex items-center gap-6">

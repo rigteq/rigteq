@@ -1,3 +1,5 @@
+"use client";
+
 import { MapPin, Phone, Mail, Facebook, Instagram, Twitter, Linkedin, Youtube, ArrowRight } from "lucide-react";
 
 interface FooterProps {

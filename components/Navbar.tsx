@@ -50,6 +50,11 @@ const servicesMenu = {
     ],
 };
 
+import { useRouter } from "next/navigation";
+import Image from "next/image"; // Optimization
+
+// ... (menus remain same)
+
 interface NavbarProps {
     currentView?: string;
     setView?: (view: string) => void;
@@ -58,6 +63,7 @@ interface NavbarProps {
 export default function Navbar({ currentView = "home", setView }: NavbarProps) {
     const [scrolled, setScrolled] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState<"design" | "services" | "mobile" | null>(null);
+    const router = useRouter();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -71,7 +77,6 @@ export default function Navbar({ currentView = "home", setView }: NavbarProps) {
         if (setView) {
             setView(view);
             if (sectionId) {
-                // Small timeout to ensure the DOM is updated if we were in another view
                 setTimeout(() => {
                     const el = document.getElementById(sectionId);
                     if (el) {
@@ -81,12 +86,16 @@ export default function Navbar({ currentView = "home", setView }: NavbarProps) {
             } else {
                 window.scrollTo({ top: 0, behavior: "smooth" });
             }
+        } else {
+            // If on a static page (Service Page), navigate to Home
+            // Ideally, the Home page should handle query params to open views, but for now redirect root.
+            router.push('/');
         }
     };
 
     return (
         <div className="relative">
-            <nav className={`sticky top-0 z-50 px-4 md:px-12 py-3 flex items-center justify-between transition-all duration-300 ${scrolled
+            <nav className={`sticky top-0 z-50 px-4 md:px-12 py-2 flex items-center justify-between transition-all duration-300 ${scrolled
                 ? "bg-white shadow-md border-b border-gray-200"
                 : "bg-white/5 backdrop-blur-md border-b border-white/10"
                 }`}>
@@ -95,7 +104,7 @@ export default function Navbar({ currentView = "home", setView }: NavbarProps) {
                     className="flex items-center gap-2 cursor-pointer"
                     onClick={() => handleViewChange("home")}
                 >
-                    <img src="/images/logos/main_logo.png" alt="Rigteq Logo" className="h-14 md:h-24 w-auto object-contain transition-transform hover:scale-105" />
+                    <img src="/images/logos/main_logo.png" alt="Rigteq Logo" className="h-10 md:h-16 w-auto object-contain transition-transform hover:scale-105" />
                 </div>
 
                 {/* Mobile Menu Toggle */}
@@ -221,26 +230,26 @@ export default function Navbar({ currentView = "home", setView }: NavbarProps) {
                     {/* Card 1 - Menu Links */}
                     <div className="bg-white border border-gray-100 p-4 space-y-1">
                         {websiteDesignMenu.col1.map((item, i) => (
-                            <a
+                            <Link
                                 key={i}
-                                href="#"
+                                href={`/services/${item.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}`}
                                 className="block text-gray-700 hover:text-blue-600 text-sm font-medium transition-colors border-b border-gray-100 py-2"
                             >
                                 {item}
-                            </a>
+                            </Link>
                         ))}
                     </div>
 
                     {/* Card 2 - Menu Links */}
                     <div className="bg-white border border-gray-100 p-4 space-y-1">
                         {websiteDesignMenu.col2.map((item, i) => (
-                            <a
+                            <Link
                                 key={i}
-                                href="#"
+                                href={`/services/${item.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}`}
                                 className="block text-gray-700 hover:text-blue-600 text-sm font-medium transition-colors border-b border-gray-100 py-2"
                             >
                                 {item}
-                            </a>
+                            </Link>
                         ))}
                     </div>
 
@@ -291,26 +300,26 @@ export default function Navbar({ currentView = "home", setView }: NavbarProps) {
                     {/* Card 1 - Menu Links */}
                     <div className="bg-white border border-gray-100 p-4 space-y-1">
                         {servicesMenu.col1.map((item, i) => (
-                            <a
+                            <Link
                                 key={i}
-                                href="#"
+                                href={`/services/${item.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-').replace(/[^a-z0-9-]/g, '')}`}
                                 className="block text-gray-700 hover:text-blue-600 text-sm font-medium transition-colors border-b border-gray-100 py-2"
                             >
                                 {item}
-                            </a>
+                            </Link>
                         ))}
                     </div>
 
                     {/* Card 2 - Menu Links */}
                     <div className="bg-white border border-gray-100 p-4 space-y-1">
                         {servicesMenu.col2.map((item, i) => (
-                            <a
+                            <Link
                                 key={i}
-                                href="#"
+                                href={`/services/${item.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-').replace(/[^a-z0-9-]/g, '')}`}
                                 className="block text-gray-700 hover:text-blue-600 text-sm font-medium transition-colors border-b border-gray-100 py-2"
                             >
                                 {item}
-                            </a>
+                            </Link>
                         ))}
                     </div>
 

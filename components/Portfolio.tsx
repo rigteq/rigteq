@@ -6,39 +6,45 @@ export default function Portfolio() {
     const projects = [
         {
             title: "Radhe Raj Enterprises",
-            category: "E-Commerce / Real Estate",
-            image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1000&auto=format&fit=crop",
-            url: "https://radheraj.vercel.app",
+            category: "Business",
+            image: "/images/portfolio/radheraj.svg",
+            url: "https://radherajenterprises.in",
+        },
+        {
+            title: "Free School MS",
+            category: "Education / SaaS",
+            image: "/images/portfolio/freeschoolms.svg",
+            url: "https://freeschoolms.vercel.app",
+        },
+        {
+            title: "Mother Touch Play School",
+            category: "Education",
+            image: "/images/portfolio/mothertouch.svg",
+            url: "https://mothertouchplayschool.vercel.app",
+        },
+        {
+            title: "Edistone Real Estates",
+            category: "Real Estate",
+            image: "/images/portfolio/edistone.svg",
+            url: "https://edistone-real-estates.vercel.app",
+        },
+        {
+            title: "SalesRQ",
+            category: "SaaS / CRM",
+            image: "/images/portfolio/salesrq.svg",
+            url: "https://salesrq.vercel.app",
         },
         {
             title: "TCGA",
             category: "Corporate",
-            image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop",
+            image: "/images/portfolio/tcga.svg",
             url: "https://tcga.vercel.app",
         },
         {
             title: "Dhan Sampatti",
             category: "Finance",
-            image: "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1000&auto=format&fit=crop",
+            image: "/images/portfolio/dhansampatti.svg",
             url: "https://dhansampatti.vercel.app",
-        },
-        {
-            title: "Free School MS",
-            category: "Education Portal",
-            image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=1000&auto=format&fit=crop",
-            url: "https://freeschoolms.vercel.app",
-        },
-        {
-            title: "SalesRQ",
-            category: "SaaS / CRM",
-            image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=1000&auto=format&fit=crop",
-            url: "https://salesrq.vercel.app",
-        },
-        {
-            title: "LMS Rigteq",
-            category: "Learning Management",
-            image: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=1000&auto=format&fit=crop",
-            url: "https://lms-rigteq.vercel.app",
         },
     ];
 
