@@ -29,6 +29,15 @@ export default function ContactForm() {
     }
   }, [success]);
 
+  // Google Ads Conversion Tracking
+  useEffect(() => {
+    if (success && typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'conversion', {
+        'send_to': 'AW-17946975199/IkCLCK-Q0_cbEN-35O1C'
+      });
+    }
+  }, [success]);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setForm((s) => ({ ...s, [name]: value }));
