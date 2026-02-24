@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { MapPin, Phone, Mail, Facebook, Instagram, Twitter, Linkedin, Youtube, ArrowRight } from "lucide-react";
 
 interface FooterProps {
@@ -8,10 +9,18 @@ interface FooterProps {
 }
 
 export default function Footer({ setView, openBrochure }: FooterProps) {
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
+
     const handleViewChange = (view: string) => {
         if (setView) {
             setView(view);
             window.scrollTo({ top: 0, behavior: "smooth" });
+        } else if (isClient) {
+            window.location.href = "/";
         }
     };
 

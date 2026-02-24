@@ -179,6 +179,13 @@ export default function Navbar({ currentView = "home", setView }: NavbarProps) {
                     >
                         Contact Us
                     </button>
+                    <Link
+                        href="/connect"
+                        className={`font-medium transition-colors ${scrolled ? "hover:text-blue-600" : "hover:text-blue-400"
+                            }`}
+                    >
+                        Connect with us
+                    </Link>
                     <div
                         onClick={() => handleViewChange("packages")}
                         className={`px-5 py-1.5 rounded-full font-semibold cursor-pointer transition-all ${scrolled
@@ -208,6 +215,7 @@ export default function Navbar({ currentView = "home", setView }: NavbarProps) {
                     <button onClick={() => { handleViewChange("packages"); setActiveDropdown(null); }} className="text-left font-medium text-gray-800 p-2 hover:bg-gray-50 rounded">Packages</button>
                     <button onClick={() => { handleViewChange("portfolio"); setActiveDropdown(null); }} className="text-left font-medium text-gray-800 p-2 hover:bg-gray-50 rounded">Portfolio</button>
                     <button onClick={() => { handleViewChange("contact"); setActiveDropdown(null); }} className="text-left font-medium text-gray-800 p-2 hover:bg-gray-50 rounded">Contact</button>
+                    <Link onClick={() => setActiveDropdown(null)} href="/connect" className="text-left font-medium text-gray-800 p-2 hover:bg-gray-50 rounded block">Connect with us</Link>
                     <div className="pt-4 border-t border-gray-100">
                         <button
                             onClick={() => { handleViewChange("contact"); setActiveDropdown(null); }}
