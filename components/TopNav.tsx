@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { Facebook, Instagram, Linkedin, Twitter, Youtube, Phone, Mail } from "lucide-react";
 
 interface TopNavProps {
@@ -22,6 +23,9 @@ export default function TopNav({ setView }: TopNavProps) {
         { label: "Support", view: "support" },
     ];
 
+    const [isClient, setIsClient] = useState(false);
+    useEffect(() => setIsClient(true), []);
+
     const handleNavClick = (view: string, id?: string) => {
         if (setView) {
             setView(view);
@@ -32,6 +36,8 @@ export default function TopNav({ setView }: TopNavProps) {
             } else {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
+        } else if (isClient) {
+            window.location.href = "/";
         }
     };
 
