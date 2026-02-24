@@ -7,44 +7,56 @@ export default function Portfolio() {
         {
             title: "Radhe Raj Enterprises",
             category: "Business",
-            image: "/images/portfolio/radheraj.svg",
+            image: "/images/portfolio/radheraj.png",
             url: "https://radherajenterprises.in",
         },
         {
             title: "Free School MS",
             category: "Education / SaaS",
-            image: "/images/portfolio/freeschoolms.svg",
+            image: "/images/portfolio/freeschoolms.png",
             url: "https://freeschoolms.vercel.app",
         },
         {
             title: "Mother Touch Play School",
             category: "Education",
-            image: "/images/portfolio/mothertouch.svg",
-            url: "https://mothertouchplayschool.vercel.app",
+            image: "/images/portfolio/mothertouch.png",
+            url: "https://motherstouchplayschool.vercel.app",
         },
         {
             title: "Edistone Real Estates",
             category: "Real Estate",
-            image: "/images/portfolio/edistone.svg",
-            url: "https://edistone-real-estates.vercel.app",
+            image: "/images/portfolio/edistone.png",
+            url: "https://edistonerealestates.vercel.app",
         },
         {
             title: "SalesRQ",
             category: "SaaS / CRM",
-            image: "/images/portfolio/salesrq.svg",
+            image: "/images/portfolio/salesrq.png",
             url: "https://salesrq.vercel.app",
         },
         {
             title: "TCGA",
             category: "Corporate",
-            image: "/images/portfolio/tcga.svg",
+            image: "/images/portfolio/tcga.png",
             url: "https://tcga.vercel.app",
         },
         {
             title: "Dhan Sampatti",
             category: "Finance",
-            image: "/images/portfolio/dhansampatti.svg",
+            image: "/images/portfolio/dhansampatti.png",
             url: "https://dhansampatti.vercel.app",
+        },
+        {
+            title: "Zentova Gifting",
+            category: "Corporate Gifting",
+            image: "/images/portfolio/zentova.png",
+            url: "https://zentova-gifting.vercel.app",
+        },
+        {
+            title: "TaskFlow",
+            category: "SaaS / Task Management",
+            image: "/images/portfolio/taskflowrq.png",
+            url: "https://taskflowrq.vercel.app",
         },
     ];
 
@@ -69,7 +81,7 @@ export default function Portfolio() {
                         <div
                             key={index}
                             onClick={() => handleOpenProject(project.url)}
-                            className="group relative overflow-hidden rounded-2xl shadow-lg bg-white cursor-pointer h-72"
+                            className="group relative overflow-hidden rounded-2xl shadow-lg bg-white cursor-pointer aspect-video"
                         >
                             <img
                                 src={project.image}
