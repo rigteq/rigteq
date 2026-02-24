@@ -158,7 +158,7 @@ export default function Footer({ setView, openBrochure }: FooterProps) {
                         </h3>
                         <div className="rounded-2xl overflow-hidden h-64 shadow-2xl border border-gray-800 grayscale hover:grayscale-0 transition-all duration-500">
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.0611168506395!2d77.365!3d28.620!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce56b12345678%3A0xabcdef123456789!2sD-41%2C%20C%20Block%2C%20Sector%2059%2C%20Noida%2C%20Uttar%20Pradesh%20201309!5e0!3m2!1sen!2sin!4v1704500000000!5m2!1sen!2sin"
+                                src="https://maps.google.com/maps?q=D, 14-C, Sector 62A, Block B, Khora Colony, Sector 62, Noida, Uttar Pradesh 201020&t=&z=14&ie=UTF8&iwloc=&output=embed"
                                 width="100%"
                                 height="100%"
                                 style={{ border: 0 }}
@@ -178,7 +178,7 @@ export default function Footer({ setView, openBrochure }: FooterProps) {
                             </div>
                             <div>
                                 <h4 className="font-semibold text-lg text-white">Headquarters</h4>
-                                <p className="text-gray-400 mt-1">D-41, C Block, Sector 59, Noida, Uttar Pradesh 201309</p>
+                                <p className="text-gray-400 mt-1">D, 14-C, Sector 62A, Block B, Khora Colony, Sector 62, Noida, Uttar Pradesh 201020</p>
                             </div>
                         </div>
 
