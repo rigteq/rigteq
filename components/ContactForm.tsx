@@ -1,218 +1,147 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import { Send, CheckCircle, AlertCircle, RotateCcw, Paperclip } from "lucide-react";
-
-type FormState = {
-  name: string;
-  email: string;
-  company?: string;
-  message: string;
-  file?: File | null;
-};
+import { motion } from 'framer-motion';
+import { Send, Globe } from 'lucide-react';
+import { useState } from 'react';
 
 export default function ContactForm() {
-  const [form, setForm] = useState<FormState>({ name: "", email: "", company: "", message: "", file: null });
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState(false);
-  const [isRateLimited, setIsRateLimited] = useState(false);
-  const [fileName, setFileName] = useState<string | null>(null);
+    const [formState, setFormState] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: ''
+    });
 
-  useEffect(() => {
-    const lastSubmission = localStorage.getItem("last_contact_submission");
-    if (lastSubmission) {
-      const timePassed = Date.now() - parseInt(lastSubmission);
-      if (timePassed < 86400000) {
-        setIsRateLimited(true);
-      }
-    }
-  }, [success]);
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        // Submit to API
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                body: new FormData(e.target as HTMLFormElement),
+            });
+            if (response.ok) {
+                alert('Thank you for your message! Our team will get back to you shortly.');
+                setFormState({ name: '', email: '', phone: '', subject: '', message: '' });
+            } else {
+                alert('Failed to send message. Please try again.');
+            }
+        } catch (error) {
+            alert('Failed to send message. Please try again.');
+        }
+    };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setForm((s) => ({ ...s, [name]: value }));
-    if (error) setError(null);
-  };
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setForm((s) => ({ ...s, file: e.target.files![0] }));
-      setFileName(e.target.files[0].name);
-    }
-  };
-
-  const validate = () => {
-    if (!form.name.trim()) return "Please enter your name.";
-    if (!form.email.trim() || !/^\S+@\S+\.\S+$/.test(form.email)) return "A valid email is required.";
-    if (form.message.trim().length < 10) return "Message must be at least 10 characters.";
-    return null;
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError(null);
-
-    if (isRateLimited) {
-      setError("You can only send one message every 24 hours. Please try again later.");
-      return;
-    }
-
-    const validationError = validate();
-    if (validationError) {
-      setError(validationError);
-      return;
-    }
-
-    setLoading(true);
-    try {
-      const formData = new FormData();
-      formData.append("name", form.name);
-      formData.append("email", form.email);
-      formData.append("message", form.message);
-      if (form.company) formData.append("company", form.company);
-      if (form.file) formData.append("file", form.file);
-
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        body: formData,
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.error || "Something went wrong. Please try again.");
-      }
-
-      localStorage.setItem("last_contact_submission", Date.now().toString());
-      setSuccess(true);
-      setForm({ name: "", email: "", company: "", message: "", file: null });
-      setFileName(null);
-    } catch (err: any) {
-      setError(err?.message || "Internal server error.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  if (success) {
     return (
-      <div className="p-10 bg-gray-50 rounded-3xl border border-gray-200 text-center">
-        <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-          <CheckCircle className="text-green-600" size={40} />
-        </div>
-        <h3 className="text-3xl font-bold text-gray-900 mb-4">Message Sent!</h3>
-        <p className="text-gray-600 mb-8 max-w-sm mx-auto">
-          Thank you for reaching out. We have received your inquiry and will get back to you within 24 hours at ops@rigteq.com.
-        </p>
-        <button
-          className="inline-flex items-center gap-2 px-8 py-3 bg-blue-600 text-white font-bold rounded-full hover:bg-blue-700 transition-all active:scale-95"
-          onClick={() => setSuccess(false)}
+        <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-200 relative overflow-hidden max-w-2xl mx-auto"
         >
-          <RotateCcw size={18} /> Go Back
-        </button>
-      </div>
+            {/* Decorative internal blob */}
+            <div className="absolute -top-24 -right-24 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+
+            <div className="relative z-10">
+                <h3 className="text-2xl font-black text-gray-900 mb-6">Send us a Message</h3>
+
+                {/* Trust Signals */}
+                <div className="flex flex-wrap gap-4 mb-10">
+                    <span className="flex items-center gap-2 text-sm text-gray-600 font-medium bg-gray-50 px-3 py-1.5 rounded-full border border-gray-200">
+                        <span className="text-green-500">✓</span> Free consultation
+                    </span>
+                    <span className="flex items-center gap-2 text-sm text-gray-600 font-medium bg-gray-50 px-3 py-1.5 rounded-full border border-gray-200">
+                        <span className="text-green-500">✓</span> Response within 24 hours
+                    </span>
+                    <span className="flex items-center gap-2 text-sm text-gray-600 font-medium bg-gray-50 px-3 py-1.5 rounded-full border border-gray-200">
+                        <span className="text-green-500">✓</span> NDA available
+                    </span>
+                </div>
+
+                <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                            <label className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Full Name</label>
+                            <input
+                                required
+                                name="name"
+                                type="text"
+                                placeholder="Ex: David Warner"
+                                value={formState.name}
+                                onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                                className="w-full px-6 py-4 rounded-xl bg-gray-50 border border-gray-200 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all outline-none font-medium text-gray-900 placeholder:text-gray-400"
+                            />
+                        </div>
+                        <div className="space-y-2">
+                            <label className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Email Address</label>
+                            <input
+                                required
+                                name="email"
+                                type="email"
+                                placeholder="Ex: david@rigteq.com"
+                                value={formState.email}
+                                onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                                className="w-full px-6 py-4 rounded-xl bg-gray-50 border border-gray-200 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all outline-none font-medium text-gray-900 placeholder:text-gray-400"
+                            />
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                            <label className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Phone Number</label>
+                            <input
+                                name="phone"
+                                type="tel"
+                                placeholder="+91 XXXX XXXX"
+                                value={formState.phone}
+                                onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
+                                className="w-full px-6 py-4 rounded-xl bg-gray-50 border border-gray-200 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all outline-none font-medium text-gray-900 placeholder:text-gray-400"
+                            />
+                        </div>
+                        <div className="space-y-2">
+                            <label className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Inquiry Type</label>
+                            <div className="relative">
+                                <select
+                                    name="subject"
+                                    value={formState.subject}
+                                    onChange={(e) => setFormState({ ...formState, subject: e.target.value })}
+                                    className="w-full px-6 py-4 rounded-xl bg-gray-50 border border-gray-200 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all outline-none font-medium text-gray-900 appearance-none cursor-pointer"
+                                >
+                                    <option className="bg-white" value="">Select a Service</option>
+                                    <option className="bg-white" value="web">Web Development</option>
+                                    <option className="bg-white" value="app">Mobile Apps</option>
+                                    <option className="bg-white" value="seo">SEO & Marketing</option>
+                                    <option className="bg-white" value="product">Custom Product</option>
+                                </select>
+                                <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
+                                    <Globe size={18} />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="space-y-2">
+                        <label className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Message</label>
+                        <textarea
+                            required
+                            name="message"
+                            rows={4}
+                            placeholder="Briefly describe your requirements..."
+                            value={formState.message}
+                            onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                            className="w-full px-6 py-4 rounded-xl bg-gray-50 border border-gray-200 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all outline-none font-medium text-gray-900 placeholder:text-gray-400 resize-none"
+                        />
+                    </div>
+
+                    <button
+                        type="submit"
+                        className="w-full py-4 rounded-xl bg-blue-600 text-white font-bold text-sm tracking-wide hover:bg-blue-700 transition-all duration-300 flex items-center justify-center gap-3 shadow-lg shadow-blue-500/20 group"
+                    >
+                        SEND ENQUIRY
+                        <Send size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
+                    </button>
+                </form>
+            </div>
+        </motion.div>
     );
-  }
-
-  return (
-    <form onSubmit={handleSubmit} className="space-y-6 bg-gray-50 p-6 md:p-10 rounded-3xl border border-gray-200 shadow-xl relative overflow-hidden group">
-      {error && (
-        <div className="flex items-center gap-3 text-sm text-red-600 bg-red-50 p-4 rounded-xl border border-red-200">
-          <AlertCircle size={18} className="shrink-0" />
-          <span>{error}</span>
-        </div>
-      )}
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="space-y-2">
-          <label className="text-sm font-semibold text-gray-700 ml-1">Full Name</label>
-          <input
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-            className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all"
-            placeholder="John Doe"
-          />
-        </div>
-
-        <div className="space-y-2">
-          <label className="text-sm font-semibold text-gray-700 ml-1">Email Address</label>
-          <input
-            name="email"
-            value={form.email}
-            onChange={handleChange}
-            type="email"
-            className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all"
-            placeholder="john@company.com"
-          />
-        </div>
-      </div>
-
-      <div className="space-y-2">
-        <label className="text-sm font-semibold text-gray-700 ml-1">Company Name <span className="text-gray-400 font-normal">(Optional)</span></label>
-        <input
-          name="company"
-          value={form.company || ""}
-          onChange={handleChange}
-          className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all"
-          placeholder="Your Company Ltd."
-        />
-      </div>
-
-      <div className="space-y-2">
-        <label className="text-sm font-semibold text-gray-700 ml-1">Your Message</label>
-        <textarea
-          name="message"
-          value={form.message}
-          onChange={handleChange}
-          rows={5}
-          className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all resize-none"
-          placeholder="Tell us about your project requirements..."
-        />
-      </div>
-
-      <div className="space-y-2">
-        <label className="text-sm font-semibold text-gray-700 ml-1">Attach File <span className="text-gray-400 font-normal">(Optional)</span></label>
-        <div className="relative">
-          <input
-            type="file"
-            id="file-upload"
-            className="hidden"
-            onChange={handleFileChange}
-            accept=".pdf,.doc,.docx,.jpg,.png"
-          />
-          <label
-            htmlFor="file-upload"
-            className="flex items-center justify-between w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-gray-500 cursor-pointer hover:bg-gray-50 transition-colors"
-          >
-            <span className="truncate">{fileName || "Choose a file..."}</span>
-            <Paperclip size={18} />
-          </label>
-        </div>
-        <p className="text-xs text-gray-400 ml-1">Accepted formats: PDF, DOC, JPG, PNG (Max 5MB)</p>
-      </div>
-
-      <button
-        type="submit"
-        disabled={loading || isRateLimited}
-        className={`w-full inline-flex items-center justify-center gap-3 px-8 py-4 ${isRateLimited ? "bg-gray-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700"} text-white rounded-xl font-bold transition-all active:scale-[0.98] disabled:opacity-50`}
-      >
-        {loading ? (
-          <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-        ) : (
-          <>
-            <Send size={20} />
-            {isRateLimited ? "Limit Reached" : "Submit Proposal"}
-          </>
-        )}
-      </button>
-
-      {isRateLimited && (
-        <p className="text-center text-xs text-gray-500">
-          You've reached your daily limit. Try again in 24 hours.
-        </p>
-      )}
-    </form>
-  );
 }

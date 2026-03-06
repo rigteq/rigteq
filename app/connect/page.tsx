@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import TopNav from "@/components/TopNav";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import { TopBar as TopNav } from "@/components/layout/TopBar";
+import Navbar from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 import { Send, CheckCircle, AlertCircle, RotateCcw } from "lucide-react";
 
 type ConnectFormState = {
