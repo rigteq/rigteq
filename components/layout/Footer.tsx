@@ -94,7 +94,7 @@ export function Footer() {
                                 <MapPin size={18} className="text-blue-600 mt-1 shrink-0" />
                                 <div>
                                     <p className="text-gray-900 font-bold text-sm tracking-wide mb-1">Noida Campus (HQ)</p>
-                                    <p className="text-gray-500 text-sm leading-relaxed">D-41, C Block, Sector 59, Noida, UP 201309</p>
+                                    <p className="text-gray-500 text-sm leading-relaxed">D, 14-C, Sector 62A, Block B, Khora Colony, Sector 62, Noida, Uttar Pradesh 201020</p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-4">
