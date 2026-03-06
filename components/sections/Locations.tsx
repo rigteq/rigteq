@@ -5,9 +5,9 @@ import { MapPin, Phone, Mail, Clock, ExternalLink } from 'lucide-react';
 
 const locations = [
     {
-        country: 'India — Noida',
+        country: 'Noida, UP, India',
         office: 'Global Headquarters',
-        address: 'D-41, C Block, Sector 59, Noida, Uttar Pradesh 201309',
+        address: 'Noida, UP, India',
         phone: '+91 87503 99055',
         email: 'ops@rigteq.com',
         hours: 'Mon–Sat: 9:00 AM – 7:00 PM IST',
@@ -16,26 +16,15 @@ const locations = [
         flag: '🇮🇳'
     },
     {
-        country: 'India — Ghaziabad',
+        country: 'Ghaziabad, UP',
         office: 'Digital Operations',
-        address: 'G-615, Govindpuram, Ghaziabad, Uttar Pradesh, India',
+        address: 'Ghaziabad, UP',
         phone: '+91 87503 99055',
         email: 'sales@rigteq.com',
         hours: 'Mon–Sat: 9:00 AM – 7:00 PM IST',
         gradient: 'from-blue-500 to-indigo-500',
         mapUrl: 'https://maps.google.com/?q=Govindpuram+Ghaziabad+Uttar+Pradesh',
         flag: '🇮🇳'
-    },
-    {
-        country: 'USA — Houston',
-        office: 'US Business Center',
-        address: 'Houston, Texas, United States',
-        phone: '+1 3502 008-444',
-        email: 'sales@rigteq.com',
-        hours: 'Mon–Fri: 9:00 AM – 6:00 PM CST',
-        gradient: 'from-cyan-500 to-blue-500',
-        mapUrl: 'https://maps.google.com/?q=Houston+Texas+USA',
-        flag: '🇺🇸'
     },
 ];
 

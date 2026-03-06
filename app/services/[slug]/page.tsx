@@ -1,9 +1,9 @@
 import { servicesData } from "../data";
 import { notFound } from "next/navigation";
 import ContactForm from "@/components/ContactForm";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import TopNav from "@/components/TopNav";
+import Navbar from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
+import { TopBar as TopNav } from "@/components/layout/TopBar";
 import { Check } from "lucide-react";
 
 export async function generateStaticParams() {

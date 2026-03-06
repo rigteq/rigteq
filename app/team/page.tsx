@@ -50,6 +50,21 @@ const team = [
         linkedin: '#',
         email: 'yatendra@rigteq.com',
     },
+    {
+        name: 'Satyam',
+        role: 'Program Manager',
+        experience: 'Project Delivery Expert',
+        bio: 'Experienced program manager focused on delivering complex projects on time and within budget. Specializes in agile methodologies, stakeholder management, and cross-functional team coordination.',
+        icon: Briefcase,
+        accentColor: 'from-orange-600 to-orange-400',
+        bgAccent: 'bg-orange-50',
+        borderAccent: 'border-orange-200',
+        iconColor: 'text-orange-600',
+        badgeColor: 'bg-orange-600',
+        skills: ['Program Management', 'Agile Methodologies', 'Stakeholder Management', 'Team Coordination'],
+        linkedin: '#',
+        email: 'satyam@rigteq.com',
+    },
 ];
 
 export default function TeamPage() {
@@ -93,7 +108,7 @@ export default function TeamPage() {
                     {/* Stats row */}
                     <div className="grid grid-cols-3 gap-6 mb-20 max-w-2xl mx-auto">
                         {[
-                            { label: 'Team Members', value: '3+' },
+                            { label: 'Team Members', value: '4+' },
                             { label: 'Years Combined Experience', value: '25+' },
                             { label: 'Projects Delivered', value: '200+' },
                         ].map((stat) => (

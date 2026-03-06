@@ -5,6 +5,10 @@ import Link from 'next/link';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+interface NavbarProps {
+  currentView?: string;
+}
+
 const menuItems = [
     { name: 'Home', href: '/' },
     {
@@ -41,7 +45,7 @@ const menuItems = [
     { name: 'Contact', href: '#contact' },
 ];
 
-export function Navbar() {
+export default function Navbar({ currentView }: NavbarProps) {
     const [isScrolled, setIsScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -79,7 +83,7 @@ export function Navbar() {
                                 <Link
                                     href={item.href}
                                     className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-semibold tracking-wide transition-all duration-200
-                    ${activeDropdown === item.name ? 'text-blue-600 bg-blue-50' : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'}`}
+                    ${activeDropdown === item.name || (currentView && item.name.toLowerCase() === currentView) ? 'text-blue-600 bg-blue-50' : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'}`}
                                 >
                                     {item.name}
                                     {item.dropdown && (

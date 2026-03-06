@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 import { TopBar } from '@/components/layout/TopBar';
-import { Navbar } from '@/components/layout/Navbar';
+import Navbar from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { Chatbot } from '@/components/layout/Chatbot';
 
@@ -18,6 +18,10 @@ export const metadata: Metadata = {
   publisher: 'Rigteq Softwares',
   metadataBase: new URL('https://www.rigteq.com'),
   alternates: { canonical: 'https://www.rigteq.com' },
+  icons: {
+    icon: '/images/logo.png',
+    apple: '/images/logo.png',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -38,10 +42,6 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
     googleBot: { index: true, follow: true, 'max-snippet': -1, 'max-image-preview': 'large' },
-  },
-  icons: {
-    icon: '/favicon.ico',
-    apple: '/images/logo.png',
   },
   category: 'technology',
 };
