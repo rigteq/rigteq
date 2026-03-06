@@ -26,6 +26,17 @@ const locations = [
         mapUrl: 'https://maps.google.com/?q=Govindpuram+Ghaziabad+Uttar+Pradesh',
         flag: '🇮🇳'
     },
+    {
+        country: 'Houston, TX',
+        office: 'US Business Center',
+        address: 'Houston, US',
+        phone: '+1 3502 008-444',
+        email: 'sales@rigteq.com',
+        hours: 'Mon–Fri: 9:00 AM – 6:00 PM CST',
+        gradient: 'from-cyan-500 to-blue-500',
+        mapUrl: 'https://maps.google.com/?q=3+Greenway+Plz+Houston+TX+77046',
+        flag: '🇺🇸'
+    },
 ];
 
 export function Locations() {
