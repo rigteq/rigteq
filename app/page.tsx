@@ -1,102 +1,89 @@
-"use client";
-
-import { useState } from "react";
-import TopNav from "@/components/TopNav";
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import MissionStats from "@/components/MissionStats";
-import ServicesGrid from "@/components/ServicesGrid";
-import WebsiteCostCalculator from "@/components/WebsiteCostCalculator";
-import Testimonials from "@/components/Testimonials";
-import CompaniesSection from "@/components/CompaniesSection";
-import IndustriesSection from "@/components/IndustriesSection";
-import TechnologiesSection from "@/components/TechnologiesSection";
-import Footer from "@/components/Footer";
-import FloatingWidgets from "@/components/FloatingWidgets";
-import ContactForm from "@/components/ContactForm";
-import Media from "@/components/Media";
-import Blog from "@/components/Blog";
-import Packages from "@/components/Packages";
-import Portfolio from "@/components/Portfolio";
-import Careers from "@/components/Careers";
-import Support from "@/components/Support";
-import BrochureModal from "@/components/BrochureModal";
-import Solutions from "@/components/Solutions";
-import ROICentral from "@/components/ROICentral";
-import Enterprise from "@/components/Enterprise";
+import { Hero } from '@/components/sections/Hero';
+import { Stats } from '@/components/sections/Stats';
+import { Services } from '@/components/sections/Services';
+import { Features } from '@/components/sections/Features';
+import { Process } from '@/components/sections/Process';
+import { Technologies } from '@/components/sections/Technologies';
+import { CaseStudies } from '@/components/sections/CaseStudies';
+import { Testimonials } from '@/components/sections/Testimonials';
+import { Locations } from '@/components/sections/Locations';
+import { Contact } from '@/components/sections/Contact';
+import { Packages } from '@/components/sections/Packages';
+import { CTA } from '@/components/sections/CTA';
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://www.rigteq.com/#organization',
+      name: 'Rigteq Softwares',
+      url: 'https://www.rigteq.com',
+      logo: 'https://www.rigteq.com/images/logo.png',
+      sameAs: [
+        'https://www.linkedin.com/company/rigteq',
+        'https://twitter.com/rigteq',
+        'https://www.facebook.com/rigteq',
+      ],
+      contactPoint: [
+        { '@type': 'ContactPoint', telephone: '+91-87503-99055', contactType: 'sales', areaServed: 'IN', availableLanguage: 'English' },
+        { '@type': 'ContactPoint', telephone: '+1-3502-008-444', contactType: 'sales', areaServed: 'US', availableLanguage: 'English' },
+      ],
+    },
+    {
+      '@type': 'LocalBusiness',
+      '@id': 'https://www.rigteq.com/#localbusiness',
+      name: 'Rigteq Softwares',
+      image: 'https://www.rigteq.com/images/logo.png',
+      url: 'https://www.rigteq.com',
+      telephone: '+91-87503-99055',
+      email: 'sales@rigteq.com',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'D-41, C Block, Sector 59',
+        addressLocality: 'Noida',
+        addressRegion: 'Uttar Pradesh',
+        postalCode: '201309',
+        addressCountry: 'IN',
+      },
+      openingHoursSpecification: [{
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        opens: '09:00',
+        closes: '19:00',
+      }],
+      priceRange: '$$',
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://www.rigteq.com/#website',
+      url: 'https://www.rigteq.com',
+      name: 'Rigteq Softwares',
+      description: 'Custom software development company in India offering web, mobile, AI & SaaS solutions globally.',
+      publisher: { '@id': 'https://www.rigteq.com/#organization' },
+    },
+  ],
+};
 
 export default function Home() {
-  const [view, setView] = useState("home");
-  const [isBrochureOpen, setIsBrochureOpen] = useState(false);
-
-  const openBrochure = () => setIsBrochureOpen(true);
-
   return (
-    <main className="min-h-screen bg-white text-gray-900 font-sans">
-      <div className="sticky top-0 z-[100]">
-        <TopNav setView={setView} />
-        <Navbar currentView={view} setView={setView} />
-      </div>
-
-      {view === "home" && (
-        <>
-          <Hero setView={setView} />
-          <MissionStats />
-          <div id="services">
-            <ServicesGrid />
-          </div>
-          <div id="calculator">
-            <WebsiteCostCalculator />
-          </div>
-          <div id="testimonials">
-            <Testimonials />
-          </div>
-          <div id="clients">
-            <CompaniesSection />
-          </div>
-          <div id="industries">
-            <IndustriesSection setView={setView} />
-          </div>
-          <TechnologiesSection />
-        </>
-      )}
-
-      {/* High-Value Pages */}
-      {view === "solutions" && <Solutions setView={setView} />}
-      {view === "roi-central" && <ROICentral setView={setView} />}
-      {view === "enterprise" && <Enterprise setView={setView} />}
-
-      {view === "contact" && (
-        <section className="relative py-24 px-4 md:px-12 min-h-[80vh] flex items-center overflow-hidden bg-gradient-to-b from-slate-50 to-white animate-in fade-in slide-in-from-bottom-4 duration-500">
-          <div className="max-w-7xl mx-auto w-full">
-            <div className="text-center mb-16">
-              <span className="inline-block py-1.5 px-4 rounded-full bg-blue-50 text-blue-700 text-sm font-semibold border border-blue-100 mb-4">
-                Get Started
-              </span>
-              <h1 className="text-5xl md:text-7xl font-bold text-[#0e3d52] mb-6 font-serif tracking-tight">
-                Let's Build Something <span className="text-gradient">Extraordinary</span>
-              </h1>
-              <p className="text-gray-600 max-w-2xl mx-auto text-lg md:text-xl leading-relaxed">
-                Have a vision? We have the expertise. Reach out today and let's start your digital transformation journey.
-              </p>
-            </div>
-            <div className="max-w-4xl mx-auto">
-              <ContactForm />
-            </div>
-          </div>
-        </section>
-      )}
-
-      {view === "media" && <Media setView={setView} />}
-      {view === "blog" && <Blog setView={setView} />}
-      {view === "packages" && <Packages setView={setView} />}
-      {view === "portfolio" && <Portfolio />}
-      {view === "careers" && <Careers setView={setView} />}
-      {view === "support" && <Support setView={setView} />}
-
-      <Footer setView={setView} openBrochure={openBrochure} />
-      <FloatingWidgets />
-      <BrochureModal isOpen={isBrochureOpen} onClose={() => setIsBrochureOpen(false)} />
+    <main className="min-h-screen">
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <Hero />
+      <Stats />
+      <Services />
+      <Features />
+      <Process />
+      <Technologies />
+      <CaseStudies />
+      <Packages />
+      <Testimonials />
+      <Locations />
+      <Contact />
+      <CTA />
     </main>
   );
 }
