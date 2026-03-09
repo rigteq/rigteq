@@ -1,9 +1,6 @@
 import { servicesData } from "../data";
 import { notFound } from "next/navigation";
 import ContactForm from "@/components/ContactForm";
-import Navbar from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
-import { TopBar as TopNav } from "@/components/layout/TopBar";
 import { Check } from "lucide-react";
 
 export async function generateStaticParams() {
@@ -24,10 +21,6 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
     return (
         <main className="min-h-screen bg-white">
-            <div className="sticky top-0 z-[100]">
-                <TopNav />
-                <Navbar currentView="services" />
-            </div>
 
             {/* Hero Section */}
             <section className="relative h-[60vh] flex items-center justify-center overflow-hidden bg-[#0f172a]">
@@ -128,8 +121,6 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                     <ContactForm />
                 </div>
             </section>
-
-            <Footer />
         </main>
     );
 }

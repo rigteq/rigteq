@@ -19,7 +19,7 @@ const SUGGESTIONS = [
 export function Chatbot() {
     const [isOpen, setIsOpen] = useState(false);
     const [messages, setMessages] = useState<ChatMessage[]>([
-        { role: 'model', content: "Hi! I'm the Rigteq Assistant. How can I help you today?" }
+        { role: 'model', content: "How can I assist you?" }
     ]);
     const [input, setInput] = useState('');
     const [isLoading, setIsLoading] = useState(false);
@@ -32,6 +32,14 @@ export function Chatbot() {
             messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
         }
     }, [messages, isOpen, isLoading]);
+
+    // Auto-open after 5 seconds
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsOpen(true);
+        }, 5000);
+        return () => clearTimeout(timer);
+    }, []);
 
     // Auto-focus input when opened
     useEffect(() => {
@@ -77,7 +85,7 @@ export function Chatbot() {
     };
 
     const handleClear = () => {
-        setMessages([{ role: 'model', content: "Hi! I'm the Rigteq Assistant. How can I help you today?" }]);
+        setMessages([{ role: 'model', content: "How can I assist you?" }]);
     };
 
     return (

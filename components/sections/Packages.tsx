@@ -153,13 +153,13 @@ export function Packages() {
                             </div>
 
                             <Link
-                                href="#contact"
+                                href="/contact"
                                 className={`w-full py-4 rounded-xl text-center font-bold text-sm transition-all duration-300 ${pkg.popular
                                         ? 'bg-blue-600 text-white hover:bg-blue-500 shadow-lg shadow-blue-600/25'
                                         : 'bg-gray-50 text-gray-900 border border-gray-200 hover:bg-gray-100 hover:border-gray-300'
                                     }`}
                             >
-                                Get Started Today
+                                Get Started
                             </Link>
                         </motion.div>
                     ))}

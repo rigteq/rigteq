@@ -10,6 +10,8 @@ import { Locations } from '@/components/sections/Locations';
 import { Contact } from '@/components/sections/Contact';
 import { Packages } from '@/components/sections/Packages';
 import { CTA } from '@/components/sections/CTA';
+import { Products } from '@/components/sections/Products';
+import { Industries } from '@/components/sections/Industries';
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -75,6 +77,8 @@ export default function Home() {
       <Hero />
       <Stats />
       <Services />
+      <Products />
+      <Industries />
       <Features />
       <Process />
       <Technologies />

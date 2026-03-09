@@ -9,7 +9,8 @@ export function Contact() {
         name: '',
         email: '',
         phone: '',
-        subject: '',
+        projectType: '',
+        budget: '',
         message: ''
     });
 
@@ -17,7 +18,7 @@ export function Contact() {
         e.preventDefault();
         console.log('Form submitted:', formState);
         alert('Thank you for your message! Our team will get back to you shortly.');
-        setFormState({ name: '', email: '', phone: '', subject: '', message: '' });
+        setFormState({ name: '', email: '', phone: '', projectType: '', budget: '', message: '' });
     };
 
     return (
@@ -184,24 +185,42 @@ export function Contact() {
                                         />
                                     </div>
                                     <div className="space-y-2">
-                                        <label className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Inquiry Type</label>
+                                        <label className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Project Type</label>
                                         <div className="relative">
                                             <select
-                                                value={formState.subject}
-                                                onChange={(e) => setFormState({ ...formState, subject: e.target.value })}
+                                                required
+                                                value={formState.projectType}
+                                                onChange={(e) => setFormState({ ...formState, projectType: e.target.value })}
                                                 className="w-full px-6 py-4 rounded-xl bg-gray-50 border border-gray-200 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all outline-none font-medium text-gray-900 appearance-none cursor-pointer"
                                             >
-                                                <option className="bg-white" value="">Select a Service</option>
-                                                <option className="bg-white" value="web">Web Development</option>
-                                                <option className="bg-white" value="app">Mobile Apps</option>
-                                                <option className="bg-white" value="seo">SEO & Marketing</option>
-                                                <option className="bg-white" value="product">Custom Product</option>
+                                                <option className="bg-white" value="">Select a Project Type</option>
+                                                <option className="bg-white" value="web">Web App Development</option>
+                                                <option className="bg-white" value="mobile">Mobile App Engineering</option>
+                                                <option className="bg-white" value="ai">AI / Automation</option>
+                                                <option className="bg-white" value="enterprise">Enterprise Software</option>
+                                                <option className="bg-white" value="cloud">Cloud Architecture</option>
                                             </select>
                                             <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
                                                 <Globe size={18} />
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+
+                                <div className="space-y-2">
+                                    <label className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Budget Range</label>
+                                    <select
+                                        required
+                                        value={formState.budget}
+                                        onChange={(e) => setFormState({ ...formState, budget: e.target.value })}
+                                        className="w-full px-6 py-4 rounded-xl bg-gray-50 border border-gray-200 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all outline-none font-medium text-gray-900 appearance-none cursor-pointer"
+                                    >
+                                        <option value="">Select your budget</option>
+                                        <option value="10k-50k">$10,000 - $25,000</option>
+                                        <option value="25k-50k">$25,000 - $50,000</option>
+                                        <option value="50k-100k">$50,000 - $100,000</option>
+                                        <option value="100k+">$100,000+</option>
+                                    </select>
                                 </div>
 
                                 <div className="space-y-2">

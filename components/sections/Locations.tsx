@@ -5,36 +5,25 @@ import { MapPin, Phone, Mail, Clock, ExternalLink } from 'lucide-react';
 
 const locations = [
     {
-        country: 'Noida, UP, India',
+        country: 'Noida, India',
         office: 'Global Headquarters',
-        address: 'Noida, UP, India',
+        address: 'Tower B, Sector 59, Noida, UP, India 201301',
         phone: '+91 87503 99055',
         email: 'ops@rigteq.com',
         hours: 'Mon–Sat: 9:00 AM – 7:00 PM IST',
         gradient: 'from-[#3B82F6] to-[#2563EB]',
-        mapUrl: 'https://maps.google.com/?q=Sector+59+Noida+Uttar+Pradesh',
+        mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.9366650426876!2d77.36978!3d28.618349!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce56620f32997%3A0xe244ea4cc23baec2!2sSector%2059%2C%20Noida%2C%20Uttar%20Pradesh%20201301!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin',
         flag: '🇮🇳'
     },
     {
-        country: 'Ghaziabad, UP',
-        office: 'Digital Operations',
-        address: 'Ghaziabad, UP',
-        phone: '+91 87503 99055',
-        email: 'sales@rigteq.com',
-        hours: 'Mon–Sat: 9:00 AM – 7:00 PM IST',
-        gradient: 'from-blue-500 to-indigo-500',
-        mapUrl: 'https://maps.google.com/?q=Govindpuram+Ghaziabad+Uttar+Pradesh',
-        flag: '🇮🇳'
-    },
-    {
-        country: 'Houston, TX',
+        country: 'Houston, USA',
         office: 'US Business Center',
-        address: 'Houston, US',
+        address: '3 Greenway Plaza, Suite 200, Houston, TX 77046',
         phone: '+1 3502 008-444',
         email: 'sales@rigteq.com',
         hours: 'Mon–Fri: 9:00 AM – 6:00 PM CST',
         gradient: 'from-cyan-500 to-blue-500',
-        mapUrl: 'https://maps.google.com/?q=3+Greenway+Plz+Houston+TX+77046',
+        mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3464.0850257321683!2d-95.4326551!3d29.7329482!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640c1110a12e8cd%3A0x6d11b2cb0efaaab!2s3%20Greenway%20Plz%2C%20Houston%2C%20TX%2077046%2C%20USA!5e0!3m2!1sen!2sin!4v1700000000001!5m2!1sen!2sin',
         flag: '🇺🇸'
     },
 ];
@@ -58,7 +47,7 @@ export function Locations() {
                     </motion.div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                     {locations.map((loc, idx) => (
                         <motion.div
                             key={loc.country}
@@ -112,15 +101,17 @@ export function Locations() {
                                 </div>
                             </div>
 
-                            <a
-                                href={loc.mapUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="mt-8 flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-white border border-gray-200 text-gray-900 text-[11px] font-bold uppercase tracking-widest hover:bg-gray-50 hover:border-blue-400/30 transition-all duration-300 shadow-sm"
-                            >
-                                <ExternalLink size={16} />
-                                Locate Office
-                            </a>
+                            <div className="mt-8 rounded-xl overflow-hidden shadow-sm h-48 border border-gray-200">
+                                <iframe
+                                    src={loc.mapEmbedUrl}
+                                    width="100%"
+                                    height="100%"
+                                    style={{ border: 0 }}
+                                    allowFullScreen
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                ></iframe>
+                            </div>
                         </motion.div>
                     ))}
                 </div>

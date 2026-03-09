@@ -13,83 +13,92 @@ const projects = [
     {
         id: 1,
         title: 'DhanSampatti',
+        clientName: 'Private Wealth Corp',
         category: 'Web App',
         description: 'Elite wealth management ecosystem designed for high-net-worth individuals to track global assets in real-time.',
         image: '/images/portfolio/dhansampatti.png',
-        tags: ['FINANCIAL ENGINE', 'NEXT.JS', 'DASHBOARD'],
-        link: '#',
+        techStack: ['Next.js', 'Tailwind', 'Node.js', 'PostgreSQL'],
+        link: 'https://dhansampatti.vercel.app',
     },
     {
         id: 2,
         title: 'Edistone Marble',
-        category: 'E-commerce',
+        clientName: 'Edistone Luxury Marbles',
+        category: 'Real Estate',
         description: 'Premium luxury stone marketplace featuring high-fidelity product rendering and global logistic integration.',
         image: '/images/portfolio/edistone.png',
-        tags: ['LUXURY UI', 'SHOPPING', 'LOGISTICS'],
-        link: '#',
+        techStack: ['React', 'Redux', 'Stripe', 'Express'],
+        link: 'https://edistone.vercel.app',
     },
     {
         id: 3,
         title: 'FreeSchool MS',
+        clientName: 'Mothertouch Public School',
         category: 'SaaS Product',
         description: 'Next-generation educational ERP system bridging the gap between administrators, teachers, and parents.',
         image: '/images/portfolio/freeschoolms.png',
-        tags: ['EDTECH', 'ERP', 'SCALABLE'],
-        link: '#',
+        techStack: ['Next.js', 'Supabase', 'TailwindCSS', 'Prisma'],
+        link: 'https://freeschoolms.vercel.app/',
     },
     {
         id: 4,
         title: 'Mothertouch',
-        category: 'E-commerce',
+        clientName: 'Mothertouch Public School',
+        category: 'Education',
         description: 'Award-winning e-commerce experience for premium baby care, focused on trust-driven UX and fast conversion.',
         image: '/images/portfolio/mothertouch.png',
-        tags: ['BABYCARE', 'CONVERSION', 'UX'],
-        link: '#',
+        techStack: ['React', 'Node.js', 'MongoDB', 'AWS'],
+        link: 'https://motherstouchplayschool.vercel.app',
     },
     {
         id: 5,
         title: 'RadheRaj RealEstate',
+        clientName: 'RadheRaj Properties',
         category: 'Real Estate',
         description: 'Modern property discovery engine with advanced spatial filtering and virtual tour capabilities.',
         image: '/images/portfolio/radheraj.png',
-        tags: ['REAL ESTATE', 'MAPS', '3D TOUR'],
-        link: '#',
+        techStack: ['Next.js', 'Google Maps API', 'Firebase'],
+        link: 'https://radherajenterprises.in',
     },
     {
         id: 6,
         title: 'SalesRQ Enterprise',
+        clientName: 'B2B SalesHub',
         category: 'SaaS Product',
         description: 'High-performance sales pipeline management with AI-driven forecasting and CRM orchestration.',
         image: '/images/portfolio/salesrq.png',
-        tags: ['SALES OPS', 'AI FORCAST', 'CRM'],
-        link: '#',
+        techStack: ['React', 'Python', 'FastAPI', 'PostgreSQL'],
+        link: 'https://salesrq.vercel.app/',
     },
     {
         id: 7,
         title: 'TaskFlow RQ',
+        clientName: 'AgileFlow Systems',
         category: 'SaaS Product',
         description: 'Strategic project management tool designed for agile teams demanding speed and absolute clarity.',
         image: '/images/portfolio/taskflowrq.png',
-        tags: ['AGILE', 'WORKFLOW', 'TEAMS'],
-        link: '#',
+        techStack: ['Next.js', 'NestJS', 'Redis', 'Docker'],
+        link: 'https://taskflowrq.vercel.app/',
     },
     {
         id: 8,
         title: 'TCGA Consulting',
+        clientName: 'TCGA Group',
         category: 'Web App',
         description: 'Sophisticated corporate platform for professional consulting, featuring automated booking and lead capture.',
         image: '/images/portfolio/tcga.png',
-        tags: ['CONSULTING', 'AUTOMATION', 'LEADGEN'],
-        link: '#',
+        techStack: ['React', 'Express', 'MySQL', 'Tailwind'],
+        link: 'https://tcgaconsulting.vercel.app',
     },
     {
         id: 9,
         title: 'Zentova Studios',
+        clientName: 'Zentova Creative Agency',
         category: 'Web App',
         description: 'Immersive agency portfolio built with cutting-edge animations and a future-forward design aesthetic.',
         image: '/images/portfolio/zentova.png',
-        tags: ['ANIMATION', 'CREATIVE', 'AESTHETIC'],
-        link: '#',
+        techStack: ['Next.js', 'Framer Motion', 'Three.js'],
+        link: 'https://zentova-gifting.vercel.app',
     },
 ];
 
@@ -214,13 +223,17 @@ export default function PortfolioPage() {
 
                                     {/* Intelligence Block */}
                                     <div className="p-10">
+                                        <div className="flex flex-col mb-4 gap-1">
+                                            <span className="text-[10px] font-bold uppercase tracking-widest text-teal-600">Client</span>
+                                            <span className="text-gray-900 font-semibold">{project.clientName}</span>
+                                        </div>
                                         <div className="flex flex-wrap gap-2 mb-6">
-                                            {project.tags.map((tag) => (
+                                            {project.techStack.map((tech) => (
                                                 <span
-                                                    key={tag}
-                                                    className="text-[9px] font-black text-teal-600/60 uppercase tracking-widest px-2 py-0.5 border border-teal-500/10 rounded-md"
+                                                    key={tech}
+                                                    className="text-[10px] font-bold text-gray-600 bg-gray-100 rounded-md px-2.5 py-1"
                                                 >
-                                                    {tag}
+                                                    {tech}
                                                 </span>
                                             ))}
                                         </div>

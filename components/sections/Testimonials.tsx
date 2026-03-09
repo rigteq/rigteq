@@ -4,24 +4,38 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react';
 
+import { ExternalLink } from 'lucide-react';
+
 const testimonials = [
     {
         name: 'Sarah Mitchell',
         role: 'CEO, TechStart Inc.',
         text: 'Rigteq delivered a powerful platform that increased our growth significantly. Their engineering team is top-tier.',
         rating: 5,
+        photo: 'https://i.pravatar.cc/150?u=sarah',
+        logo: 'https://i.pravatar.cc/50?u=techstart',
+        linkedin: 'https://linkedin.com/in/sarah',
+        projectDetails: 'Scalable SaaS Platform for B2B Analytics',
     },
     {
         name: 'Rajesh Sharma',
         role: 'CTO, Global Logistics',
         text: 'The complete digital transformation of our legacy systems was handled flawlessly. Highly recommended for complex enterprise builds.',
         rating: 5,
+        photo: 'https://i.pravatar.cc/150?u=rajesh',
+        logo: 'https://i.pravatar.cc/50?u=global',
+        linkedin: 'https://linkedin.com/in/rajesh',
+        projectDetails: 'Enterprise ERP System Modernization',
     },
     {
         name: 'Alexei Volkov',
         role: 'Founder, CloudStream',
         text: 'Working with Rigteq feels like having an elite in-house engineering team. They delivered ahead of schedule with zero defects.',
         rating: 5,
+        photo: 'https://i.pravatar.cc/150?u=alexei',
+        logo: 'https://i.pravatar.cc/50?u=cloudstream',
+        linkedin: 'https://linkedin.com/in/alexei',
+        projectDetails: 'Live Video Streaming Application Network',
     },
 ];
 
@@ -71,9 +85,33 @@ export function Testimonials() {
                                 "{testimonials[current].text}"
                             </p>
 
-                            <div>
-                                <h4 className="text-gray-900 font-bold text-xl mb-1">{testimonials[current].name}</h4>
-                                <p className="text-gray-500 font-bold text-sm">{testimonials[current].role}</p>
+                            <div className="flex items-center justify-between mb-8 pb-8 border-b border-gray-100">
+                                <div className="flex items-center gap-4">
+                                    <div className="w-16 h-16 rounded-full overflow-hidden bg-gray-100 ring-4 ring-blue-50">
+                                        <img src={testimonials[current].photo} alt={testimonials[current].name} className="w-full h-full object-cover" />
+                                    </div>
+                                    <div className="text-left">
+                                        <h4 className="text-gray-900 font-bold text-lg mb-0.5">{testimonials[current].name}</h4>
+                                        <p className="text-gray-500 font-semibold text-sm">{testimonials[current].role}</p>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col items-end gap-2">
+                                    <img src={testimonials[current].logo} alt="Company Logo" className="h-8 rounded opacity-80" />
+                                    <a
+                                        href={testimonials[current].linkedin}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-blue-600 hover:text-blue-700 flex items-center gap-1 text-[10px] font-bold uppercase tracking-widest"
+                                    >
+                                        LinkedIn <ExternalLink size={12} />
+                                    </a>
+                                </div>
+                            </div>
+                            <div className="text-left mt-6">
+                                <span className="inline-block px-3 py-1 rounded bg-blue-50 text-blue-700 text-[10px] font-bold uppercase tracking-widest mb-4 border border-blue-100">
+                                    Project Highlights
+                                </span>
+                                <p className="text-sm font-semibold text-gray-700">{testimonials[current].projectDetails}</p>
                             </div>
                         </motion.div>
 

@@ -5,6 +5,21 @@ export interface ServiceData {
 }
 
 export const servicesData: Record<string, ServiceData> = {
+    "web-mobile-engineering": {
+        title: "Web & Mobile Engineering",
+        description: "We build high-performance, scalable web and mobile applications using React Native, Flutter, Next.js, and Node. Our architectures are designed to handle millions of concurrent users with zero latency, ensuring a seamless omni-channel experience.",
+        features: ["Native & Cross-Platform", "Micro-Frontend Architectures", "Sub-second TTI", "Enterprise Grade State Management"]
+    },
+    "ai-workflow-automation": {
+        title: "AI & Workflow Automation",
+        description: "Deploy intelligent NLP agents and automated workflows that seamlessly integrate into your existing tech stack. We reduce operational overhead by automating repetitive tasks, leveraging LLMs to execute complex multi-step reasoning engines.",
+        features: ["Custom LLM Integration", "Agentic Workflows", "Data Pipeline Automation", "Predictive Analytics"]
+    },
+    "cloud-solutions-devops": {
+        title: "Cloud Solutions & DevOps",
+        description: "Robust, auto-scaling cloud architectures focused on zero-downtime deployments. We orchestrate secure, high-availability clusters using Kubernetes, Docker, and advanced CI/CD pipelines across AWS, GCP, and Azure.",
+        features: ["Kubernetes Clustering", "Zero-Downtime CI/CD", "Infrastructure as Code (IaC)", "Automated Security Scanning"]
+    },
     "website-designing": {
         title: "Website Designing",
         description: "Create a stunning first impression with our ultra-premium website designing services. We blend aesthetics with functionality to deliver digital experiences that captivate your audience and drive conversions.",
