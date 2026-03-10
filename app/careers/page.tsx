@@ -1,11 +1,8 @@
-import { Metadata } from 'next';
-import { ArrowRight, Code, Terminal, Brain, Sparkles, LocateIcon, MapPin } from 'lucide-react';
-import Link from 'next/link';
+'use client';
 
-export const metadata: Metadata = {
-    title: 'Careers | Join Rigteq Engineering',
-    description: 'Explore active job vacancies and join an elite group of engineers building scalable digital solutions.',
-};
+import { useState } from 'react';
+import { ArrowRight, Code, Terminal, Brain, Sparkles, MapPin } from 'lucide-react';
+import JobApplicationForm from '@/components/JobApplicationForm';
 
 const jobs = [
     {
@@ -38,6 +35,14 @@ const jobs = [
 ];
 
 export default function CareersPage() {
+    const [selectedJob, setSelectedJob] = useState<typeof jobs[0] | null>(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const handleApplyNow = (job: typeof jobs[0]) => {
+        setSelectedJob(job);
+        setIsModalOpen(true);
+    };
+
     return (
         <main className="min-h-screen bg-gray-50 pt-32 pb-24">
             <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -88,7 +93,10 @@ export default function CareersPage() {
                                 </div>
                             </div>
 
-                            <button className="w-full md:w-auto px-8 py-4 rounded-xl bg-gray-900 text-white font-bold text-sm hover:bg-blue-600 transition-colors shadow-xl shadow-gray-200 flex items-center justify-center gap-2 group-hover:shadow-blue-500/20">
+                            <button 
+                                onClick={() => handleApplyNow(job)}
+                                className="w-full md:w-auto px-8 py-4 rounded-xl bg-gray-900 text-white font-bold text-sm hover:bg-blue-600 transition-colors shadow-xl shadow-gray-200 flex items-center justify-center gap-2 group-hover:shadow-blue-500/20"
+                            >
                                 Apply Now <ArrowRight size={16} />
                             </button>
 
@@ -106,6 +114,15 @@ export default function CareersPage() {
                      </a>
                 </div>
             </div>
+
+            {/* Job Application Modal */}
+            {selectedJob && (
+                <JobApplicationForm
+                    job={selectedJob}
+                    isOpen={isModalOpen}
+                    onClose={() => setIsModalOpen(false)}
+                />
+            )}
         </main>
     );
 }

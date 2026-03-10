@@ -17,14 +17,16 @@ interface MenuItem {
 
 const menuItems: MenuItem[] = [
     { name: 'Home', href: '/' },
-    { name: 'About Us', href: '/about' },
-    { name: 'Services', href: '/#services' },
-    { name: 'Products', href: '/#products' }, // Assuming products section
+    { name: 'About', href: '/about' },
+    { name: 'Services', href: '/#services', dropdown: [
+        { name: 'Products', href: '/#products' },
+        { name: 'Industries', href: '/#industries' },
+    ]},
     { name: 'Portfolio', href: '/portfolio' },
-    { name: 'Industries', href: '/#industries' }, // Using hash or actual path if to be added
-    { name: 'Blog', href: '/blog' },
-    { name: 'Careers', href: '/careers' },
-    { name: 'Contact Us', href: '/contact' },
+    { name: 'Blog', href: '/blog', dropdown: [
+        { name: 'Careers', href: '/careers' },
+    ]},
+    { name: 'Contact', href: '/contact' },
 ];
 
 export default function Navbar({ currentView }: NavbarProps) {
@@ -105,11 +107,22 @@ export default function Navbar({ currentView }: NavbarProps) {
                     </nav>
 
                     {/* Desktop CTA */}
-                    <div className="hidden lg:flex items-center">
+                    <div className="hidden lg:flex items-center gap-3">
+                        <a
+                            href="https://razorpay.me/@rigteq"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-5 py-2.5 rounded-full bg-green-600 text-white text-sm font-bold tracking-wide hover:bg-green-700 transition-all shadow-md shadow-green-500/20 flex items-center gap-2"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <rect width="20" height="14" x="2" y="5" rx="2" />
+                                <line x1="2" x2="22" y1="10" y2="10" />
+                            </svg>
+                            Order Now
+                        </a>
                         <Link
                             href="/contact"
-                            className="px-6 py-2.5 rounded-full bg-blue-600 text-white text-sm font-bold tracking-wide
-                hover:bg-blue-700 transition-all shadow-md shadow-blue-500/20"
+                            className="px-6 py-2.5 rounded-full bg-blue-600 text-white text-sm font-bold tracking-wide hover:bg-blue-700 transition-all shadow-md shadow-blue-500/20"
                         >
                             Get A Quote
                         </Link>
@@ -180,10 +193,23 @@ export default function Navbar({ currentView }: NavbarProps) {
                                 </div>
                             ))}
 
+                            <a
+                                href="https://razorpay.me/@rigteq"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={() => setMobileMenuOpen(false)}
+                                className="mt-4 px-8 py-5 rounded-2xl bg-green-600 text-white text-center text-sm font-bold tracking-wide shadow-xl shadow-green-500/20 flex items-center justify-center gap-2"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <rect width="20" height="14" x="2" y="5" rx="2" />
+                                    <line x1="2" x2="22" y1="10" y2="10" />
+                                </svg>
+                                Order Now
+                            </a>
                             <Link
                                 href="/contact"
                                 onClick={() => setMobileMenuOpen(false)}
-                                className="mt-8 px-8 py-5 rounded-2xl bg-blue-600 text-white text-center text-sm font-bold tracking-wide shadow-xl shadow-blue-500/20"
+                                className="px-8 py-5 rounded-2xl bg-blue-600 text-white text-center text-sm font-bold tracking-wide shadow-xl shadow-blue-500/20"
                             >
                                 Get A Quote
                             </Link>
