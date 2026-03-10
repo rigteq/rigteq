@@ -12,6 +12,7 @@ import { Packages } from '@/components/sections/Packages';
 import { CTA } from '@/components/sections/CTA';
 import { Products } from '@/components/sections/Products';
 import { Industries } from '@/components/sections/Industries';
+import { SectionWrapper } from '@/components/SectionWrapper';
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -75,19 +76,45 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Hero />
-      <Stats />
-      <Services />
-      <Products />
-      <Industries />
-      <Features />
-      <Process />
-      <Technologies />
-      <CaseStudies />
-      <Packages />
-      <Testimonials />
-      <Locations />
-      <Contact />
-      <CTA />
+      <SectionWrapper animation="fade-up" delay={100}>
+        <Stats />
+      </SectionWrapper>
+      <SectionWrapper animation="fade-up" delay={200}>
+        <Services />
+      </SectionWrapper>
+      <SectionWrapper animation="fade-up" delay={300}>
+        <Products />
+      </SectionWrapper>
+      <SectionWrapper animation="fade-up" delay={400}>
+        <Industries />
+      </SectionWrapper>
+      <SectionWrapper animation="fade-up" delay={500}>
+        <Features />
+      </SectionWrapper>
+      <SectionWrapper animation="fade-up">
+        <Process />
+      </SectionWrapper>
+      <SectionWrapper animation="fade-up">
+        <Technologies />
+      </SectionWrapper>
+      <SectionWrapper animation="fade-up">
+        <CaseStudies />
+      </SectionWrapper>
+      <SectionWrapper animation="fade-up">
+        <Packages />
+      </SectionWrapper>
+      <SectionWrapper animation="fade-up">
+        <Testimonials />
+      </SectionWrapper>
+      <SectionWrapper animation="fade-up">
+        <Locations />
+      </SectionWrapper>
+      <SectionWrapper animation="fade-up">
+        <Contact />
+      </SectionWrapper>
+      <SectionWrapper animation="fade-up">
+        <CTA />
+      </SectionWrapper>
     </main>
   );
 }
