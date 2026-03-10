@@ -64,17 +64,17 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                         </div>
 
                         <div className="relative">
-                            <div className="absolute inset-0 bg-gradient-to-tr from-blue-600 to-purple-600 rounded-3xl transform rotate-3 scale-[1.02] opacity-20 blur-xl" />
-                            <div className="relative bg-white rounded-3xl overflow-hidden shadow-2xl border border-gray-100 h-[400px] flex items-center justify-center bg-gray-50 group">
-                                <img
-                                    src={getImageForService(slug)}
-                                    alt={`${data.title} Illustration`}
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
-                                <div className="absolute bottom-6 left-6 text-white">
-                                    <div className="text-sm font-medium bg-blue-600 px-3 py-1 rounded-full inline-block mb-2">Premium Quality</div>
-                                    <div className="text-2xl font-bold">{data.title}</div>
+                            <div className="bg-white rounded-3xl overflow-hidden shadow-xl border border-gray-200">
+                                <div className="h-[350px] flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 p-6">
+                                    <img
+                                        src={getImageForService(slug)}
+                                        alt={`${data.title} Illustration`}
+                                        className="max-w-full max-h-full object-contain"
+                                    />
+                                </div>
+                                <div className="p-6 bg-white">
+                                    <div className="text-sm font-medium bg-blue-600 text-white px-3 py-1 rounded-full inline-block mb-2">Premium Quality</div>
+                                    <div className="text-xl font-bold text-gray-900">{data.title}</div>
                                 </div>
                             </div>
                         </div>
@@ -127,11 +127,14 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
 function getImageForService(slug: string): string {
     const images: Record<string, string> = {
+        "web-mobile-engineering": "/images/web-mobile-full.png",
+        "ai-workflow-automation": "/images/ai-automation-full.png",
+        "cloud-solutions-devops": "/images/cloud-devops-full.png",
         "website-designing": "/images/web_designing.webp",
         "custom-website-development": "/images/custom.webp",
         "e-commerce-website-development": "/images/e-commerce.webp",
         "crm-development": "/images/crm.webp",
-        "cms-development": "/images/website-development.webp", // Fallback reasonable match
+        "cms-development": "/images/website-development.webp",
         "static-website-design": "/images/web_designing.webp",
         "dynamic-website-design": "/images/custom.webp",
         "website-development": "/images/website-development.webp"

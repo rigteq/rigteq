@@ -1,7 +1,8 @@
 'use client';
 
-import { Globe, Smartphone, Cloud, Cpu, Server, Network, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
 
 const services = [
@@ -9,19 +10,19 @@ const services = [
         title: 'Web & Mobile Engineering',
         description: 'High-performance, scalable applications built with modern frameworks to deliver seamless omni-channel experiences.',
         slug: 'web-mobile-engineering',
-        Icon: Smartphone,
+        image: '/images/web-mobile-engineering.png',
     },
     {
         title: 'AI & Workflow Automation',
         description: 'Intelligent systems and NLP agents designed to automate workflows, reduce overhead, and increase operational efficiency.',
         slug: 'ai-workflow-automation',
-        Icon: Cpu,
+        image: '/images/ai-automation-workflow.png',
     },
     {
         title: 'Cloud Solutions & DevOps',
         description: 'Robust cloud architectures focused on zero-downtime deployments, auto-scaling, and enterprise-grade security.',
         slug: 'cloud-solutions-devops',
-        Icon: Cloud,
+        image: '/images/cloud-solutions.png',
     },
 ];
 
@@ -56,8 +57,12 @@ export function Services() {
                             transition={{ delay: idx * 0.1 }}
                             className="bg-white p-8 rounded-[2rem] border border-gray-200 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10 hover:border-blue-400/30 transition-all duration-300 group flex flex-col items-start"
                         >
-                            <div className="w-16 h-16 mb-6 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 shadow-sm">
-                                <service.Icon size={32} strokeWidth={1.5} className="group-hover:scale-110 transition-transform duration-500" />
+                            <div className="w-full h-48 mb-6 rounded-2xl overflow-hidden bg-gray-50 flex items-center justify-center">
+                                <img 
+                                    src={service.image} 
+                                    alt={service.title}
+                                    className="w-full h-full object-contain p-4"
+                                />
                             </div>
                             <h3 className="text-xl font-black text-gray-900 mb-3 group-hover:text-blue-600 transition-colors tracking-tight leading-snug">
                                 {service.title}

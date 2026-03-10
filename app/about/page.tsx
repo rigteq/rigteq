@@ -1,16 +1,44 @@
 import { Metadata } from 'next';
-import Image from 'next/image';
+import { Award, TrendingUp, Code2, Briefcase } from 'lucide-react';
 
 export const metadata: Metadata = {
     title: 'About Us | Rigteq',
-    description: 'Learn about Rigteq’s journey, mission, founder, and the expert team driving digital transformation.',
+    description: "Learn about Rigteq's journey, mission, founder, and the expert team driving digital transformation.",
 };
 
 const team = [
-    { name: 'John Doe', role: 'Chief Engineer', image: 'https://i.pravatar.cc/300?u=1' },
-    { name: 'Jane Smith', role: 'Head of Design', image: 'https://i.pravatar.cc/300?u=2' },
-    { name: 'Michael Brown', role: 'VP of Engineering', image: 'https://i.pravatar.cc/300?u=3' },
-    { name: 'Sarah Wilson', role: 'Lead Architect', image: 'https://i.pravatar.cc/300?u=4' },
+    { 
+        name: 'Mr. Divyang Gaur', 
+        role: 'Director', 
+        icon: Award,
+        color: 'from-blue-600 to-blue-400',
+        bgColor: 'bg-blue-50',
+        textColor: 'text-blue-600'
+    },
+    { 
+        name: 'Mr. Manoj Sharma', 
+        role: 'Senior Sales Manager', 
+        icon: TrendingUp,
+        color: 'from-emerald-600 to-emerald-400',
+        bgColor: 'bg-emerald-50',
+        textColor: 'text-emerald-600'
+    },
+    { 
+        name: 'Mr. Yatendra Sharma', 
+        role: 'Technical Architect', 
+        icon: Code2,
+        color: 'from-violet-600 to-violet-400',
+        bgColor: 'bg-violet-50',
+        textColor: 'text-violet-600'
+    },
+    { 
+        name: 'Satyam', 
+        role: 'Program Manager', 
+        icon: Briefcase,
+        color: 'from-orange-600 to-orange-400',
+        bgColor: 'bg-orange-50',
+        textColor: 'text-orange-600'
+    },
 ];
 
 export default function AboutPage() {
@@ -57,16 +85,16 @@ export default function AboutPage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="bg-[#0c1829] rounded-[3rem] p-10 md:p-20 text-white flex flex-col md:flex-row items-center gap-16 shadow-2xl relative overflow-hidden">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/20 rounded-full blur-[100px] pointer-events-none" />
-                        <div className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-8 border-white/10 shrink-0">
-                            <img src="https://i.pravatar.cc/400?u=founder" alt="Founder" className="w-full h-full object-cover" />
+                        <div className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-8 border-white/10 shrink-0 bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center">
+                            <Award size={64} className="text-white" />
                         </div>
                         <div>
                             <span className="text-blue-400 font-bold text-xs uppercase tracking-widest mb-4 inline-block">Founder's Vision</span>
-                            <h3 className="text-3xl md:text-5xl font-black mb-6">Alex Rigteq</h3>
+                            <h3 className="text-3xl md:text-5xl font-black mb-6">Mr. Divyang Gaur</h3>
                             <p className="text-xl text-gray-300 italic mb-8 bg-white/5 p-6 rounded-2xl border border-white/10">
                                 "Technology should empower human potential, not complicate it. At Rigteq, we architect systems that get out of the way and let you focus on what you do best—growing your vision."
                             </p>
-                            <p className="text-gray-400 font-medium">Former Tech Lead at elite tech firms, now dedicated to democratizing enterprise-grade software capabilities for growing businesses.</p>
+                            <p className="text-gray-400 font-medium">Director at Rigteq, leading the charge in democratizing enterprise-grade software capabilities for growing businesses.</p>
                         </div>
                     </div>
                 </div>
@@ -81,11 +109,11 @@ export default function AboutPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                         {team.map((member) => (
                             <div key={member.name} className="group relative">
-                                <div className="aspect-square rounded-3xl overflow-hidden mb-6 bg-gray-100">
-                                    <img src={member.image} alt={member.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                                <div className={`aspect-square rounded-3xl overflow-hidden mb-6 ${member.bgColor} flex items-center justify-center group-hover:scale-105 transition-transform duration-500`}>
+                                    <member.icon size={64} className={member.textColor} />
                                 </div>
                                 <h4 className="text-xl font-black text-gray-900 mb-1">{member.name}</h4>
-                                <p className="text-sm font-bold text-blue-600 uppercase tracking-wide">{member.role}</p>
+                                <p className={`text-sm font-bold uppercase tracking-wide ${member.textColor}`}>{member.role}</p>
                             </div>
                         ))}
                     </div>
@@ -94,3 +122,4 @@ export default function AboutPage() {
         </main>
     );
 }
+
