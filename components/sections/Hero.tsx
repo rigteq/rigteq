@@ -4,10 +4,10 @@ import Link from 'next/link';
 import { ArrowRight, Sparkles, Command, Hexagon, Triangle, CircleDot } from 'lucide-react';
 
 const startupBrands = [
-    { name: 'TechFlow', Icon: Hexagon },
-    { name: 'Nexus', Icon: CircleDot },
-    { name: 'Vortex', Icon: Triangle },
-    { name: 'Aura', Icon: Command },
+    { name: 'TechFlow', color: 'from-blue-600 to-blue-400', Icon: Hexagon },
+    { name: 'Nexus', color: 'from-purple-600 to-purple-400', Icon: CircleDot },
+    { name: 'Vortex', color: 'from-orange-600 to-orange-400', Icon: Triangle },
+    { name: 'Aura', color: 'from-emerald-600 to-emerald-400', Icon: Command },
 ];
 
 export function Hero() {
@@ -65,7 +65,7 @@ export function Hero() {
                             </Link>
                         </div>
 
-                        {/* Trusted logos — small brands/startups */}
+{/* Trusted logos — small brands/startups */}
                         <div className="pt-6 sm:pt-8 border-t border-gray-200">
                             <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">
                                 Trusted by growing startups & businesses
@@ -74,44 +74,46 @@ export function Hero() {
                                 {startupBrands.map((brand) => (
                                     <div
                                         key={brand.name}
-                                        className="flex items-center gap-2 text-gray-400 hover:text-gray-700 transition-colors duration-300 grayscale hover:grayscale-0 cursor-pointer"
+                                        className="flex items-center gap-2 cursor-pointer group"
                                     >
-                                        <brand.Icon size={20} strokeWidth={2.5} className="text-blue-500 opacity-80" />
-                                        <span className="font-bold text-sm tracking-tight">{brand.name}</span>
+                                        <brand.Icon size={22} strokeWidth={2.5} className={`text-transparent bg-clip-text bg-gradient-to-r ${brand.color} group-hover:scale-110 transition-transform duration-300`} />
+                                        <span className={`font-bold text-sm tracking-tight bg-clip-text text-transparent bg-gradient-to-r ${brand.color}`}>
+                                            {brand.name}
+                                        </span>
                                     </div>
                                 ))}
                             </div>
                         </div>
                     </div>
 
-                    {/* Right Visual — hidden on mobile, shown on lg+ */}
-                    <div className="hidden lg:block relative max-w-md xl:max-w-lg mx-auto w-full">
+{/* Right Visual — visible on all screens */}
+                    <div className="relative max-w-md xl:max-w-lg mx-auto w-full mt-8 lg:mt-0">
                         <div className="rounded-[2.5rem] border border-gray-200 bg-white shadow-2xl overflow-hidden">
-                            <div className="border-b border-gray-100 px-6 py-4 flex items-center gap-2 bg-gray-50">
-                                <div className="flex gap-2">
-                                    <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
-                                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
-                                    <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
+                            <div className="border-b border-gray-100 px-4 py-3 flex items-center gap-2 bg-gray-50">
+                                <div className="flex gap-1.5">
+                                    <div className="w-2 h-2 rounded-full bg-red-400" />
+                                    <div className="w-2 h-2 rounded-full bg-yellow-400" />
+                                    <div className="w-2 h-2 rounded-full bg-green-400" />
                                 </div>
                                 <div className="flex-1 flex justify-center">
-                                    <div className="px-8 py-1 rounded-full bg-white text-[9px] uppercase font-black tracking-widest text-gray-500 shadow-sm border border-gray-100">Analytics Dashboard</div>
+                                    <div className="px-6 py-0.5 rounded-full bg-white text-[8px] uppercase font-black tracking-widest text-gray-500 shadow-sm border border-gray-100">Analytics Dashboard</div>
                                 </div>
                             </div>
-                            <div className="aspect-[4/3] bg-white p-6 flex flex-col gap-6">
-                                <div className="grid grid-cols-3 gap-4">
+                            <div className="aspect-[4/3] bg-white p-4 flex flex-col gap-4">
+                                <div className="grid grid-cols-3 gap-2">
                                     {[
                                         { label: 'DELIVERED', value: '30+', color: 'from-blue-50 to-white', border: 'border-blue-100' },
                                         { label: 'CLIENTS', value: '30+', color: 'from-indigo-50 to-white', border: 'border-indigo-100' },
                                         { label: 'GLOBAL', value: '5+', color: 'from-sky-50 to-white', border: 'border-sky-100' },
                                     ].map((stat) => (
-                                        <div key={stat.label} className={`rounded-xl bg-gradient-to-b ${stat.color} border ${stat.border} p-3`}>
-                                            <p className="text-xl font-bold text-gray-900 tracking-tight">{stat.value}</p>
-                                            <p className="text-[9px] font-bold text-gray-500 mt-1 uppercase tracking-widest">{stat.label}</p>
+                                        <div key={stat.label} className={`rounded-lg bg-gradient-to-b ${stat.color} border ${stat.border} p-2`}>
+                                            <p className="text-lg font-bold text-gray-900 tracking-tight">{stat.value}</p>
+                                            <p className="text-[7px] font-bold text-gray-500 mt-0.5 uppercase tracking-widest">{stat.label}</p>
                                         </div>
                                     ))}
                                 </div>
-                                <div className="flex-1 rounded-xl bg-gray-50 border border-gray-100 p-4">
-                                    <div className="flex items-end justify-between gap-2 h-full pb-1">
+                                <div className="flex-1 rounded-lg bg-gray-50 border border-gray-100 p-3">
+                                    <div className="flex items-end justify-between gap-1 h-full pb-0.5">
                                         {[40, 65, 45, 80, 55, 90, 70, 85].map((h, i) => (
                                             <div
                                                 key={i}
@@ -124,8 +126,8 @@ export function Hero() {
                             </div>
                         </div>
 
-                        {/* Floating badge */}
-                        <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-4 shadow-xl border border-gray-100 flex items-center gap-3">
+                        {/* Floating badge - hidden on mobile */}
+                        <div className="hidden sm:block absolute -bottom-6 -left-6 bg-white rounded-2xl p-4 shadow-xl border border-gray-100 flex items-center gap-3">
                             <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
                                 <Sparkles size={16} className="text-blue-600" />
                             </div>
