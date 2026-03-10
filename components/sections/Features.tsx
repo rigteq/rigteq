@@ -37,10 +37,10 @@ export function Features() {
                             {/* Stat grid */}
                             <div className="grid grid-cols-2 gap-6 mb-12">
                                 {[
-                                    { value: '10+', label: 'Years Active' },
-                                    { value: '500+', label: 'Successful Apps' },
-                                    { value: '10K+', label: 'Global Users' },
-                                    { value: '15+', label: 'Countries' },
+                                    { value: '5+', label: 'Years Active' },
+                                    { value: '30+', label: 'Successful Apps' },
+                                    { value: '5K+', label: 'Global Users' },
+                                    { value: '5+', label: 'Countries' },
                                 ].map((stat) => (
                                     <div key={stat.label} className="bg-gray-50 rounded-2xl p-6 border border-gray-100 hover:bg-white hover:border-blue-200 transition-all duration-300 shadow-sm hover:shadow-md">
                                         <p className="text-3xl font-black text-gray-900 mb-2">{stat.value}</p>

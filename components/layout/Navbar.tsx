@@ -9,40 +9,22 @@ interface NavbarProps {
   currentView?: string;
 }
 
-const menuItems = [
+interface MenuItem {
+    name: string;
+    href: string;
+    dropdown?: { name: string; href: string }[];
+}
+
+const menuItems: MenuItem[] = [
     { name: 'Home', href: '/' },
-    {
-        name: 'About',
-        href: '#about',
-        dropdown: [
-            { name: 'About Us', href: '#about' },
-            { name: 'Our Expert Team', href: '/team' },
-            { name: 'Global Presence', href: '#locations' },
-        ],
-    },
-    {
-        name: 'Services',
-        href: '#services',
-        dropdown: [
-            { name: 'Web Development', href: '#services' },
-            { name: 'Mobile Apps', href: '#services' },
-            { name: 'SaaS Products', href: '#services' },
-            { name: 'SEO & Marketing', href: '#services' },
-            { name: 'E-commerce', href: '#services' },
-            { name: 'AI & Automation', href: '#services' },
-        ],
-    },
-    {
-        name: 'Products',
-        href: '/portfolio',
-        dropdown: [
-            { name: 'School MS', href: 'https://freeschoolms.vercel.app/' },
-            { name: 'Sales MS', href: 'https://salesrq.vercel.app/' },
-            { name: 'Task MS', href: 'https://taskflowrq.vercel.app/' },
-        ],
-    },
+    { name: 'About Us', href: '/about' },
+    { name: 'Services', href: '/#services' },
+    { name: 'Products', href: '/#products' }, // Assuming products section
     { name: 'Portfolio', href: '/portfolio' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Industries', href: '/#industries' }, // Using hash or actual path if to be added
+    { name: 'Blog', href: '/blog' },
+    { name: 'Careers', href: '/careers' },
+    { name: 'Contact Us', href: '/contact' },
 ];
 
 export default function Navbar({ currentView }: NavbarProps) {
@@ -125,7 +107,7 @@ export default function Navbar({ currentView }: NavbarProps) {
                     {/* Desktop CTA */}
                     <div className="hidden lg:flex items-center">
                         <Link
-                            href="#contact"
+                            href="/contact"
                             className="px-6 py-2.5 rounded-full bg-blue-600 text-white text-sm font-bold tracking-wide
                 hover:bg-blue-700 transition-all shadow-md shadow-blue-500/20"
                         >
@@ -199,7 +181,7 @@ export default function Navbar({ currentView }: NavbarProps) {
                             ))}
 
                             <Link
-                                href="#contact"
+                                href="/contact"
                                 onClick={() => setMobileMenuOpen(false)}
                                 className="mt-8 px-8 py-5 rounded-2xl bg-blue-600 text-white text-center text-sm font-bold tracking-wide shadow-xl shadow-blue-500/20"
                             >

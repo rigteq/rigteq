@@ -1,39 +1,27 @@
 'use client';
 
+import { Globe, Smartphone, Cloud, Cpu, Server, Network, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
-import Image from 'next/image';
+import Link from 'next/link';
 
 const services = [
     {
-        title: 'Web Application Development',
-        description: 'Building high-performance, scalable web systems using modern frameworks for a seamless digital presence.',
-        image: '/images/website-development.webp',
+        title: 'Web & Mobile Engineering',
+        description: 'High-performance, scalable applications built with modern frameworks to deliver seamless omni-channel experiences.',
+        slug: 'web-mobile-engineering',
+        Icon: Smartphone,
     },
     {
-        title: 'Mobile App Engineering',
-        description: 'Expertly crafted iOS and Android applications focused on user engagement and flawless functionality.',
-        image: '/images/custom.webp',
+        title: 'AI & Workflow Automation',
+        description: 'Intelligent systems and NLP agents designed to automate workflows, reduce overhead, and increase operational efficiency.',
+        slug: 'ai-workflow-automation',
+        Icon: Cpu,
     },
     {
-        title: 'Enterprise Software Solutions',
-        description: 'Tailor-made internal systems (CRM, ERP, HRMS) designed to optimize your business operations and efficiency.',
-        image: '/images/crm.webp',
-    },
-    {
-        title: 'Search Engine Optimization',
-        description: 'Strategic SEO and data-driven marketing to put your brand in front of the right audience at the right time.',
-        image: '/images/web_designing.webp',
-    },
-    {
-        title: 'E-commerce Platforms',
-        description: 'User-friendly, high-converting online stores that provide a secure and fast shopping experience for your users.',
-        image: '/images/e-commerce.webp',
-    },
-    {
-        title: 'AI & Automation Solutions',
-        description: 'Advanced AI chatbots and workflow automation that reduce operational costs and enhance customer support.',
-        image: '/images/ai-integration.png',
+        title: 'Cloud Solutions & DevOps',
+        description: 'Robust cloud architectures focused on zero-downtime deployments, auto-scaling, and enterprise-grade security.',
+        slug: 'cloud-solutions-devops',
+        Icon: Cloud,
     },
 ];
 
@@ -50,9 +38,9 @@ export function Services() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                     >
-                        <p className="text-blue-600 font-bold text-xs uppercase tracking-widest mb-4">Core Expertise</p>
+                        <p className="text-blue-600 font-bold text-xs uppercase tracking-widest mb-4">What We Offer</p>
                         <h2 className="text-4xl md:text-[42px] font-black text-gray-900 leading-tight mb-6">
-                            Solutions for the <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">Digital Age</span>
+                            Architecting for <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">Scalability & Performance</span>
                         </h2>
                         <div className="h-1 w-20 bg-gradient-to-r from-blue-500 to-blue-400 mx-auto rounded-full opacity-50" />
                     </motion.div>
@@ -68,13 +56,8 @@ export function Services() {
                             transition={{ delay: idx * 0.1 }}
                             className="bg-white p-8 rounded-[2rem] border border-gray-200 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10 hover:border-blue-400/30 transition-all duration-300 group flex flex-col items-start"
                         >
-                            <div className="w-full h-48 mb-6 overflow-hidden rounded-xl bg-gray-50 flex items-center justify-center p-4">
-                                <img
-                                    src={service.image}
-                                    alt={service.title}
-                                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
-                                    loading="lazy"
-                                />
+                            <div className="w-16 h-16 mb-6 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 shadow-sm">
+                                <service.Icon size={32} strokeWidth={1.5} className="group-hover:scale-110 transition-transform duration-500" />
                             </div>
                             <h3 className="text-xl font-black text-gray-900 mb-3 group-hover:text-blue-600 transition-colors tracking-tight leading-snug">
                                 {service.title}
@@ -82,9 +65,16 @@ export function Services() {
                             <p className="text-gray-600 text-base leading-relaxed mb-8">
                                 {service.description}
                             </p>
-                            <button className="flex items-center gap-2 text-sm font-bold tracking-wide text-blue-600 group-hover:gap-3 transition-all">
-                                Learn More <ArrowRight size={16} />
-                            </button>
+                            <div className="mt-auto pt-6">
+                                <Link 
+                                    href={`/services/${service.slug}`} 
+                                    aria-label={`Learn more about Rigteq's ${service.title} services`}
+                                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-blue-600/30 text-blue-600 bg-blue-50/50 text-sm font-bold tracking-wide hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:bg-blue-600 hover:text-white transition-all duration-300 group/btn"
+                                >
+                                    Learn More 
+                                    <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
+                                </Link>
+                            </div>
                         </motion.div>
                     ))}
                 </div>

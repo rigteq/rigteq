@@ -38,7 +38,7 @@ export function Hero() {
                             Premium Software Development Company
                         </div>
 
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-black text-gray-900 leading-[1.1] mb-4 tracking-tight">
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-black text-gray-900 leading-[1.1] mb-4 tracking-tight italic">
                             Build Scalable
                             <br className="hidden sm:block" />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400"> Software</span> for the{' '}
@@ -100,8 +100,8 @@ export function Hero() {
                             <div className="aspect-[4/3] bg-white p-6 flex flex-col gap-6">
                                 <div className="grid grid-cols-3 gap-4">
                                     {[
-                                        { label: 'DELIVERED', value: '50+', color: 'from-blue-50 to-white', border: 'border-blue-100' },
-                                        { label: 'CLIENTS', value: '500+', color: 'from-indigo-50 to-white', border: 'border-indigo-100' },
+                                        { label: 'DELIVERED', value: '30+', color: 'from-blue-50 to-white', border: 'border-blue-100' },
+                                        { label: 'CLIENTS', value: '30+', color: 'from-indigo-50 to-white', border: 'border-indigo-100' },
                                         { label: 'GLOBAL', value: '5+', color: 'from-sky-50 to-white', border: 'border-sky-100' },
                                     ].map((stat) => (
                                         <div key={stat.label} className={`rounded-xl bg-gradient-to-b ${stat.color} border ${stat.border} p-3`}>
