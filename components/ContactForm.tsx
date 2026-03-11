@@ -69,7 +69,10 @@ export default function ContactForm() {
                                 type="text"
                                 placeholder="Ex: David Warner"
                                 value={formState.name}
-                                onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                                onChange={(e) => {
+                                    const val = e.target.value.replace(/[^a-zA-Z\s]/g, '');
+                                    setFormState({ ...formState, name: val });
+                                }}
                                 className="w-full px-6 py-4 rounded-xl bg-gray-50 border border-gray-200 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all outline-none font-medium text-gray-900 placeholder:text-gray-400"
                             />
                         </div>
@@ -95,7 +98,10 @@ export default function ContactForm() {
                                 type="tel"
                                 placeholder="+91 XXXX XXXX"
                                 value={formState.phone}
-                                onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
+                                onChange={(e) => {
+                                    const val = e.target.value.replace(/[^0-9]/g, '');
+                                    setFormState({ ...formState, phone: val });
+                                }}
                                 className="w-full px-6 py-4 rounded-xl bg-gray-50 border border-gray-200 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all outline-none font-medium text-gray-900 placeholder:text-gray-400"
                             />
                         </div>

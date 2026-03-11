@@ -5,38 +5,7 @@ import { ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const cases = [
-    {
-        id: 'sales-ms',
-        client: 'B2B SalesHub',
-        category: 'Enterprise CRM / MS',
-        title: 'Advanced Sales Management System',
-        problem: 'High lead leakage and inefficient sales tracking due to fragmented manual data entry.',
-        solution: 'Built a centralized dashboard with automated pipeline tracking, lead scoring, and reporting.',
-        result: 'Boosted sales conversion rates by 35% and drastically reduced administrative overhead.',
-        image: '/images/portfolio/salesrq.png',
-    },
-    {
-        id: 'task-management',
-        client: 'AgileFlow Systems',
-        category: 'Enterprise SaaS',
-        title: 'Next-Gen Task Management System',
-        problem: 'Siloed communication and disjointed tools causing missed deadlines and low visibility.',
-        solution: 'Engineered a unified workspace with real-time sync, kanban workflows, and detailed reporting.',
-        result: 'Increased team productivity by 40% and reduced project delays to near zero.',
-        image: '/images/portfolio/taskflowrq.png',
-    },
-    {
-        id: 'ai-integration',
-        client: 'TechForward Inc.',
-        category: 'AI Integration',
-        title: 'Enterprise AI Integration & Automation',
-        problem: 'Manual repetitive workflows consuming 40% of operational hours with zero intelligence layer.',
-        solution: 'Integrated GPT-4o and LangChain to automate workflows, summarize reports, and power smart assistants.',
-        result: 'Saved 1,200+ man-hours per month and cut operational costs by 38%.',
-        image: '/images/ai-integration.png',
-    }
-];
+import { cases } from '@/lib/caseStudies';
 
 export function CaseStudies() {
     return (
