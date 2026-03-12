@@ -108,10 +108,8 @@ export default function Navbar({ currentView }: NavbarProps) {
 
                     {/* Desktop CTA */}
                     <div className="hidden lg:flex items-center gap-3">
-                        <a
-                            href="https://razorpay.me/@rigteq"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                        <Link
+                            href="/order"
                             className="px-5 py-2.5 rounded-full bg-green-600 text-white text-sm font-bold tracking-wide hover:bg-green-700 transition-all shadow-md shadow-green-500/20 flex items-center gap-2"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -119,7 +117,7 @@ export default function Navbar({ currentView }: NavbarProps) {
                                 <line x1="2" x2="22" y1="10" y2="10" />
                             </svg>
                             Order Now
-                        </a>
+                        </Link>
                         <Link
                             href="/contact"
                             className="px-6 py-2.5 rounded-full bg-blue-600 text-white text-sm font-bold tracking-wide hover:bg-blue-700 transition-all shadow-md shadow-blue-500/20"
@@ -193,10 +191,8 @@ export default function Navbar({ currentView }: NavbarProps) {
                                 </div>
                             ))}
 
-                            <a
-                                href="https://razorpay.me/@rigteq"
-                                target="_blank"
-                                rel="noopener noreferrer"
+                            <Link
+                                href="/order"
                                 onClick={() => setMobileMenuOpen(false)}
                                 className="mt-4 px-8 py-5 rounded-2xl bg-green-600 text-white text-center text-sm font-bold tracking-wide shadow-xl shadow-green-500/20 flex items-center justify-center gap-2"
                             >
@@ -205,7 +201,7 @@ export default function Navbar({ currentView }: NavbarProps) {
                                     <line x1="2" x2="22" y1="10" y2="10" />
                                 </svg>
                                 Order Now
-                            </a>
+                            </Link>
                             <Link
                                 href="/contact"
                                 onClick={() => setMobileMenuOpen(false)}
