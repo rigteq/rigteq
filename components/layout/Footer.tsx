@@ -1,22 +1,22 @@
 'use client';
 
 import Link from 'next/link';
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react';
+import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react';
 
 const footerLinks = {
     company: [
-        { name: 'About Elite', href: '#about' },
-        { name: 'Core Services', href: '#services' },
+        { name: 'About Elite', href: '/about' },
+        { name: 'Core Services', href: '/#services' },
         { name: 'Our Portfolio', href: '/portfolio' },
-        { name: 'Global Presence', href: '#locations' },
-        { name: 'Contact Us', href: '#contact' },
+        { name: 'Global Presence', href: '/#locations' },
+        { name: 'Contact Us', href: '/contact' },
     ],
     services: [
-        { name: 'Web Development', href: '#services' },
-        { name: 'Mobile App Dev', href: '#services' },
-        { name: 'Cloud SaaS', href: '#services' },
-        { name: 'SEO Strategy', href: '#services' },
-        { name: 'AI Automation', href: '#services' },
+        { name: 'Web Development', href: '/#services' },
+        { name: 'Mobile App Dev', href: '/#services' },
+        { name: 'Cloud SaaS', href: '/#services' },
+        { name: 'SEO Strategy', href: '/#services' },
+        { name: 'AI Automation', href: '/#services' },
     ],
     legal: [
         { name: 'Terms of Use', href: '#' },
@@ -49,7 +49,7 @@ export function Footer() {
                         </p>
 
                         <div className="flex items-center gap-4">
-                            {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
+                            {[Facebook, Instagram, Linkedin].map((Icon, i) => (
                                 <a key={i} href="#" className="w-10 h-10 rounded-xl bg-gray-50 border border-gray-200 flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 hover:text-white transition-all duration-300 text-gray-400">
                                     <Icon size={18} />
                                 </a>
