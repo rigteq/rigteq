@@ -23,6 +23,7 @@ const menuItems: MenuItem[] = [
         { name: 'Industries', href: '/#industries' },
     ]},
     { name: 'Portfolio', href: '/portfolio' },
+    { name: 'Packages', href: '/#pricing' },
     { name: 'Blog', href: '/blog', dropdown: [
         { name: 'Careers', href: '/careers' },
     ]},

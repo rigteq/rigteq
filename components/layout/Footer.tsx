@@ -8,15 +8,16 @@ const footerLinks = {
         { name: 'About Elite', href: '/about' },
         { name: 'Core Services', href: '/#services' },
         { name: 'Our Portfolio', href: '/portfolio' },
+        { name: 'Packages', href: '/#pricing' },
         { name: 'Global Presence', href: '/#locations' },
         { name: 'Contact Us', href: '/contact' },
     ],
     services: [
         { name: 'Web Development', href: '/#services' },
         { name: 'Mobile App Dev', href: '/#services' },
-        { name: 'Cloud SaaS', href: '/#services' },
-        { name: 'SEO Strategy', href: '/#services' },
         { name: 'AI Automation', href: '/#services' },
+        { name: 'Cloud SaaS', href: '/#services' },
+        { name: 'Devops', href: '/#services' },
     ],
     legal: [
         { name: 'Terms of Use', href: '#' },
@@ -49,11 +50,15 @@ export function Footer() {
                         </p>
 
                         <div className="flex items-center gap-4">
-                            {[Facebook, Instagram, Linkedin].map((Icon, i) => (
-                                <a key={i} href="#" className="w-10 h-10 rounded-xl bg-gray-50 border border-gray-200 flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 hover:text-white transition-all duration-300 text-gray-400">
-                                    <Icon size={18} />
-                                </a>
-                            ))}
+                            <a href="https://www.facebook.com/profile.php?id=61587912905390&mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-gray-50 border border-gray-200 flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 hover:text-white transition-all duration-300 text-gray-400">
+                                <Facebook size={18} />
+                            </a>
+                            <a href="https://www.instagram.com/rigteqsoftware?igsh=eHhxODl0bmozMXZy" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-gray-50 border border-gray-200 flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 hover:text-white transition-all duration-300 text-gray-400">
+                                <Instagram size={18} />
+                            </a>
+                            <a href="https://www.linkedin.com/company/rigteq-software-solutions/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-gray-50 border border-gray-200 flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 hover:text-white transition-all duration-300 text-gray-400">
+                                <Linkedin size={18} />
+                            </a>
                         </div>
                     </div>
 

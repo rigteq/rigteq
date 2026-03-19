@@ -66,7 +66,10 @@ export function Chatbot() {
                 body: JSON.stringify({ message: text.trim(), history }),
             });
 
-            if (!res.ok) throw new Error('API request failed');
+            if (!res.ok) {
+                const errorData = await res.json().catch(() => ({ error: 'API request failed' }));
+                throw new Error(errorData.error || 'API request failed');
+            }
 
             const data = await res.json();
             setMessages((prev) => [

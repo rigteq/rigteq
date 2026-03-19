@@ -12,7 +12,7 @@ const testimonials = [
         role: 'CEO, TechStart Inc.',
         text: 'Rigteq delivered a powerful platform that increased our growth significantly. Their engineering team is top-tier.',
         rating: 5,
-        photo: 'https://i.pravatar.cc/150?u=sarah',
+        photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&h=150&auto=format&fit=crop',
         logo: 'https://i.pravatar.cc/50?u=techstart',
         linkedin: 'https://linkedin.com/in/sarah',
         projectDetails: 'Scalable SaaS Platform for B2B Analytics',
@@ -22,7 +22,7 @@ const testimonials = [
         role: 'CTO, Global Logistics',
         text: 'The complete digital transformation of our legacy systems was handled flawlessly. Highly recommended for complex enterprise builds.',
         rating: 5,
-        photo: 'https://i.pravatar.cc/150?u=rajesh',
+        photo: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=150&h=150&auto=format&fit=crop',
         logo: 'https://i.pravatar.cc/50?u=global',
         linkedin: 'https://linkedin.com/in/rajesh',
         projectDetails: 'Enterprise ERP System Modernization',
@@ -32,7 +32,7 @@ const testimonials = [
         role: 'Founder, CloudStream',
         text: 'Working with Rigteq feels like having an elite in-house engineering team. They delivered ahead of schedule with zero defects.',
         rating: 5,
-        photo: 'https://i.pravatar.cc/150?u=alexei',
+        photo: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=150&h=150&auto=format&fit=crop',
         logo: 'https://i.pravatar.cc/50?u=cloudstream',
         linkedin: 'https://linkedin.com/in/alexei',
         projectDetails: 'Live Video Streaming Application Network',
@@ -96,15 +96,6 @@ export function Testimonials() {
                                     </div>
                                 </div>
                                 <div className="flex flex-col items-end gap-2">
-                                    <img src={testimonials[current].logo} alt="Company Logo" className="h-8 rounded opacity-80" />
-                                    <a
-                                        href={testimonials[current].linkedin}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-blue-600 hover:text-blue-700 flex items-center gap-1 text-[10px] font-bold uppercase tracking-widest"
-                                    >
-                                        LinkedIn <ExternalLink size={12} />
-                                    </a>
                                 </div>
                             </div>
                             <div className="text-left mt-6">
@@ -115,17 +106,19 @@ export function Testimonials() {
                             </div>
                         </motion.div>
 
-                        {/* Side Arrows - Visible on Desktop */}
-                        <div className="hidden lg:block">
+                        {/* Navigation Arrows */}
+                        <div className="flex justify-center gap-4 mt-8 lg:mt-0 lg:block">
                             <button
                                 onClick={prev}
-                                className="absolute top-1/2 -left-20 -translate-y-1/2 w-14 h-14 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all group shadow-md"
+                                className="lg:absolute lg:top-1/2 lg:-left-20 lg:-translate-y-1/2 w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all group shadow-md"
+                                aria-label="Previous testimonial"
                             >
                                 <ChevronLeft size={24} className="group-hover:-translate-x-1 transition-transform" />
                             </button>
                             <button
                                 onClick={next}
-                                className="absolute top-1/2 -right-20 -translate-y-1/2 w-14 h-14 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all group shadow-md"
+                                className="lg:absolute lg:top-1/2 lg:-right-20 lg:-translate-y-1/2 w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all group shadow-md"
+                                aria-label="Next testimonial"
                             >
                                 <ChevronRight size={24} className="group-hover:translate-x-1 transition-transform" />
                             </button>

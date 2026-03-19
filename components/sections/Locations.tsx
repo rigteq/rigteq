@@ -26,6 +26,17 @@ const locations = [
         mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3464.0850257321683!2d-95.4326551!3d29.7329482!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640c1110a12e8cd%3A0x6d11b2cb0efaaab!2s3%20Greenway%20Plz%2C%20Houston%2C%20TX%2077046%2C%20USA!5e0!3m2!1sen!2sin!4v1700000000001!5m2!1sen!2sin',
         flag: '🇺🇸'
     },
+    {
+        country: 'Ghaziabad, India',
+        office: 'Regional Operations',
+        address: 'Govindpuram, Ghaziabad, Uttar Pradesh, India 201013',
+        phone: '+91 87503 99055',
+        email: 'support@rigteq.com',
+        hours: 'Mon–Sat: 9:30 AM – 6:30 PM IST',
+        gradient: 'from-orange-500 to-red-500',
+        mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3500.563!2d77.495!3d28.692!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cf366!2sGovindpuram%2C%20Ghaziabad%2C%20Uttar%20Pradesh%20201013!5e0!3m2!1sen!2sin!4v1700000000002!5m2!1sen!2sin',
+        flag: '🇮🇳'
+    },
 ];
 
 export function Locations() {
@@ -47,7 +58,7 @@ export function Locations() {
                     </motion.div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                     {locations.map((loc, idx) => (
                         <motion.div
                             key={loc.country}
