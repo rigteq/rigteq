@@ -7,33 +7,33 @@ export const metadata: Metadata = {
 };
 
 const team = [
-    { 
-        name: 'Mr. Divyang Gaur', 
-        role: 'Director', 
+    {
+        name: 'Mr. Divyang Gaur',
+        role: 'Director',
         icon: Award,
         color: 'from-blue-600 to-blue-400',
         bgColor: 'bg-blue-50',
         textColor: 'text-blue-600'
     },
-    { 
-        name: 'Mr. Manoj Sharma', 
-        role: 'Senior Sales Manager', 
+    {
+        name: 'Mr. Manoj Sharma',
+        role: 'Senior Sales Manager',
         icon: TrendingUp,
         color: 'from-emerald-600 to-emerald-400',
         bgColor: 'bg-emerald-50',
         textColor: 'text-emerald-600'
     },
-    { 
-        name: 'Mr. Yatendra Sharma', 
-        role: 'Technical Architect', 
+    {
+        name: 'Mr. Yatendra Sharma',
+        role: 'Technical Architect',
         icon: Code2,
         color: 'from-violet-600 to-violet-400',
         bgColor: 'bg-violet-50',
         textColor: 'text-violet-600'
     },
-    { 
-        name: 'Satyam', 
-        role: 'Program Manager', 
+    {
+        name: 'Satyam Raikwar',
+        role: 'Program Manager',
         icon: Briefcase,
         color: 'from-orange-600 to-orange-400',
         bgColor: 'bg-orange-50',
@@ -71,9 +71,9 @@ export default function AboutPage() {
                         </div>
                     </div>
                     <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
-                        <img 
-                            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" 
-                            alt="RigTeq Team Collaboration" 
+                        <img
+                            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
+                            alt="RigTeq Team Collaboration"
                             className="object-cover w-full h-full"
                         />
                     </div>
@@ -105,7 +105,7 @@ export default function AboutPage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <span className="text-blue-600 font-bold text-xs uppercase tracking-widest mb-4 inline-block">The Experts</span>
                     <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-16">Meet the Engineering Core</h2>
-                    
+
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                         {team.map((member) => (
                             <div key={member.name} className="group relative">

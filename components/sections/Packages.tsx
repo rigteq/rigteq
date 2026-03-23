@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 const packages = [
     {
-        name: 'Starter Space',
+        name: 'Starter Pack',
         description: 'Perfect for small businesses and personal portfolios.',
         price: '₹14,999',
         popular: false,
@@ -43,7 +43,7 @@ const packages = [
         ],
     },
     {
-        name: 'Enterprise App',
+        name: 'Custom',
         description: 'Custom web applications and full-scale SaaS platforms.',
         price: 'Custom',
         popular: false,
@@ -94,8 +94,8 @@ export function Packages() {
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
                             className={`relative flex flex-col p-8 sm:p-10 rounded-[2rem] border transition-all duration-300 ${pkg.popular
-                                    ? 'bg-gradient-to-br from-gray-900 to-gray-800 border-gray-800 text-white shadow-2xl scale-100 lg:scale-105 z-10'
-                                    : 'bg-white border-gray-200 text-gray-900 shadow-xl shadow-gray-200/40 hover:border-blue-200 hover:shadow-2xl hover:-translate-y-1'
+                                ? 'bg-gradient-to-br from-gray-900 to-gray-800 border-gray-800 text-white shadow-2xl scale-100 lg:scale-105 z-10'
+                                : 'bg-white border-gray-200 text-gray-900 shadow-xl shadow-gray-200/40 hover:border-blue-200 hover:shadow-2xl hover:-translate-y-1'
                                 }`}
                         >
                             {pkg.popular && (
@@ -152,15 +152,17 @@ export function Packages() {
                                 ))}
                             </div>
 
-                            <Link
-                                href="/order"
+                            <a
+                                href="https://razorpay.me/@rigteq"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className={`w-full py-4 rounded-xl text-center font-bold text-sm transition-all duration-300 ${pkg.popular
-                                        ? 'bg-blue-600 text-white hover:bg-blue-500 shadow-lg shadow-blue-600/25'
-                                        : 'bg-gray-50 text-gray-900 border border-gray-200 hover:bg-gray-100 hover:border-gray-300'
+                                    ? 'bg-blue-600 text-white hover:bg-blue-500 shadow-lg shadow-blue-600/25'
+                                    : 'bg-gray-50 text-gray-900 border border-gray-200 hover:bg-gray-100 hover:border-gray-300'
                                     }`}
                             >
-                                Get Started
-                            </Link>
+                                Pay Now
+                            </a>
                         </motion.div>
                     ))}
                 </div>

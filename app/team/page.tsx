@@ -51,7 +51,7 @@ const team = [
         email: 'yatendra@rigteq.com',
     },
     {
-        name: 'Satyam',
+        name: 'Satyam Raikwar',
         role: 'Program Manager',
         experience: 'Project Delivery Expert',
         bio: 'Experienced program manager focused on delivering complex projects on time and within budget. Specializes in agile methodologies, stakeholder management, and cross-functional team coordination.',
