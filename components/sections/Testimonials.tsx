@@ -53,8 +53,8 @@ export function Testimonials() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="text-center max-w-3xl mx-auto mb-20">
                     <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                     >
                         <p className="text-blue-600 font-bold text-xs uppercase tracking-widest mb-4">Client Feedback</p>
@@ -68,9 +68,9 @@ export function Testimonials() {
                     <div className="relative">
                         <motion.div
                             key={current}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5 }}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.3 }}
                             className="bg-white border border-gray-200 rounded-3xl p-10 md:p-16 text-center shadow-xl relative overflow-hidden"
                         >
                             <Quote size={80} className="text-blue-50 absolute top-4 left-4 pointer-events-none rotate-12" />

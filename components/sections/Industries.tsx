@@ -42,8 +42,8 @@ export function Industries() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="text-center max-w-3xl mx-auto mb-20">
                     <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                     >
                         <p className="text-blue-600 font-bold text-xs uppercase tracking-widest mb-4">Domain Expertise</p>
@@ -58,10 +58,10 @@ export function Industries() {
                     {industries.map((ind, idx) => (
                         <motion.div
                             key={ind.name}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
                             viewport={{ once: true }}
-                            transition={{ delay: idx * 0.1 }}
+                            transition={{ delay: idx * 0.05 }}
                             className="bg-gray-50 border border-gray-100 rounded-[2rem] p-8 hover:-translate-y-2 hover:shadow-xl hover:border-blue-400/30 transition-all duration-300 group"
                         >
                             <div className="w-14 h-14 rounded-2xl bg-white border border-gray-200 text-blue-600 flex items-center justify-center mb-6 shadow-sm group-hover:bg-blue-600 group-hover:text-white transition-all duration-500">

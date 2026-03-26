@@ -20,8 +20,8 @@ export function Features() {
 
                     {/* Left: Stats Panel Overlay */}
                     <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         className="relative"
                     >
@@ -60,8 +60,8 @@ export function Features() {
 
                     {/* Right: Why Us Content */}
                     <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         className="space-y-10"
                     >
@@ -79,8 +79,8 @@ export function Features() {
                             {whyUs.map((item, idx) => (
                                 <motion.div
                                     key={item}
-                                    initial={{ opacity: 0, y: 10 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
+                                    initial={{ opacity: 0 }}
+                                    whileInView={{ opacity: 1 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: idx * 0.05 }}
                                     className="flex items-center gap-3 group"
