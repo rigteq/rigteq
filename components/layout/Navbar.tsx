@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, ChevronDown } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
 
 interface NavbarProps {
     currentView?: string;
@@ -42,8 +41,9 @@ export default function Navbar({ currentView }: NavbarProps) {
     const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
     useEffect(() => {
+        // passive: true lets the browser scroll without waiting for JS handler
         const handleScroll = () => setIsScrolled(window.scrollY > 20);
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
@@ -86,29 +86,25 @@ export default function Navbar({ currentView }: NavbarProps) {
                                     )}
                                 </Link>
 
-                                {/* Desktop Dropdown */}
+                                {/* Desktop Dropdown — CSS only, no JS animation overhead */}
                                 {item.dropdown && (
-                                    <AnimatePresence>
-                                        {activeDropdown === item.name && (
-                                            <motion.div
-                                                initial={{ opacity: 0, scale: 0.95, y: 10 }}
-                                                animate={{ opacity: 1, scale: 1, y: 0 }}
-                                                exit={{ opacity: 0, scale: 0.95, y: 10 }}
-                                                transition={{ duration: 0.2 }}
-                                                className="absolute top-full left-0 mt-2 w-56 rounded-2xl bg-white border border-gray-100 shadow-xl py-3 overflow-hidden"
+                                    <div
+                                        className={`absolute top-full left-0 mt-2 w-56 rounded-2xl bg-white border border-gray-100 shadow-xl py-3 overflow-hidden transition-[opacity,transform] duration-150 origin-top ${
+                                            activeDropdown === item.name
+                                                ? 'opacity-100 scale-100 pointer-events-auto'
+                                                : 'opacity-0 scale-95 pointer-events-none'
+                                        }`}
+                                    >
+                                        {item.dropdown.map((subItem) => (
+                                            <Link
+                                                key={subItem.name}
+                                                href={subItem.href}
+                                                className="block px-5 py-2.5 text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-gray-50 transition-colors duration-100"
                                             >
-                                                {item.dropdown.map((subItem) => (
-                                                    <Link
-                                                        key={subItem.name}
-                                                        href={subItem.href}
-                                                        className="block px-5 py-2.5 text-sm font-semibold text-gray-600 hover:text-blue-600 hover:bg-gray-50 transition-all duration-150"
-                                                    >
-                                                        {subItem.name}
-                                                    </Link>
-                                                ))}
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
+                                                {subItem.name}
+                                            </Link>
+                                        ))}
+                                    </div>
                                 )}
                             </div>
                         ))}
@@ -145,18 +141,15 @@ export default function Navbar({ currentView }: NavbarProps) {
                 </div>
             </div>
 
-            {/* Mobile Menu */}
-            <AnimatePresence>
-                {mobileMenuOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="fixed inset-x-0 top-[72px] bg-white lg:hidden overflow-y-auto z-40 border-t border-gray-100 shadow-2xl max-h-[calc(100vh-72px)]"
-                    >
+            {/* Mobile Menu — CSS height transition instead of framer-motion */}
+            <div
+                className={`fixed inset-x-0 top-[72px] bg-white lg:hidden overflow-y-auto z-40 border-t border-gray-100 shadow-2xl transition-[max-height,opacity] duration-300 ease-in-out ${
+                    mobileMenuOpen ? 'max-h-[calc(100vh-72px)] opacity-100' : 'max-h-0 opacity-0 pointer-events-none'
+                }`}
+            >
                         <div className="flex flex-col p-6 sm:p-8 gap-1">
-                            {menuItems.map((item) => (
-                                <div key={item.name} className="border-b border-gray-50 last:border-0 pb-1">
+                        {menuItems.map((item) => (
+                            <div key={item.name} className="border-b border-gray-50 last:border-0 pb-1">
                                     <div className="flex justify-between items-center">
                                         <Link
                                             href={item.href}
@@ -178,12 +171,10 @@ export default function Navbar({ currentView }: NavbarProps) {
                                             </button>
                                         )}
                                     </div>
-                                    {item.dropdown && activeDropdown === item.name && (
-                                        <motion.div
-                                            initial={{ height: 0, opacity: 0 }}
-                                            animate={{ height: 'auto', opacity: 1 }}
-                                            className="pl-4 pb-4 flex flex-col gap-3 pt-2"
-                                        >
+                            {item.dropdown && activeDropdown === item.name && (
+                                <div
+                                    className="pl-4 pb-4 flex flex-col gap-3 pt-2"
+                                >
                                             {item.dropdown.map((sub) => (
                                                 <Link
                                                     key={sub.name}
@@ -194,12 +185,12 @@ export default function Navbar({ currentView }: NavbarProps) {
                                                     {sub.name}
                                                 </Link>
                                             ))}
-                                        </motion.div>
-                                    )}
                                 </div>
-                            ))}
+                            )}
+                                </div>
+                        ))}
 
-                            <Link
+                        <Link
                                 href="/order"
                                 onClick={() => setMobileMenuOpen(false)}
                                 className="mt-4 px-8 py-5 rounded-2xl bg-green-600 text-white text-center text-sm font-bold tracking-wide shadow-xl shadow-green-500/20 flex items-center justify-center gap-2"
@@ -218,9 +209,7 @@ export default function Navbar({ currentView }: NavbarProps) {
                                 Get A Quote
                             </Link>
                         </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+            </div>
         </header>
     );
 }

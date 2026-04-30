@@ -20,11 +20,11 @@ export function StickyConsultationCTA() {
     if (dismissed || !visible) return null;
 
     return (
-        <div className="fixed bottom-24 right-4 sm:right-6 z-[9998] animate-fade-in-up">
+        // bottom-[168px] keeps this above the chatbot (bottom-[90px]) + WhatsApp (bottom-[84px]) stack
+        <div className="fixed bottom-[168px] right-4 sm:right-6 z-[9998] animate-fade-in-up">
             <div className="relative flex items-center gap-3 bg-blue-600 text-white px-4 py-3 rounded-2xl shadow-2xl shadow-blue-500/40 max-w-[240px] sm:max-w-xs">
-                {/* Pulse dot */}
+                {/* Static pulse dot — no animate-ping to avoid infinite GPU compositing */}
                 <span className="relative flex h-2.5 w-2.5 shrink-0">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-60"></span>
                     <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-white"></span>
                 </span>
 

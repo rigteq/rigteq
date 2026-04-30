@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, ChevronDown, CheckCircle } from 'lucide-react';
 import { useState } from 'react';
 
@@ -58,12 +57,10 @@ export function Contact() {
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="text-center mb-20 max-w-3xl mx-auto">
-                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-                        <p className="text-blue-600 font-bold text-xs uppercase tracking-widest mb-4">Contact us</p>
-                        <h2 className="text-4xl md:text-[42px] font-black text-gray-900 leading-tight tracking-tight">
-                            Ready to <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">Transform</span> Your Business?
-                        </h2>
-                    </motion.div>
+                    <p className="text-blue-600 font-bold text-xs uppercase tracking-widest mb-4">Contact us</p>
+                    <h2 className="text-4xl md:text-[42px] font-black text-gray-900 leading-tight tracking-tight">
+                        Ready to <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">Transform</span> Your Business?
+                    </h2>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
@@ -71,12 +68,9 @@ export function Contact() {
                     {/* Left Info Panel */}
                     <div className="lg:col-span-5 space-y-8">
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
-                            <motion.a
+                            <a
                                 href="tel:+918750399055"
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                className="p-6 rounded-2xl bg-white border border-gray-200 group hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/10 hover:border-blue-400/30 transition-all duration-300 flex items-center gap-4"
+                                className="p-6 rounded-2xl bg-white border border-gray-200 group hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/10 hover:border-blue-400/30 transition-[transform,box-shadow,border-color] duration-300 flex items-center gap-4"
                             >
                                 <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300 shrink-0">
                                     <Phone size={20} />
@@ -85,15 +79,11 @@ export function Contact() {
                                     <h4 className="font-bold text-gray-900">Direct Call</h4>
                                     <p className="text-gray-500 text-sm font-medium">+91 87503 99055</p>
                                 </div>
-                            </motion.a>
+                            </a>
 
-                            <motion.a
+                            <a
                                 href="mailto:sales@rigteq.com"
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.1 }}
-                                className="p-6 rounded-2xl bg-white border border-gray-200 group hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/10 hover:border-blue-400/30 transition-all duration-300 flex items-center gap-4"
+                                className="p-6 rounded-2xl bg-white border border-gray-200 group hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/10 hover:border-blue-400/30 transition-[transform,box-shadow,border-color] duration-300 flex items-center gap-4"
                             >
                                 <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300 shrink-0">
                                     <Mail size={20} />
@@ -102,13 +92,9 @@ export function Contact() {
                                     <h4 className="font-bold text-gray-900">Email Support</h4>
                                     <p className="text-gray-500 text-sm font-medium">sales@rigteq.com</p>
                                 </div>
-                            </motion.a>
+                            </a>
 
-                            <motion.div
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.2 }}
+                            <div
                                 className="p-6 rounded-2xl bg-white border border-gray-200 flex items-center gap-4 sm:col-span-2 lg:col-span-1"
                             >
                                 <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
@@ -118,16 +104,12 @@ export function Contact() {
                                     <h4 className="font-bold text-gray-900">Registered Office</h4>
                                     <p className="text-gray-500 text-sm font-medium">Office no-UGF-74, Signature street, Govindpuram, Ghaziabad, Uttar Pradesh 201013</p>
                                 </div>
-                            </motion.div>
+                            </div>
                         </div>
 
                         {/* Google Maps */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.3 }}
-                            className="rounded-3xl overflow-hidden border border-gray-200 shadow-xl aspect-square sm:aspect-video lg:aspect-auto lg:h-80 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
+                        <div
+                            className="rounded-3xl overflow-hidden border border-gray-200 shadow-xl aspect-square sm:aspect-video lg:aspect-auto lg:h-80 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-[filter,opacity] duration-500"
                         >
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3500.563!2d77.495!3d28.692!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cf366!2sGovindpuram%2C%20Ghaziabad%2C%20Uttar%20Pradesh%20201013!5e0!3m2!1sen!2sin!4v1700000000002!5m2!1sen!2sin"
@@ -139,14 +121,11 @@ export function Contact() {
                                 title="Rigteq Softwares Office Location"
                                 referrerPolicy="no-referrer-when-downgrade"
                             ></iframe>
-                        </motion.div>
+                        </div>
                     </div>
 
                     {/* Right: Form */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
+                    <div
                         className="lg:col-span-7 bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-200 relative overflow-hidden"
                     >
                         <div className="absolute -top-24 -right-24 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -318,7 +297,7 @@ export function Contact() {
                                 <span className="text-sm font-medium text-gray-500">Available 24/7</span>
                             </div>
                         </div>
-                    </motion.div>
+                    </div>
                 </div>
             </div>
         </section>
