@@ -41,7 +41,7 @@ export function CTA() {
                                 href="#contact"
                                 className="w-full sm:w-auto px-10 py-4 rounded-full bg-blue-600 text-white font-bold text-sm tracking-wide hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 transition-all flex items-center justify-center gap-3 group"
                             >
-                                Start your project
+                                📅 Book Free Consultation
                                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                             </Link>
 
@@ -55,16 +55,16 @@ export function CTA() {
 
                         <div className="mt-16 flex flex-wrap items-center justify-center gap-10 text-[11px] font-bold uppercase tracking-widest text-gray-500">
                             <span className="flex items-center gap-2">
+                                <span className="w-2 h-2 rounded-full bg-green-500" />
+                                100% Satisfaction Guarantee
+                            </span>
+                            <span className="flex items-center gap-2">
                                 <span className="w-2 h-2 rounded-full bg-blue-600" />
-                                No Hidden Costs
+                                Free Revisions Policy
                             </span>
                             <span className="flex items-center gap-2">
                                 <span className="w-2 h-2 rounded-full bg-blue-600" />
                                 24/7 Global Support
-                            </span>
-                            <span className="flex items-center gap-2">
-                                <span className="w-2 h-2 rounded-full bg-blue-600" />
-                                Agile Development
                             </span>
                         </div>
                     </motion.div>

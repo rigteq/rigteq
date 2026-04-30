@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { Award, TrendingUp, Code2, Briefcase } from 'lucide-react';
+import { Award, TrendingUp, Code2, Briefcase, Terminal, Users } from 'lucide-react';
 
 export const metadata: Metadata = {
     title: 'About Us | Rigteq',
@@ -38,6 +38,22 @@ const team = [
         color: 'from-orange-600 to-orange-400',
         bgColor: 'bg-orange-50',
         textColor: 'text-orange-600'
+    },
+    {
+        name: 'Manu Gaur',
+        role: 'Senior Software Engineer',
+        icon: Terminal,
+        color: 'from-cyan-600 to-cyan-400',
+        bgColor: 'bg-cyan-50',
+        textColor: 'text-cyan-600'
+    },
+    {
+        name: 'Ashwani',
+        role: 'HR & Operations',
+        icon: Users,
+        color: 'from-rose-600 to-rose-400',
+        bgColor: 'bg-rose-50',
+        textColor: 'text-rose-600'
     },
 ];
 
@@ -101,21 +117,66 @@ export default function AboutPage() {
             </section>
 
             {/* Team Overview */}
-            <section className="bg-white py-24">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <span className="text-blue-600 font-bold text-xs uppercase tracking-widest mb-4 inline-block">The Experts</span>
-                    <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-16">Meet the Engineering Core</h2>
+            <section className="bg-white py-16">
+                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                    {/* Section header */}
+                    <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+                        <div>
+                            <span className="text-blue-600 font-bold text-xs uppercase tracking-widest mb-2 inline-block">The Experts</span>
+                            <h2 className="text-3xl md:text-4xl font-black text-gray-900 leading-tight">Meet the Engineering Core</h2>
+                        </div>
+                        <p className="text-gray-400 text-sm font-medium max-w-xs text-right hidden sm:block">
+                            The people building world-class software every day
+                        </p>
+                    </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {team.map((member) => (
-                            <div key={member.name} className="group relative">
-                                <div className={`aspect-square rounded-3xl overflow-hidden mb-6 ${member.bgColor} flex items-center justify-center group-hover:scale-105 transition-transform duration-500`}>
-                                    <member.icon size={64} className={member.textColor} />
+                    {/* Compact team grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {team.map((member) => {
+                            const initials = member.name
+                                .split(' ')
+                                .filter((w) => !['Mr.', 'Ms.', 'Dr.'].includes(w))
+                                .slice(0, 2)
+                                .map((w) => w[0])
+                                .join('');
+                            return (
+                                <div
+                                    key={member.name}
+                                    className="flex items-center gap-4 p-4 rounded-2xl border border-gray-100 bg-gray-50 hover:bg-white hover:shadow-md hover:border-gray-200 transition-all duration-300 group"
+                                >
+                                    {/* Monogram avatar */}
+                                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${member.color} flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform duration-300`}>
+                                        <span className="text-white font-black text-sm tracking-tight">{initials}</span>
+                                    </div>
+
+                                    {/* Info */}
+                                    <div className="min-w-0">
+                                        <p className="font-bold text-gray-900 text-sm leading-snug truncate">{member.name}</p>
+                                        <span className={`inline-block mt-1 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${member.bgColor} ${member.textColor}`}>
+                                            {member.role}
+                                        </span>
+                                    </div>
                                 </div>
-                                <h4 className="text-xl font-black text-gray-900 mb-1">{member.name}</h4>
-                                <p className={`text-sm font-bold uppercase tracking-wide ${member.textColor}`}>{member.role}</p>
-                            </div>
-                        ))}
+                            );
+                        })}
+                    </div>
+
+                    {/* Bottom strip */}
+                    <div className="mt-8 flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-gray-100">
+                        <div className="flex items-center gap-6">
+                            {[['6+', 'Core Members'], ['10+', 'Tech Experts'], ['5+', 'Years Together']].map(([val, lbl]) => (
+                                <div key={lbl} className="text-center">
+                                    <p className="text-xl font-black text-gray-900">{val}</p>
+                                    <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400">{lbl}</p>
+                                </div>
+                            ))}
+                        </div>
+                        <a
+                            href="mailto:sales@rigteq.com"
+                            className="text-sm font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1.5 transition-colors"
+                        >
+                            Join our team →
+                        </a>
                     </div>
                 </div>
             </section>

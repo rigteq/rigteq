@@ -5,7 +5,7 @@ import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin, ArrowUpRight } from
 
 const footerLinks = {
     company: [
-        { name: 'About Elite', href: '/about' },
+        { name: 'About Us', href: '/about' },
         { name: 'Core Services', href: '/#services' },
         { name: 'Our Portfolio', href: '/portfolio' },
         { name: 'Packages', href: '/#pricing' },
@@ -20,9 +20,9 @@ const footerLinks = {
         { name: 'Devops', href: '/#services' },
     ],
     legal: [
-        { name: 'Terms of Use', href: '#' },
-        { name: 'Data Privacy', href: '#' },
-        { name: 'Cookie Policy', href: '#' },
+        { name: 'Terms of Use', href: '/terms' },
+        { name: 'Data Privacy', href: '/privacy' },
+        { name: 'Cookie Policy', href: '/cookies' },
         { name: 'Global Sitemap', href: '/sitemap.xml' },
     ],
 };
@@ -40,7 +40,7 @@ export function Footer() {
                     <div className="lg:col-span-4 space-y-8">
                         <Link href="/" className="inline-block group">
                             <img
-                                src="/images/logo.png"
+                                src="/images/rigteq-logo.png"
                                 alt="Rigteq Softwares"
                                 className="h-11 md:h-12 w-auto object-contain transition-transform group-hover:scale-105"
                             />
@@ -98,20 +98,20 @@ export function Footer() {
                             <div className="flex items-start gap-4">
                                 <MapPin size={18} className="text-blue-600 mt-1 shrink-0" />
                                 <div>
-                                    <p className="text-gray-900 font-bold text-sm tracking-wide mb-1">Noida Campus (HQ)</p>
-                                    <p className="text-gray-500 text-sm leading-relaxed">D, 14-C, Sector 62A, Block B, Khora Colony, Sector 62, Noida, Uttar Pradesh 201020</p>
+                                    <p className="text-gray-900 font-bold text-sm tracking-wide mb-1">Ghaziabad Office</p>
+                                    <p className="text-gray-500 text-sm leading-relaxed">Office no-UGF-74, Signature street, Govindpuram, Ghaziabad, Uttar Pradesh, India 201013</p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-4">
                                 <Phone size={18} className="text-blue-600 shrink-0" />
                                 <div className="space-y-1">
-                                    <p className="text-gray-500 text-sm tracking-wide">IN: +91 87503 99055</p>
-                                    <p className="text-gray-500 text-sm tracking-wide">US: +1 3502 008-444</p>
+                                    <a href="tel:+918750399055" className="block text-gray-500 hover:text-blue-600 text-sm tracking-wide transition-colors">IN: +91 87503 99055</a>
+                                    <a href="tel:+13502008444" className="block text-gray-500 hover:text-blue-600 text-sm tracking-wide transition-colors">US: +1 3502 008-444</a>
                                 </div>
                             </div>
                             <div className="flex items-center gap-4">
                                 <Mail size={18} className="text-blue-600 shrink-0" />
-                                <p className="text-gray-500 text-sm tracking-wide">sales@rigteq.com</p>
+                                <a href="mailto:sales@rigteq.com" className="text-gray-500 hover:text-blue-600 text-sm tracking-wide transition-colors">sales@rigteq.com</a>
                             </div>
                         </div>
                     </div>

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Linkedin, Mail, Award, Briefcase, Code2, TrendingUp } from 'lucide-react';
+import { ArrowLeft, Linkedin, Mail, Award, Briefcase, Code2, TrendingUp, Terminal, Users } from 'lucide-react';
 
 const team = [
     {
@@ -65,6 +65,36 @@ const team = [
         linkedin: '#',
         email: 'satyam@rigteq.com',
     },
+    {
+        name: 'Manu Gaur',
+        role: 'Senior Software Engineer',
+        experience: '5+ Years of Engineering',
+        bio: 'A versatile and detail-driven software engineer with deep expertise in full-stack development, building scalable APIs, and delivering high-performance web applications. Passionate about clean code, modern frameworks, and continuous delivery pipelines.',
+        icon: Terminal,
+        accentColor: 'from-cyan-600 to-cyan-400',
+        bgAccent: 'bg-cyan-50',
+        borderAccent: 'border-cyan-200',
+        iconColor: 'text-cyan-600',
+        badgeColor: 'bg-cyan-600',
+        skills: ['Full-Stack Development', 'REST & GraphQL APIs', 'React & Next.js', 'CI/CD Pipelines'],
+        linkedin: '#',
+        email: 'manu@rigteq.com',
+    },
+    {
+        name: 'Ashwani',
+        role: 'HR & Operations',
+        experience: 'People & Culture Leader',
+        bio: 'Dedicated people-first professional responsible for talent acquisition, employee engagement, and building a thriving workplace culture at Rigteq. Ensures operational excellence across the organization while fostering an environment of growth and inclusivity.',
+        icon: Users,
+        accentColor: 'from-rose-600 to-rose-400',
+        bgAccent: 'bg-rose-50',
+        borderAccent: 'border-rose-200',
+        iconColor: 'text-rose-600',
+        badgeColor: 'bg-rose-600',
+        skills: ['Talent Acquisition', 'Employee Engagement', 'HR Operations', 'Culture Building'],
+        linkedin: '#',
+        email: 'ashwani@rigteq.com',
+    },
 ];
 
 export default function TeamPage() {
@@ -108,7 +138,7 @@ export default function TeamPage() {
                     {/* Stats row */}
                     <div className="grid grid-cols-3 gap-6 mb-20 max-w-2xl mx-auto">
                         {[
-                            { label: 'Team Members', value: '4+' },
+                            { label: 'Team Members', value: '6+' },
                             { label: 'Years Combined Experience', value: '25+' },
                             { label: 'Projects Delivered', value: '200+' },
                         ].map((stat) => (
