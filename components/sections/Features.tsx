@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 const whyUs = [
@@ -18,12 +17,7 @@ export function Features() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
 
                     {/* Left: Stats Panel Overlay */}
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        className="relative"
-                    >
+                    <div className="relative">
                         <div className="relative rounded-3xl overflow-hidden bg-white border border-gray-200 p-10 md:p-14 text-gray-900 shadow-xl">
                             {/* Decorative background flare */}
                             <div className="absolute top-0 right-0 w-80 h-80 bg-blue-500/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl pointer-events-none" />
@@ -67,15 +61,10 @@ export function Features() {
                                 📅 Book Free Consultation
                             </Link>
                         </div>
-                    </motion.div>
+                    </div>
 
                     {/* Right: Why Us Content */}
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        className="space-y-10"
-                    >
+                    <div className="space-y-10">
                         <div>
                             <p className="text-blue-600 font-bold text-xs uppercase tracking-widest mb-4">Why Partner With Us</p>
                             <h2 className="text-4xl md:text-[42px] font-black text-gray-900 leading-tight tracking-tight">
@@ -87,21 +76,17 @@ export function Features() {
                         </div>
 
                         <div className="grid grid-cols-1 gap-y-3">
-                            {whyUs.map((item, idx) => (
-                                <motion.div
+                            {whyUs.map((item) => (
+                                <div
                                     key={item.text}
-                                    initial={{ opacity: 0, x: 10 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: idx * 0.05 }}
-                                    className="flex items-center gap-3 p-3 rounded-xl hover:bg-white hover:shadow-sm border border-transparent hover:border-gray-100 transition-all duration-200"
+                                    className="flex items-center gap-3 p-3 rounded-xl hover:bg-white hover:shadow-sm border border-transparent hover:border-gray-100 transition-[background-color,box-shadow,border-color] duration-200"
                                 >
                                     <span className="text-xl shrink-0">{item.icon}</span>
                                     <span className="font-semibold text-gray-700 text-sm">{item.text}</span>
-                                </motion.div>
+                                </div>
                             ))}
                         </div>
-                    </motion.div>
+                    </div>
 
                 </div>
             </div>

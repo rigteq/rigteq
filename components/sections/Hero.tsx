@@ -42,10 +42,10 @@ export function Hero() {
                         </div>
 
                         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-black text-gray-900 leading-[1.1] mb-4 tracking-tight">
-                            Best Software
+                            Build Scalable
                             <br className="hidden sm:block" />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400"> Development</span>
-                            <br className="hidden md:block" /> Company in India
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400"> Software</span>
+                            <br className="hidden md:block" /> for the digital future
                         </h1>
 
                         <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
@@ -77,14 +77,14 @@ export function Hero() {
                             <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4 text-center lg:text-left">
                                 Trusted by growing startups &amp; businesses
                             </p>
-                            {/* Horizontal scroll on mobile, wrap on desktop */}
-                            <div className="flex items-center gap-5 sm:gap-8 overflow-x-auto pb-1 scrollbar-hide lg:flex-wrap lg:justify-start justify-center">
+                            {/* 3-col grid — ensures names stay column-aligned */}
+                            <div className="grid grid-cols-3 gap-x-6 gap-y-4 lg:justify-items-start justify-items-center">
                                 {trustedClients.map((brand) => (
                                     <div
                                         key={brand.name}
-                                        className="flex items-center gap-2 cursor-pointer group shrink-0"
+                                        className="flex items-center gap-2 group"
                                     >
-                                        <brand.Icon size={20} strokeWidth={2.5} className={`text-transparent bg-clip-text bg-gradient-to-r ${brand.color} group-hover:scale-110 transition-transform duration-300`} />
+                                        <brand.Icon size={16} strokeWidth={2.5} className={`shrink-0 text-transparent bg-clip-text bg-gradient-to-r ${brand.color} group-hover:scale-110 transition-transform duration-200`} />
                                         <span className={`font-bold text-sm tracking-tight bg-clip-text text-transparent bg-gradient-to-r ${brand.color} whitespace-nowrap`}>
                                             {brand.name}
                                         </span>

@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { useEffect, useState, useRef } from 'react';
 
 const stats = [
@@ -58,18 +57,14 @@ export function Stats() {
         <section className="bg-white py-24 relative overflow-hidden" aria-label="Company Statistics">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-                    {stats.map((stat, idx) => (
-                        <motion.div
+                    {stats.map((stat) => (
+                        <div
                             key={stat.label}
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: idx * 0.05 }}
-                            className="bg-gray-50 border border-gray-200 rounded-2xl p-6 sm:p-8 text-center hover:-translate-y-2 hover:shadow-xl hover:shadow-blue-500/10 hover:border-blue-400/30 transition-all duration-300"
+                            className="bg-gray-50 border border-gray-200 rounded-2xl p-6 sm:p-8 text-center hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/10 hover:border-blue-400/30 transition-[transform,box-shadow,border-color] duration-300"
                         >
                             <AnimatedNumber value={stat.value} suffix={stat.suffix} />
                             <p className="text-gray-600 font-bold text-xs sm:text-sm tracking-wide uppercase">{stat.label}</p>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </div>

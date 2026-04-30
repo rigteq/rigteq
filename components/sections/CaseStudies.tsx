@@ -1,8 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
-import Image from 'next/image';
 import Link from 'next/link';
 
 import { cases } from '@/lib/caseStudies';
@@ -15,23 +13,14 @@ export function CaseStudies() {
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        className="max-w-2xl"
-                    >
+                    <div className="max-w-2xl">
                         <p className="text-blue-600 font-bold text-xs uppercase tracking-widest mb-4">Case Studies</p>
                         <h2 className="text-4xl md:text-[42px] font-black text-gray-900 leading-tight tracking-tight">
                             Engineering <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">Success Stories</span>
                         </h2>
-                    </motion.div>
+                    </div>
 
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                    >
+                    <div>
                         <Link
                             href="/portfolio"
                             className="inline-flex items-center gap-2 text-gray-600 hover:text-blue-600 font-bold text-sm tracking-wide transition-colors group"
@@ -39,19 +28,15 @@ export function CaseStudies() {
                             View All Work
                             <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                         </Link>
-                    </motion.div>
+                    </div>
                 </div>
 
                 <div className="space-y-12">
                     {cases.map((study, index) => {
                         const isEven = index % 2 === 0;
                         return (
-                            <motion.div
+                            <div
                                 key={study.id}
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.05 }}
                                 className="bg-white border border-gray-200 rounded-[2rem] overflow-hidden shadow-sm"
                             >
                                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
@@ -103,7 +88,7 @@ export function CaseStudies() {
                                         </Link>
                                     </div>
                                 </div>
-                            </motion.div>
+                            </div>
                         );
                     })}
                 </div>

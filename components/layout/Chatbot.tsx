@@ -54,18 +54,12 @@ export function Chatbot() {
             oscillator.start();
             oscillator.stop(audioContext.currentTime + 0.1);
         } catch (e) {
-            console.log('Audio playback blocked by browser');
+            // Audio API not available — ignore silently
         }
     };
 
-    // Auto-open after 5 seconds
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsOpen(true);
-            playNotificationSound();
-        }, 5000);
-        return () => clearTimeout(timer);
-    }, []);
+    // Do NOT auto-open: forces layout paint + AudioContext on page load
+    // Users will open the chat themselves when ready
 
     // Auto-focus input when opened
     useEffect(() => {
@@ -103,7 +97,6 @@ export function Chatbot() {
                 { role: 'model', content: data.reply || "I'm having trouble connecting to my system right now. Please email sales@rigteq.com." }
             ]);
         } catch (error) {
-            console.error('Chat error:', error);
             setMessages((prev) => [
                 ...prev,
                 { role: 'model', content: "Sorry, I'm currently unavailable. Please contact us via the contact form or call us directly." }
@@ -127,11 +120,8 @@ export function Chatbot() {
             >
                 <MessageSquareText size={26} strokeWidth={2} />
 
-                {/* Online indicator dot */}
-                <span className="absolute top-1 right-1 flex h-3.5 w-3.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-green-500 border-2 border-slate-900"></span>
-                </span>
+                {/* Online indicator dot — static, no animate-ping (saves constant GPU compositing) */}
+                <span className="absolute top-1 right-1 w-3.5 h-3.5 rounded-full bg-green-500 border-2 border-slate-900" />
             </button>
 
             {/* Chat Popup Container */}

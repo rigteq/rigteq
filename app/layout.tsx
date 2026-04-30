@@ -4,11 +4,13 @@ import './globals.css';
 import { TopBar } from '@/components/layout/TopBar';
 import Navbar from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
-import { Chatbot } from '@/components/layout/Chatbot';
 import { StickyConsultationCTA } from '@/components/layout/StickyConsultationCTA';
+// ChatbotLoader is a Client Component that lazy-loads the chatbot with ssr:false
+import { ChatbotLoader } from '@/components/layout/ChatbotLoader';
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space' });
+// display:'swap' is critical — prevents invisible text during font loading (FOIT)
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
+const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space', display: 'swap' });
 
 export const metadata: Metadata = {
   title: 'Rigteq Softwares | Custom Software Development Company — India & USA',
@@ -103,7 +105,7 @@ export default function RootLayout({
         </div>
 
         <StickyConsultationCTA />
-        <Chatbot />
+        <ChatbotLoader />
         <Footer />
       </body>
     </html>

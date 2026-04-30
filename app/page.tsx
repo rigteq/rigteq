@@ -76,19 +76,19 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Hero />
-      <SectionWrapper animation="fade-up" delay={100}>
+      <SectionWrapper animation="fade-up">
         <Stats />
       </SectionWrapper>
-      <SectionWrapper animation="fade-up" delay={200}>
+      <SectionWrapper animation="fade-up">
         <Services />
       </SectionWrapper>
-      <SectionWrapper animation="fade-up" delay={300}>
+      <SectionWrapper animation="fade-up">
         <Products />
       </SectionWrapper>
-      <SectionWrapper animation="fade-up" delay={400}>
+      <SectionWrapper animation="fade-up">
         <Industries />
       </SectionWrapper>
-      <SectionWrapper animation="fade-up" delay={500}>
+      <SectionWrapper animation="fade-up">
         <Features />
       </SectionWrapper>
       <SectionWrapper animation="fade-up">

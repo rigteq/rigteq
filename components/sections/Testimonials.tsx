@@ -139,18 +139,16 @@ export function Testimonials() {
 
                 {/* Section Header */}
                 <div className="text-center max-w-3xl mx-auto mb-14">
-                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-                        <p className="text-blue-600 font-bold text-xs uppercase tracking-widest mb-4">Client Feedback</p>
-                        <h2 className="text-4xl md:text-[46px] font-black text-gray-900 leading-tight tracking-tight">
-                            Trusted by{' '}
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-500">
-                                Indian Businesses
-                            </span>
-                        </h2>
-                        <p className="mt-4 text-gray-500 text-lg font-medium">
-                            Real results for real businesses — from Mumbai to Chennai.
-                        </p>
-                    </motion.div>
+                    <p className="text-blue-600 font-bold text-xs uppercase tracking-widest mb-4">Client Feedback</p>
+                    <h2 className="text-4xl md:text-[46px] font-black text-gray-900 leading-tight tracking-tight">
+                        Trusted by{' '}
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-500">
+                            Indian Businesses
+                        </span>
+                    </h2>
+                    <p className="mt-4 text-gray-500 text-lg font-medium">
+                        Real results for real businesses — from Mumbai to Chennai.
+                    </p>
                 </div>
 
                 {/* Monogram selector strip */}
@@ -177,10 +175,10 @@ export function Testimonials() {
                         <motion.div
                             key={current}
                             custom={direction}
-                            initial={{ opacity: 0, x: direction * 70 }}
+                            initial={{ opacity: 0, x: direction * 40 }}
                             animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: direction * -70 }}
-                            transition={{ duration: 0.35, ease: 'easeInOut' }}
+                            exit={{ opacity: 0, x: direction * -40 }}
+                            transition={{ duration: 0.25, ease: 'easeInOut' }}
                             className="rounded-3xl overflow-hidden shadow-2xl shadow-gray-200/60 border border-gray-100"
                         >
                             <div className="grid grid-cols-1 md:grid-cols-[280px_1fr]">
@@ -305,10 +303,7 @@ export function Testimonials() {
                 </div>
 
                 {/* Trust strip */}
-                <motion.div
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                <div
                     className="mt-16 flex flex-wrap items-center justify-center gap-10 text-center"
                 >
                     {[
@@ -322,7 +317,7 @@ export function Testimonials() {
                             <span className="text-xs text-gray-400 font-semibold uppercase tracking-wide mt-0.5">{stat.label}</span>
                         </div>
                     ))}
-                </motion.div>
+                </div>
             </div>
         </section>
     );
