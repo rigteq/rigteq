@@ -2,14 +2,13 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { CheckCircle } from 'lucide-react';
 
 const whyUs = [
-    'Certified Experts',
-    'Agile Development Process',
-    'Transparent Communication',
-    'Scalable Architecture',
-    'Long-term Support',
+    { icon: '🏆', text: 'Certified Experts — 5+ years proven track record' },
+    { icon: '⚡', text: 'Agile delivery — go live in weeks, not months' },
+    { icon: '🔒', text: 'NDA-protected — your idea stays 100% yours' },
+    { icon: '♻️', text: 'Free revisions until you are satisfied' },
+    { icon: '🌍', text: 'India & USA presence — same-timezone calls' },
 ];
 
 export function Features() {
@@ -38,8 +37,8 @@ export function Features() {
                             <div className="grid grid-cols-2 gap-6 mb-12">
                                 {[
                                     { value: '5+', label: 'Years Active' },
-                                    { value: '30+', label: 'Successful Apps' },
-                                    { value: '5K+', label: 'Global Users' },
+                                    { value: '200+', label: 'Projects Delivered' },
+                                    { value: '50+', label: 'Clients Served' },
                                     { value: '5+', label: 'Countries' },
                                 ].map((stat) => (
                                     <div key={stat.label} className="bg-gray-50 rounded-2xl p-6 border border-gray-100 hover:bg-white hover:border-blue-200 transition-all duration-300 shadow-sm hover:shadow-md">
@@ -49,11 +48,23 @@ export function Features() {
                                 ))}
                             </div>
 
+                            {/* Guarantees */}
+                            <div className="mt-6 p-4 rounded-2xl bg-blue-50 border border-blue-100">
+                                <p className="text-xs font-bold text-blue-700 uppercase tracking-widest mb-2">Our Promise to You</p>
+                                <ul className="space-y-1.5">
+                                    {['100% satisfaction guarantee', 'Free revisions policy', 'On-time delivery or refund'].map(g => (
+                                        <li key={g} className="flex items-center gap-2 text-sm font-semibold text-gray-700">
+                                            <span className="text-green-500 text-base">✓</span> {g}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+
                             <Link
                                 href="#contact"
-                                className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm transition-all shadow-lg shadow-blue-500/20"
+                                className="inline-flex items-center justify-center gap-2 w-full px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm transition-all shadow-lg shadow-blue-500/20 mt-8"
                             >
-                                START YOUR JOURNEY →
+                                📅 Book Free Consultation
                             </Link>
                         </div>
                     </motion.div>
@@ -75,22 +86,18 @@ export function Features() {
                             </p>
                         </div>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8">
+                        <div className="grid grid-cols-1 gap-y-3">
                             {whyUs.map((item, idx) => (
                                 <motion.div
-                                    key={item}
-                                    initial={{ opacity: 0 }}
-                                    whileInView={{ opacity: 1 }}
+                                    key={item.text}
+                                    initial={{ opacity: 0, x: 10 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: idx * 0.05 }}
-                                    className="flex items-center gap-3 group"
+                                    className="flex items-center gap-3 p-3 rounded-xl hover:bg-white hover:shadow-sm border border-transparent hover:border-gray-100 transition-all duration-200"
                                 >
-                                    <div className="shrink-0">
-                                        <div className="w-6 h-6 rounded-full bg-blue-50 flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300">
-                                            <CheckCircle size={14} className="text-blue-600 group-hover:text-white transition-colors duration-300" />
-                                        </div>
-                                    </div>
-                                    <span className="font-semibold text-gray-700 group-hover:text-gray-900 transition-colors duration-300 text-base">{item}</span>
+                                    <span className="text-xl shrink-0">{item.icon}</span>
+                                    <span className="font-semibold text-gray-700 text-sm">{item.text}</span>
                                 </motion.div>
                             ))}
                         </div>

@@ -4,40 +4,46 @@ import { motion } from 'framer-motion';
 import { useEffect, useState, useRef } from 'react';
 
 const stats = [
-    { value: 5, suffix: '+', label: 'Years Experience' },
-    { value: 30, suffix: '+', label: 'Projects Delivered' },
-    { value: 30, suffix: '+', label: 'Clients Served' },
-    { value: 5, suffix: '+', label: 'Countries Served' },
+    { value: 5,   suffix: '+', label: 'Years Experience' },
+    { value: 200, suffix: '+', label: 'Projects Delivered' },
+    { value: 50,  suffix: '+', label: 'Clients Served' },
+    { value: 5,   suffix: '+', label: 'Countries Served' },
 ];
 
 function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
     const [count, setCount] = useState(0);
     const ref = useRef<HTMLDivElement>(null);
-    const [hasAnimated, setHasAnimated] = useState(false);
+    const hasAnimated = useRef(false);   // ref, not state — won't trigger effect re-run
+    const rafRef = useRef<number | null>(null);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
-                if (entry.isIntersecting && !hasAnimated) {
-                    setHasAnimated(true);
-                    let start = 0;
-                    const duration = 2000;
+                if (entry.isIntersecting && !hasAnimated.current) {
+                    hasAnimated.current = true;
+                    observer.disconnect();               // stop observing once triggered
+                    const duration = 1800;
                     const startTime = Date.now();
                     const animate = () => {
                         const elapsed = Date.now() - startTime;
                         const progress = Math.min(elapsed / duration, 1);
                         const eased = 1 - Math.pow(1 - progress, 3);
-                        setCount(Math.floor(eased * value));
-                        if (progress < 1) requestAnimationFrame(animate);
+                        setCount(progress < 1 ? Math.floor(eased * value) : value);
+                        if (progress < 1) {
+                            rafRef.current = requestAnimationFrame(animate);
+                        }
                     };
-                    requestAnimationFrame(animate);
+                    rafRef.current = requestAnimationFrame(animate);
                 }
             },
-            { threshold: 0.5 }
+            { threshold: 0.1 }
         );
         if (ref.current) observer.observe(ref.current);
-        return () => observer.disconnect();
-    }, [value, hasAnimated]);
+        return () => {
+            observer.disconnect();
+            if (rafRef.current) cancelAnimationFrame(rafRef.current);
+        };
+    }, [value]); // only value — hasAnimated is a ref now, safe to omit
 
     return (
         <div ref={ref} className="text-4xl md:text-5xl font-black text-gray-900 mb-3">
@@ -45,6 +51,7 @@ function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
         </div>
     );
 }
+
 
 export function Stats() {
     return (

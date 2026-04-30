@@ -5,22 +5,26 @@ import { TopBar } from '@/components/layout/TopBar';
 import Navbar from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { Chatbot } from '@/components/layout/Chatbot';
+import { StickyConsultationCTA } from '@/components/layout/StickyConsultationCTA';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space' });
 
 export const metadata: Metadata = {
   title: 'Rigteq Softwares | Custom Software Development Company — India & USA',
-  description: 'Rigteq Softwares is a leading software development company in Noida, India offering custom web development, mobile app development, AI integration, SaaS products, e-commerce solutions, and SEO services globally.',
-  keywords: 'software development company, web development India, mobile app development, AI integration, SaaS development, e-commerce development, custom software, Noida, India, USA, Rigteq',
+  description: 'Rigteq Softwares is a leading software development company in Ghaziabad, India offering custom web development, mobile app development, AI integration, SaaS products, e-commerce solutions, and SEO services globally.',
+  keywords: 'software development company, web development India, mobile app development, AI integration, SaaS development, e-commerce development, custom software, Ghaziabad, Noida, India, USA, Rigteq',
   authors: [{ name: 'Rigteq Softwares', url: 'https://www.rigteq.com' }],
   creator: 'Rigteq Softwares',
   publisher: 'Rigteq Softwares',
   metadataBase: new URL('https://www.rigteq.com'),
   alternates: { canonical: 'https://www.rigteq.com' },
   icons: {
-    icon: '/images/logo.png',
-    apple: '/images/logo.png',
+    icon: '/images/favicon-image.png',
+    apple: '/images/favicon-image.png',
+  },
+  other: {
+    'theme-color': '#2563eb',
   },
   openGraph: {
     type: 'website',
@@ -29,13 +33,13 @@ export const metadata: Metadata = {
     siteName: 'Rigteq Softwares',
     title: 'Rigteq Softwares | Custom Software Development — India & USA',
     description: 'Premium software development company in India. Web apps, mobile apps, AI solutions, SaaS & e-commerce development for global businesses.',
-    images: [{ url: '/images/logo.png', width: 1200, height: 630, alt: 'Rigteq Softwares' }],
+    images: [{ url: '/images/rigteq-logo.png', width: 1200, height: 630, alt: 'Rigteq Softwares' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Rigteq Softwares | Custom Software Development',
     description: 'Custom web, mobile, AI & SaaS solutions by Rigteq — India & USA based software company.',
-    images: ['/images/logo.png'],
+    images: ['/images/rigteq-logo.png'],
     creator: '@rigteq',
   },
   robots: {
@@ -91,13 +95,14 @@ export default function RootLayout({
             className="w-12 h-12 flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all rounded-full overflow-hidden bg-white"
           >
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+              src="/images/whatsapp.svg"
               alt="WhatsApp"
               className="w-full h-full object-cover"
             />
           </a>
         </div>
 
+        <StickyConsultationCTA />
         <Chatbot />
         <Footer />
       </body>

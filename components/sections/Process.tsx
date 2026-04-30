@@ -4,33 +4,39 @@ import { Search, PenTool, Monitor, Database, ShieldCheck, Rocket } from 'lucide-
 
 const steps = [
     {
+        num: '01',
         title: 'Requirements Analysis',
-        description: 'We thoroughly analyze your project\'s needs, defining its scope and features to align with your vision and technical requirements.',
+        description: 'We define your project scope, features, and tech requirements — ensuring every build decision is aligned with your goals.',
         icon: Search,
     },
     {
-        title: 'Design and Prototyping',
-        description: 'Our skilled designers create wireframes and prototypes that serve as the visual blueprint for your app.',
+        num: '02',
+        title: 'Design & Prototyping',
+        description: 'Wireframes and interactive prototypes give you a visual blueprint before a single line of code is written.',
         icon: PenTool,
     },
     {
+        num: '03',
         title: 'Frontend Development',
-        description: 'Our front-end developers bring your design to life with coding best practices by ensuring the interface is user-friendly and responsive across multiple screen sizes.',
+        description: 'Pixel-perfect, responsive UI built with best practices — fast, accessible, and consistent across all devices.',
         icon: Monitor,
     },
     {
-        title: 'Database and Backend Development',
-        description: 'Our developers lay the groundwork by establishing the app\'s backend infrastructure, configuring databases and building APIs for ensuring efficient data management and security.',
+        num: '04',
+        title: 'Backend & Database',
+        description: 'Robust APIs, optimised databases, and secure infrastructure that power your application behind the scenes.',
         icon: Database,
     },
     {
-        title: 'Testing and Quality Assurance',
-        description: 'Rigorous testing is conducted which includes unit, integration and performance testing to identify and fix any bugs or issues for ensuring best app performance.',
+        num: '05',
+        title: 'Testing & QA',
+        description: 'Unit, integration and performance testing to catch bugs early — so you ship with confidence.',
         icon: ShieldCheck,
     },
     {
+        num: '06',
         title: 'Deployment & Launch',
-        description: 'This pivotal stage involves the technical release of your app to servers and its public release to users. It marks the moment your app is made available to users.',
+        description: 'Smooth cloud deployment with monitoring in place. Your product goes live — and stays live.',
         icon: Rocket,
     },
 ];
@@ -53,16 +59,19 @@ export function Process() {
                     {steps.map((step) => (
                         <div
                             key={step.title}
-                            className="group flex items-start gap-6"
+                            className="group flex items-start gap-5"
                         >
-                            {/* Icon Circle */}
-                            <div className="shrink-0 w-16 h-16 rounded-full bg-blue-50 border-2 border-blue-100 flex items-center justify-center group-hover:bg-blue-600 group-hover:border-blue-600 transition-all duration-300 shadow-sm">
-                                <step.icon size={24} className="text-blue-500 group-hover:text-white transition-colors duration-300" />
+                            {/* Step number + icon stacked */}
+                            <div className="shrink-0 flex flex-col items-center gap-1">
+                                <span className="text-[10px] font-black text-blue-400 uppercase tracking-widest">{step.num}</span>
+                                <div className="w-14 h-14 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center group-hover:bg-blue-600 group-hover:border-blue-600 transition-all duration-300 shadow-sm">
+                                    <step.icon size={22} className="text-blue-500 group-hover:text-white transition-colors duration-300" />
+                                </div>
                             </div>
 
                             {/* Text */}
-                            <div className="pt-1">
-                                <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                            <div className="pt-5">
+                                <h3 className="text-base font-bold text-gray-900 mb-1.5 group-hover:text-blue-600 transition-colors">
                                     {step.title}
                                 </h3>
                                 <p className="text-gray-500 text-sm leading-relaxed">

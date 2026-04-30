@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { BriefcaseMedical, Landmark, Truck, Building2, Stethoscope, Briefcase, Boxes } from 'lucide-react';
+import { Landmark, Truck, Building2, Stethoscope, Briefcase, Boxes } from 'lucide-react';
 
 const industries = [
     {

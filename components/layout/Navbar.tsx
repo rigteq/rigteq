@@ -2,11 +2,12 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface NavbarProps {
-  currentView?: string;
+    currentView?: string;
 }
 
 interface MenuItem {
@@ -18,19 +19,24 @@ interface MenuItem {
 const menuItems: MenuItem[] = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
-    { name: 'Services', href: '/#services', dropdown: [
-        { name: 'Products', href: '/#products' },
-        { name: 'Industries', href: '/#industries' },
-    ]},
+    {
+        name: 'Services', href: '/#services', dropdown: [
+            { name: 'Products', href: '/#products' },
+            { name: 'Industries', href: '/#industries' },
+        ]
+    },
     { name: 'Portfolio', href: '/portfolio' },
     { name: 'Packages', href: '/#pricing' },
-    { name: 'Blog', href: '/blog', dropdown: [
-        { name: 'Careers', href: '/careers' },
-    ]},
+    {
+        name: 'Blog', href: '/blog', dropdown: [
+            { name: 'Careers', href: '/careers' },
+        ]
+    },
     { name: 'Contact', href: '/contact' },
 ];
 
 export default function Navbar({ currentView }: NavbarProps) {
+    const pathname = usePathname();
     const [isScrolled, setIsScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -50,9 +56,9 @@ export default function Navbar({ currentView }: NavbarProps) {
                     {/* Logo */}
                     <Link href="/" className="flex items-center group z-50 shrink-0">
                         <img
-                            src="/images/logo.png"
+                            src="/images/rigteq-logo.png"
                             alt="Rigteq Softwares"
-                            className="h-14 md:h-16 w-auto object-contain transition-transform"
+                            className="h-11 md:h-12 w-auto object-contain transition-transform group-hover:scale-105"
                         />
                     </Link>
 
@@ -67,8 +73,9 @@ export default function Navbar({ currentView }: NavbarProps) {
                             >
                                 <Link
                                     href={item.href}
-                                    className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-semibold tracking-wide transition-all duration-200
-                    ${activeDropdown === item.name || (currentView && item.name.toLowerCase() === currentView) ? 'text-blue-600 bg-blue-50' : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'}`}
+                                    aria-current={pathname === item.href ? 'page' : undefined}
+                                    className={`flex items-center gap-1 px-4 py-2 rounded-lg text-base font-bold tracking-wide transition-all duration-200
+                    ${activeDropdown === item.name || pathname === item.href || (currentView && item.name.toLowerCase() === currentView) ? 'text-blue-600 bg-blue-50' : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'}`}
                                 >
                                     {item.name}
                                     {item.dropdown && (
@@ -145,7 +152,7 @@ export default function Navbar({ currentView }: NavbarProps) {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="fixed inset-x-0 top-[64px] md:top-[100px] bg-white lg:hidden overflow-y-auto z-40 border-t border-gray-100 shadow-2xl max-h-[calc(100vh-100px)]"
+                        className="fixed inset-x-0 top-[72px] bg-white lg:hidden overflow-y-auto z-40 border-t border-gray-100 shadow-2xl max-h-[calc(100vh-72px)]"
                     >
                         <div className="flex flex-col p-6 sm:p-8 gap-1">
                             {menuItems.map((item) => (
